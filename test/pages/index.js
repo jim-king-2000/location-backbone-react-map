@@ -12,7 +12,8 @@ export default class extends Component {
     return (
       <Grommet full plain>
         <Box fill>
-          <MapCanvas mapKey='143394ca6f243e7af025b73bad6b88ca' />
+          <MapCanvas mapKey='143394ca6f243e7af025b73bad6b88ca' mapVendor='amap' />
+          {/* <MapCanvas mapKey='ezIVxAYOPRYR8D3iGKsP6jFlqMiuZjTr' mapVendor='bmap' /> */}
         </Box>
       </Grommet>
     );

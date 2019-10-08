@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import LoadAPI from '../utils/APILoader';
+import BuildMap from '../utils/MapFactory';
 
 export class Map extends Component {
   container = React.createRef();
@@ -11,8 +12,11 @@ export class Map extends Component {
       return;
     }
 
-    await LoadAPI(mapKey);
-    this.map = new window.AMap.Map(this.container.current)
+    const NativeMap = BuildMap(this.props.mapVendor);
+    window.initialize = () => {
+      this.map = new NativeMap(this.container.current);
+    };
+    return LoadAPI(NativeMap.buildScriptTag(mapKey));
   }
 
   render() {
