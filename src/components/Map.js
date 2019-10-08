@@ -24,7 +24,8 @@ export class Map extends Component {
       ref={this.container}
       style={{
         width: '100%',
-        height: '100%'
+        height: '100%',
+        position: 'relative'
       }}
     />;
   }
