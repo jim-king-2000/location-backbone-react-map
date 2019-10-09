@@ -5,7 +5,10 @@ export class HereMap {
       apikey: 'oSDd-lyooghz4RTOMVFHpU8Kk2swTJ7i_cZGcbv1ulc'
     });
     const maptypes = platform.createDefaultLayers();
-    this.map = new H.Map(dom, maptypes.vector.normal.map);
+    this.map = new H.Map(dom, maptypes.vector.normal.map, {
+      pixelRatio: window.devicePixelRatio || 1
+    });
+    new H.mapevents.Behavior(new H.mapevents.MapEvents(this.map));
   }
 
   static get LoadType() {
@@ -15,7 +18,8 @@ export class HereMap {
   static buildScriptTag() {
     return [
       '//js.api.here.com/v3/3.1/mapsjs-core.js',
-      '//js.api.here.com/v3/3.1/mapsjs-service.js'
+      '//js.api.here.com/v3/3.1/mapsjs-service.js',
+      '//js.api.here.com/v3/3.1/mapsjs-mapevents.js'
     ];
   }
 }
