@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/jim-king-2000/location-backbone-react-map/issues"
   },
-  "homepage": "https://github.com/jim-king-2000/location-backbone-react-map#readme"
+  "homepage": "https://github.com/jim-king-2000/location-backbone-react-map#readme",
+  "dependencies": {
+    "ol": "^6.0.1"
+  }
 }

@@ -6,6 +6,7 @@ import { TianMap } from '../hal/domestic/tianditu';
 import { BingMap } from '../hal/international/bingmap';
 import { GoogleMap } from '../hal/international/googlemap';
 import { HereMap } from '../hal/international/heremap';
+import { OLMap } from '../hal/international/openlayers';
 
 const MapClasses = {
   AMap,
@@ -16,6 +17,7 @@ const MapClasses = {
   SogouMap,
   TianMap,
   HereMap,
+  OLMap,
 };
 
 export default mapVendor => {

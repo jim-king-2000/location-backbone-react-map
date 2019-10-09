@@ -12,10 +12,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@zeit/next-css": "^1.0.1",
     "babel-plugin-styled-components": "^1.10.6",
     "grommet": "^2.7.9",
     "location-backbone-react-map": "file:..",
     "next": "^9.1.1",
+    "next-compose-plugins": "^2.2.0",
     "next-transpile-modules": "^2.3.1",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
