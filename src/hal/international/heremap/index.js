@@ -1,11 +1,11 @@
 
 export class HereMap {
   constructor(dom) {
-    const platform = new window.H.service.Platform({
+    const platform = new H.service.Platform({
       apikey: 'oSDd-lyooghz4RTOMVFHpU8Kk2swTJ7i_cZGcbv1ulc'
     });
     const maptypes = platform.createDefaultLayers();
-    this.map = new window.H.Map(dom, maptypes.vector.normal.map);
+    this.map = new H.Map(dom, maptypes.vector.normal.map);
   }
 
   static get LoadType() {

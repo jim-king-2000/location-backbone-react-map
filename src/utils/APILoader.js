@@ -7,9 +7,9 @@ function buildScript(src, onLoad) {
   document.head.appendChild(script);
 }
 
-export default (NativeMapClass, mapKey) => {
-  const promises = NativeMapClass.buildScriptTag(mapKey).map(
-    src => new Promise(resolve => buildScript(src, resolve)));
-
-  return Promise.all(promises);
+export default async (NativeMapClass, mapKey) => {
+  const scripts = NativeMapClass.buildScriptTag(mapKey);
+  for (const script of scripts) {
+    await new Promise(resolve => buildScript(script, resolve));
+  }
 }
