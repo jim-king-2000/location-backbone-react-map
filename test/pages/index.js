@@ -20,7 +20,7 @@ export default class extends Component {
           <Box direction='row' flex>
             <Box flex><MapCanvas mapVendor='SogouMap' /></Box>
             <Box flex><MapCanvas mapKey='b618c2e99b8e8267796563c32756f9bd' mapVendor='TianMap' /></Box>
-            <Box flex><MapCanvas mapVendor='OLMap' /></Box>
+            <Box flex><MapCanvas mapVendor='MapBox' /></Box>
           </Box>
           <Box direction='row' flex>
             <Box flex><MapCanvas mapKey='oSDd-lyooghz4RTOMVFHpU8Kk2swTJ7i_cZGcbv1ulc' mapVendor='HereMap' /></Box>
