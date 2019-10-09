@@ -1,15 +1,20 @@
 import { AMap } from '../hal/domestic/amap';
 import { BMap } from '../hal/domestic/bmap';
 import { TMap } from '../hal/domestic/tmap';
+import { SougouMap } from '../hal/domestic/sougoumap';
 import { BingMap } from '../hal/international/bingmap';
 import { GoogleMap } from '../hal/international/googlemap';
 
-export default mapVendor => {
-  if (!mapVendor) return AMap;
+const MapClasses = {
+  AMap,
+  BMap,
+  TMap,
+  BingMap,
+  GoogleMap,
+  SougouMap,
+};
 
-  if ('AMap' === mapVendor) return AMap;
-  if ('BMap' === mapVendor) return BMap;
-  if ('TMap' === mapVendor) return TMap;
-  if ('BingMap' === mapVendor) return BingMap;
-  if ('GoogleMap' === mapVendor) return GoogleMap;
+export default mapVendor => {
+  const mapClass = MapClasses[mapVendor];
+  return mapClass || AMap;
 }

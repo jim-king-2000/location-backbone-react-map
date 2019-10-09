@@ -1,22 +1,17 @@
 import React, { Component } from 'react';
 import LoadAPI from '../utils/APILoader';
-import BuildMap from '../utils/MapFactory';
+import GetMapClass from '../utils/MapFactory';
 
 export class Map extends Component {
   container = React.createRef();
 
   async componentDidMount() {
     const mapKey = this.props.mapKey;
-    if (!mapKey) {
-      console.error('Wrong key of map.');
-      return;
-    }
-
-    const NativeMap = BuildMap(this.props.mapVendor);
-    window.initialize = () => {
-      this.map = new NativeMap(this.container.current);
+    const NativeMapClass = GetMapClass(this.props.mapVendor);
+    window[NativeMapClass.callbackName()] = () => {
+      this.map = new NativeMapClass(this.container.current);
     };
-    return LoadAPI(NativeMap.buildScriptTag(mapKey));
+    return LoadAPI(NativeMapClass, mapKey);
   }
 
   render() {

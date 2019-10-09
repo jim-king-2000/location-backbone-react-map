@@ -7,7 +7,11 @@ export class GoogleMap {
     });
   }
 
+  static callbackName() {
+    return 'initializeGoogleMap';
+  }
+
   static buildScriptTag(mapKey) {
-    return `//maps.googleapis.com/maps/api/js?key=${mapKey}&callback=initialize`;
+    return `//maps.google.cn/maps/api/js?key=${mapKey}&callback=${GoogleMap.callbackName()}`;
   }
 }

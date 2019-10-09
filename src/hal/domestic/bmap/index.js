@@ -5,7 +5,11 @@ export class BMap {
     this.map.centerAndZoom(new window.BMap.Point(116.402544, 39.928216), 11);
   }
 
+  static callbackName() {
+    return 'initializeBMap';
+  }
+
   static buildScriptTag(mapKey) {
-    return `//api.map.baidu.com/api?v=3.0&ak=${mapKey}&callback=initialize`;
+    return `//api.map.baidu.com/api?v=3.0&ak=${mapKey}&callback=${BMap.callbackName()}`;
   }
 }
