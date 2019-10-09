@@ -4,11 +4,11 @@ export class TMap {
     this.map = new window.TMap.Map(dom);
   }
 
-  static callbackName() {
-    return 'initializeTMap';
+  static get LoadType() {
+    return { async: false }
   }
 
   static buildScriptTag(mapKey) {
-    return `//map.qq.com/api/gljs?v=1.exp&key=${mapKey}&callback=${TMap.callbackName()}`;
+    return [`//map.qq.com/api/gljs?v=2.exp&key=${mapKey}`];
   }
 }

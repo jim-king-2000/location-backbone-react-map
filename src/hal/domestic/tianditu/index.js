@@ -1,0 +1,17 @@
+// 天地图
+export class TianMap {
+  constructor(dom) {
+    this.map = new T.Map(dom, {
+      center: new T.LngLat(116.40769, 39.89945),
+      zoom: 11,
+    });
+  }
+
+  static get LoadType() {
+    return { async: false }
+  }
+  
+  static buildScriptTag(mapKey) {
+    return [`http://api.tianditu.gov.cn/api?v=4.0&tk=${mapKey}`];
+  }
+}

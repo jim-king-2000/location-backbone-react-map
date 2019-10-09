@@ -1,18 +1,15 @@
 
-function buildScript(NativeMapClass, mapKey, onLoad) {
+function buildScript(src, onLoad) {
   const script = document.createElement('script');
   script.type = 'text/javascript';
-  script.onGo2mapApiLoad = window[NativeMapClass.callbackName()]; // for Sougou Map only
-  script.src = NativeMapClass.buildScriptTag(mapKey);
+  script.src = src;
   script.onload = onLoad;
-  return script;
+  document.head.appendChild(script);
 }
 
 export default (NativeMapClass, mapKey) => {
-  const p = new Promise(resolve => {
-    const script = buildScript(NativeMapClass, mapKey, resolve);
-    document.head.appendChild(script);
-  });
+  const promises = NativeMapClass.buildScriptTag(mapKey).map(
+    src => new Promise(resolve => buildScript(src, resolve)));
 
-  return p;
+  return Promise.all(promises);
 }

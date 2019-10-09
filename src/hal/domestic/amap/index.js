@@ -4,11 +4,11 @@ export class AMap {
     this.map = new window.AMap.Map(dom);
   }
 
-  static callbackName() {
-    return 'initializeAMap';
+  static get LoadType() {
+    return { async: false }
   }
 
   static buildScriptTag(mapKey) {
-    return `//webapi.amap.com/maps?v=1.4.15&key=${mapKey}&callback=${AMap.callbackName()}`;
+    return [`//webapi.amap.com/maps?v=1.4.15&key=${mapKey}`];
   }
 }

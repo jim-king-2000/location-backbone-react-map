@@ -8,10 +8,20 @@ export class Map extends Component {
   async componentDidMount() {
     const mapKey = this.props.mapKey;
     const NativeMapClass = GetMapClass(this.props.mapVendor);
-    window[NativeMapClass.callbackName()] = () => {
+    if (NativeMapClass.LoadType.async) {
+      window[NativeMapClass.LoadType.startup] =
+        () => this.createMap(NativeMapClass);
+    }
+    await LoadAPI(NativeMapClass, mapKey);
+    if (!NativeMapClass.LoadType.async) {
+      this.createMap(NativeMapClass);
+    }
+  }
+
+  createMap(NativeMapClass) {
+    if (!this.map) {
       this.map = new NativeMapClass(this.container.current);
-    };
-    return LoadAPI(NativeMapClass, mapKey);
+    }
   }
 
   render() {

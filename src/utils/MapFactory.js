@@ -1,9 +1,11 @@
 import { AMap } from '../hal/domestic/amap';
 import { BMap } from '../hal/domestic/bmap';
 import { TMap } from '../hal/domestic/tmap';
-import { SougouMap } from '../hal/domestic/sougoumap';
+import { SogouMap } from '../hal/domestic/sogoumap';
+import { TianMap } from '../hal/domestic/tianditu';
 import { BingMap } from '../hal/international/bingmap';
 import { GoogleMap } from '../hal/international/googlemap';
+import { HereMap } from '../hal/international/heremap';
 
 const MapClasses = {
   AMap,
@@ -11,7 +13,9 @@ const MapClasses = {
   TMap,
   BingMap,
   GoogleMap,
-  SougouMap,
+  SogouMap,
+  TianMap,
+  HereMap,
 };
 
 export default mapVendor => {
