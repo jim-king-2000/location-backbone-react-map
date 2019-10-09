@@ -14,6 +14,8 @@ export default class MyDocument extends Document {
       <html>
         <Head>
           {this.props.styleTags}
+          <meta httpEquiv='Content-Type' content='text/html; charset=utf-8' />
+          <meta name='viewport' content='initial-scale=1.0, user-scalable=no, target-densitydpi=device-dpi' />
         </Head>
         <body>
           <Main />

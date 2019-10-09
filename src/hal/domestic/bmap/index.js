@@ -4,6 +4,9 @@ export class BMap {
     this.map = new window.BMap.Map(dom, {
       enableHighResolution: true
     });
+    this.map.enableScrollWheelZoom();
+    this.map.enableContinuousZoom();
+    this.map.highResolutionEnabled();
     this.map.centerAndZoom(new window.BMap.Point(116.402544, 39.928216), 11);
   }
 

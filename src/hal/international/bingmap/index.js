@@ -2,7 +2,7 @@
 export class BingMap {
   constructor(dom) {
     this.map = new Microsoft.Maps.Map(dom, {
-      setMkt: 'zh-CN'
+      enableHighDpi: true
     });
   }
 
