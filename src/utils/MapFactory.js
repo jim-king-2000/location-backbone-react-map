@@ -2,6 +2,7 @@ import { AMap } from '../hal/domestic/amap';
 import { BMap } from '../hal/domestic/bmap';
 import { TMap } from '../hal/domestic/tmap';
 import { BingMap } from '../hal/international/bingmap';
+import { GoogleMap } from '../hal/international/googlemap';
 
 export default mapVendor => {
   if (!mapVendor) return AMap;
@@ -10,4 +11,5 @@ export default mapVendor => {
   if ('BMap' === mapVendor) return BMap;
   if ('TMap' === mapVendor) return TMap;
   if ('BingMap' === mapVendor) return BingMap;
+  if ('GoogleMap' === mapVendor) return GoogleMap;
 }
