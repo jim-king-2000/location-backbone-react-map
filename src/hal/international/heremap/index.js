@@ -1,8 +1,8 @@
 
 export class HereMap {
-  constructor(dom) {
+  constructor(dom, mapKey) {
     const platform = new H.service.Platform({
-      apikey: 'oSDd-lyooghz4RTOMVFHpU8Kk2swTJ7i_cZGcbv1ulc'
+      apikey: mapKey
     });
     const maptypes = platform.createDefaultLayers();
     this.map = new H.Map(dom, maptypes.vector.normal.map, {
