@@ -6,7 +6,9 @@ export class HereMap {
     });
     const maptypes = platform.createDefaultLayers();
     this.map = new H.Map(dom, maptypes.vector.normal.map, {
-      pixelRatio: window.devicePixelRatio || 1
+      pixelRatio: window.devicePixelRatio || 1,
+      center: { lat: 31, lng: 121 },
+      zoom: 11,
     });
     new H.mapevents.Behavior(new H.mapevents.MapEvents(this.map));
   }

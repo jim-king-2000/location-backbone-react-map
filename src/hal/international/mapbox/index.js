@@ -6,6 +6,9 @@ export class MapBox {
     mapboxgl.accessToken = 'pk.eyJ1IjoiamltLWtpbmctMjAwMCIsImEiOiJjazFqaG41azcyMHczM2NwNnZlcWhtcG54In0.VJFYenX5OVz3R-z_JjB16w';
     this.map = new mapboxgl.Map({
       container: dom,
+      antialias: true,
+      center: [121, 31],
+      zoom: 11,
       style: 'mapbox://styles/mapbox/streets-v11'
     });
   }
