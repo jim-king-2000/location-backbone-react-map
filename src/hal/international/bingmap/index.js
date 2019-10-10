@@ -2,7 +2,9 @@
 export class BingMap {
   constructor(dom) {
     this.map = new Microsoft.Maps.Map(dom, {
-      enableHighDpi: true
+      enableHighDpi: true,
+      zoom: 11,
+      center: new Microsoft.Maps.Location(31, 121),
     });
   }
 

@@ -1,7 +1,10 @@
 // 高德地图
 export class AMap {
   constructor(dom) {
-    this.map = new window.AMap.Map(dom);
+    this.map = new window.AMap.Map(dom, {
+      zoom: 11,
+      center: [121, 31],
+    });
   }
 
   static get LoadType() {

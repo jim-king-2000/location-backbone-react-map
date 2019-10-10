@@ -7,7 +7,7 @@ export class BMap {
     this.map.enableScrollWheelZoom();
     this.map.enableContinuousZoom();
     this.map.highResolutionEnabled();
-    this.map.centerAndZoom(new window.BMap.Point(116.402544, 39.928216), 11);
+    this.map.centerAndZoom(new window.BMap.Point(121, 31), 11);
   }
 
   static get LoadType() {

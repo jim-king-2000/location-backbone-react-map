@@ -2,7 +2,7 @@
 export class TianMap {
   constructor(dom) {
     this.map = new T.Map(dom, {
-      center: new T.LngLat(116.40769, 39.89945),
+      center: new T.LngLat(121, 31),
       zoom: 11,
     });
   }
