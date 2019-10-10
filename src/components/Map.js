@@ -10,17 +10,17 @@ export class Map extends Component {
     const NativeMapClass = GetMapClass(this.props.mapVendor);
     if (NativeMapClass.LoadType.async) {
       window[NativeMapClass.LoadType.startup] =
-        () => this.createMap(NativeMapClass);
+        () => this.createMap(NativeMapClass, mapKey);
     }
     await LoadAPI(NativeMapClass, mapKey);
     if (!NativeMapClass.LoadType.async) {
-      this.createMap(NativeMapClass);
+      this.createMap(NativeMapClass, mapKey);
     }
   }
 
-  createMap(NativeMapClass) {
+  createMap(NativeMapClass, mapKey) {
     if (!this.map) {
-      this.map = new NativeMapClass(this.container.current);
+      this.map = new NativeMapClass(this.container.current, mapKey);
     }
   }
 

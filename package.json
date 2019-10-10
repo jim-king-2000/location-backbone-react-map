@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "cd test&&npm i&&npm run dev"
+    "test": "cd test&&npm run dev",
+    "init": "env-cmd set MAP"
   },
   "repository": {
     "type": "git",
