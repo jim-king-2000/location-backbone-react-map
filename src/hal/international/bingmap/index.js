@@ -5,7 +5,6 @@ export class BingMap {
       enableHighDpi: true,
       zoom: 11,
       center: new Microsoft.Maps.Location(31, 121),
-      liteMode: false,
     });
   }
 
