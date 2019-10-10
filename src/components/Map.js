@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import LoadAPI from '../utils/APILoader';
 import GetMapClass from '../utils/MapFactory';
 
 export class Map extends Component {
   container = React.createRef();
+  child = React.createRef();
 
   async componentDidMount() {
     const mapKey = this.props.mapKey;
@@ -18,20 +20,37 @@ export class Map extends Component {
     }
   }
 
+  componentDidUpdate() {
+    this.renderChildren();
+  }
+
   createMap(NativeMapClass, mapKey) {
     if (!this.map) {
       this.map = new NativeMapClass(this.container.current, mapKey);
+      this.renderChildren();
     }
   }
 
+  renderChildren() {
+    const children = React.Children.map(
+      this.props.children,
+      child => child && React.cloneElement(child, { __map__: this.map })
+    );
+    ReactDOM.render(children, this.child.current);
+  }
+
   render() {
-    return <div
-      ref={this.container}
-      style={{
-        width: '100%',
-        height: '100%',
-        position: 'relative'
-      }}
-    />;
+    return (
+      <div
+        ref={this.container}
+        style={{
+          width: '100%',
+          height: '100%',
+          position: 'relative'
+        }}
+      >
+        <div ref={this.child} />
+      </div>
+    );
   }
 }
