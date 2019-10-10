@@ -5,6 +5,7 @@ export class BingMap {
       enableHighDpi: true,
       zoom: 11,
       center: new Microsoft.Maps.Location(31, 121),
+      liteMode: false,
     });
   }
 
@@ -16,6 +17,6 @@ export class BingMap {
   }
 
   static buildScriptTag(mapKey) {
-    return [`//cn.bing.com/api/maps/mapcontrol?key=${mapKey}&callback=${this.LoadType.startup}`];
+    return [`//www.bing.com/api/maps/mapcontrol?key=${mapKey}&callback=${this.LoadType.startup}&setMkt=zh-CN&setLang=zh`];
   }
 }
