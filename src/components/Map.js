@@ -42,14 +42,18 @@ export class Map extends Component {
   render() {
     return (
       <div
-        ref={this.container}
         style={{
-          width: '100%',
           height: '100%',
           position: 'relative'
         }}
       >
         <div ref={this.child} />
+        <div
+          ref={this.container}
+          style={{
+            height: '100%'
+          }}
+        />
       </div>
     );
   }

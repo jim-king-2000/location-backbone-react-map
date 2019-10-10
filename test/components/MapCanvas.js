@@ -20,7 +20,7 @@ export default class extends Component {
         <button
           style={{
             position: 'absolute',
-            zIndex: 100
+            zIndex: 1
           }}
           onClick={() => {
             this.setState({
