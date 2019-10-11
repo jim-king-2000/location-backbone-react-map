@@ -1,3 +1,4 @@
+import { CarTopView } from '../../../utils/CarTopView';
 
 function PositionToPoint(position) {
   return new window.BMap.Point(position.longitude, position.latitude);
@@ -14,10 +15,14 @@ function translateProperties(options) {
 export class Marker {
   constructor(map, position, options) {
     this.map = map;
-    this.marker = new window.BMap.Marker(
-      PositionToPoint(position),
-      translateProperties(options)
-    );
+    this.marker = new window.BMap.Marker(PositionToPoint(position), {
+      ...translateProperties(options),
+      icon: new window.BMap.Symbol(CarTopView, {
+        strokeColor: 'red',
+        scale: 0.6,
+        anchor: new window.BMap.Size(23, 23)
+      })
+    });
     map.addOverlay(this.marker);
   }
 
