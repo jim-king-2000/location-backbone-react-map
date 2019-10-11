@@ -19,6 +19,6 @@
   },
   "homepage": "https://github.com/jim-king-2000/location-backbone-react-map#readme",
   "dependencies": {
-    "mapbox-gl": "^1.4.0"
+    "mapbox-gl": "^1.4.1"
   }
 }
