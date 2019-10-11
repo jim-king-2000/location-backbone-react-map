@@ -16,7 +16,7 @@ export default class extends Component {
           <Box direction='row' flex>
             <Box flex><MapCanvas mapKey={Config.MAP_KEY_AMAP} mapVendor='AMap' /></Box>
             <Box flex><MapCanvas mapKey={Config.MAP_KEY_BMAP} mapVendor='BMap' /></Box>
-            <Box flex><MapCanvas mapKey={Config.MAP_KEY_TMAP} mapVendor='TMap' /></Box>
+            <Box flex><MapCanvas mapKey={Config.MAP_KEY_TMAP} mapVendor='QQMap' /></Box>
           </Box>
           <Box direction='row' flex>
             <Box flex><MapCanvas mapVendor='SogouMap' /></Box>

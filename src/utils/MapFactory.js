@@ -1,6 +1,7 @@
 import { AMap } from '../hal/domestic/amap';
 import { BMap } from '../hal/domestic/bmap';
 import { TMap } from '../hal/domestic/tmap';
+import { QQMap } from '../hal/domestic/qqmap';
 import { SogouMap } from '../hal/domestic/sogoumap';
 import { TianMap } from '../hal/domestic/tianditu';
 import { BingMap } from '../hal/international/bingmap';
@@ -12,6 +13,7 @@ const MapClasses = {
   AMap,
   BMap,
   TMap,
+  QQMap,
   BingMap,
   GoogleMap,
   SogouMap,
