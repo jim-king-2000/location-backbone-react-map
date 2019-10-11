@@ -47,13 +47,13 @@ export class Map extends Component {
           position: 'relative'
         }}
       >
-        <div ref={this.child} />
         <div
           ref={this.container}
           style={{
             height: '100%'
           }}
         />
+        <div ref={this.child} />
       </div>
     );
   }

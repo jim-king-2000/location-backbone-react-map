@@ -20,6 +20,7 @@ export default class extends Component {
         <button
           style={{
             position: 'absolute',
+            top: 0,
             zIndex: 1
           }}
           onClick={() => {
