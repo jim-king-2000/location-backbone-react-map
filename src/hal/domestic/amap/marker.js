@@ -1,17 +1,19 @@
+
+function PositionToLngLat(position) {
+  return new window.AMap.LngLat(position.longitude, position.latitude);
+}
+
 export class Marker {
   constructor(map, position, options) {
-    this.map = map;
     this.marker = new window.AMap.Marker({
       map,
       ...options,
-      position: new window.AMap.LngLat(position.longitude, position.latitude)
+      position: PositionToLngLat(position)
     });
   }
 
   setPosition(position) {
-    this.marker.setPosition(
-      new window.AMap.LngLat(position.longitude, position.latitude)
-    );
+    this.marker.setPosition(PositionToLngLat(position));
   }
 
   setAngle(angle) {
@@ -23,6 +25,6 @@ export class Marker {
   }
 
   remove() {
-    this.map.remove(this.marker);
+    this.marker.setMap();
   }
 }

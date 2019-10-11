@@ -27,7 +27,7 @@ export default class extends Component {
           style={{
             position: 'absolute',
             top: 0,
-            zIndex: 500
+            zIndex: 5000
           }}
         >
           <button
