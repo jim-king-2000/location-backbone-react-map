@@ -3,7 +3,12 @@ import { Map, Marker } from 'location-backbone-react-map';
 
 export default class extends Component {
   state = {
-    showOverlays: true
+    showOverlays: true,
+    position: {
+      latitude: 31,
+      longitude: 121
+    },
+    angle: 0
   }
 
   render() {
@@ -11,26 +16,43 @@ export default class extends Component {
       <Map
         mapKey={this.props.mapKey}
         mapVendor={this.props.mapVendor}>
-        {this.state.showOverlays && <Marker
-          position={{
-            latitude: 31,
-            longitude: 121
-          }}
-        />}
-        <button
+        {this.state.showOverlays &&
+          <Marker
+            position={this.state.position}
+            title={JSON.stringify(this.state.position)}
+            angle={this.state.angle}
+          />
+        }
+        <div
           style={{
             position: 'absolute',
             top: 0,
-            zIndex: 1
-          }}
-          onClick={() => {
-            this.setState({
-              showOverlays: !this.state.showOverlays
-            })
+            zIndex: 500
           }}
         >
-          显示/隐藏覆盖物
-        </button>
+          <button
+            onClick={() => {
+              this.setState({
+                showOverlays: !this.state.showOverlays
+              })
+            }}
+          >
+            显示/隐藏覆盖物
+          </button>
+          <button
+            onClick={() => {
+              this.setState({
+                position: {
+                  latitude: this.state.position.latitude + 0.01,
+                  longitude: this.state.position.longitude
+                },
+                angle: this.state.angle + 10
+              })
+            }}
+          >
+            移动覆盖物
+          </button>
+        </div>
       </Map>
     );
   }
