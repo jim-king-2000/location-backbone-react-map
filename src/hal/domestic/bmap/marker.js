@@ -17,7 +17,7 @@ export class Marker {
     this.marker = new window.BMap.Marker(PositionToPoint(position), {
       ...translateProperties(options),
       icon: new window.BMap.Symbol(options.svgIcon, {
-        fillColor: 'red',
+        fillColor: options.fillColor || 'currentColor',
         strokeWidth: 0,
         scale: 0.6,
         fillOpacity: 1,

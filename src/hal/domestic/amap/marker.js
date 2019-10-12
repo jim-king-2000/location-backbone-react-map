@@ -20,14 +20,13 @@ export class Marker {
 
       const shape = new CarTopViewShape({
         height: 30,
-        fillColor: 'red',
+        fillColor: options.fillColor || 'currentColor',
         strokeWidth: 0,
         strokeColor: '#666'
       });
       this.marker = new SvgMarker(
         shape,
         {
-          showPositionPoint: true,
           map,
           ...options,
           position: PositionToLngLat(position)
