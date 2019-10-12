@@ -15,8 +15,9 @@ export class Marker {
   constructor(map, position, options) {
     this.marker = new qq.maps.Marker({
       map,
+      flat: true,
       ...translateProperties(options),
-      position: PositionToLatLng(position)
+      position: PositionToLatLng(position),
     });
   }
 
