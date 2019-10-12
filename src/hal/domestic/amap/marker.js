@@ -1,7 +1,4 @@
-
-function PositionToLngLat(position) {
-  return new window.AMap.LngLat(position.longitude, position.latitude);
-}
+import { PositionToLngLat } from './utils';
 
 export class Marker {
   constructor(map, position, options) {
@@ -47,6 +44,6 @@ export class Marker {
   }
 
   remove() {
-    this.marker.setMap();
+    this.marker && this.marker.setMap(null);
   }
 }

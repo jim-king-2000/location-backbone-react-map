@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Map, Marker, CarTopView } from 'location-backbone-react-map';
+import { Map, Marker, Polyline, CarTopView } from 'location-backbone-react-map';
 
 export default class extends Component {
   state = {
@@ -22,6 +22,22 @@ export default class extends Component {
             title={JSON.stringify(this.state.position)}
             angle={this.state.angle}
             svgIcon={CarTopView}
+          />
+        }
+        {this.state.showOverlays &&
+          <Polyline path={[{
+              longitude: 121,
+              latitude: 31
+            }, {
+              longitude: 121.05,
+              latitude: 31.05
+            }, {
+              longitude: 121,
+              latitude: 31.10
+            }, {
+              longitude: 121.05,
+              latitude: 31.15
+            }]}
           />
         }
         <div

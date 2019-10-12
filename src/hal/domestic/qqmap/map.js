@@ -1,4 +1,5 @@
 import { Marker } from './marker';
+import { Polyline } from './polyline';
 
 export class QQMap {
   constructor(dom) {
@@ -25,5 +26,9 @@ export class QQMap {
 
   addMarker(position, options) {
     return new Marker(this.map, position, options);
+  }
+
+  addPolyline(path, options) {
+    return new Polyline(this.map, path, options);
   }
 }

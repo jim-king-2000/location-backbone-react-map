@@ -1,7 +1,4 @@
-
-function PositionToLatLng(position) {
-  return new qq.maps.LatLng(position.latitude, position.longitude);
-}
+import { PositionToLatLng } from './utils';
 
 function translateProperties(options) {
   const { angle, ...others } = options;

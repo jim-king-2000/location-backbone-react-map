@@ -1,7 +1,4 @@
-
-function PositionToLocation(position) {
-  return new Microsoft.Maps.Location(position.latitude, position.longitude);
-}
+import { PositionToLocation } from './utils';
 
 export class Marker {
   constructor(map, position, options) {

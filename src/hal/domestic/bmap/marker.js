@@ -1,7 +1,4 @@
-
-function PositionToPoint(position) {
-  return new window.BMap.Point(position.longitude, position.latitude);
-}
+import { PositionToPoint } from './utils';
 
 function translateProperties(options) {
   const { angle, ...others } = options;
