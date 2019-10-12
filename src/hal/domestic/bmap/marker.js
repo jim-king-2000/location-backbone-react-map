@@ -18,9 +18,9 @@ export class Marker {
       ...translateProperties(options),
       icon: new window.BMap.Symbol(options.svgIcon, {
         fillColor: 'red',
-        strokeWidth: 1,
-        strokeColor: '#666',
+        strokeWidth: 0,
         scale: 0.6,
+        fillOpacity: 1,
         anchor: new window.BMap.Size(23, 23)
       })
     });
