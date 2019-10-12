@@ -1,6 +1,7 @@
 import 'mapbox-gl/dist/mapbox-gl.css';
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
 import { Marker } from './marker';
+import { Polyline } from './polyline';
 
 export class MapBox {
   constructor(dom, mapKey) {
@@ -25,4 +26,8 @@ export class MapBox {
   addMarker(position, options) {
     return new Marker(this.map, position, options);
   }
+
+  // addPolyline(path, options) {
+  //   return new Polyline(this.map, path, options);
+  // }
 }
