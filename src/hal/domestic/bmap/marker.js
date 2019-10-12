@@ -1,4 +1,3 @@
-import { CarTopView } from '../../../utils/CarTopView';
 
 function PositionToPoint(position) {
   return new window.BMap.Point(position.longitude, position.latitude);
@@ -17,8 +16,10 @@ export class Marker {
     this.map = map;
     this.marker = new window.BMap.Marker(PositionToPoint(position), {
       ...translateProperties(options),
-      icon: new window.BMap.Symbol(CarTopView, {
-        strokeColor: 'red',
+      icon: new window.BMap.Symbol(options.svgIcon, {
+        fillColor: 'red',
+        strokeWidth: 1,
+        strokeColor: '#666',
         scale: 0.6,
         anchor: new window.BMap.Size(23, 23)
       })

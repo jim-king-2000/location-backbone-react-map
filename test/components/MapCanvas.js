@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Map, Marker } from 'location-backbone-react-map';
+import { Map, Marker, CarTopView } from 'location-backbone-react-map';
 
 export default class extends Component {
   state = {
@@ -21,6 +21,7 @@ export default class extends Component {
             position={this.state.position}
             title={JSON.stringify(this.state.position)}
             angle={this.state.angle}
+            svgIcon={CarTopView}
           />
         }
         <div

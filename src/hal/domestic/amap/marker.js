@@ -5,10 +5,34 @@ function PositionToLngLat(position) {
 
 export class Marker {
   constructor(map, position, options) {
-    this.marker = new window.AMap.Marker({
-      map,
-      ...options,
-      position: PositionToLngLat(position)
+    AMapUI.load(['lib/utils', 'ui/overlay/SvgMarker'], (utils, SvgMarker) => {
+      function CarTopViewShape(opts) {
+        opts = utils.extend({
+          sourcePath: {
+            path: options.svgIcon,
+            width: 47.032,
+            height: 47.032
+          }
+        }, opts);
+        CarTopViewShape.__super__.constructor.call(this, opts);
+      }
+      utils.inherit(CarTopViewShape, SvgMarker.Shape.PathShape);
+
+      const shape = new CarTopViewShape({
+        height: 30,
+        fillColor: 'red',
+        strokeWidth: 0,
+        strokeColor: '#666'
+      });
+      this.marker = new SvgMarker(
+        shape,
+        {
+          showPositionPoint: true,
+          map,
+          ...options,
+          position: PositionToLngLat(position)
+        }
+      );
     });
   }
 
