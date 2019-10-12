@@ -3,8 +3,7 @@ import React, { Component } from 'react';
 export class Marker extends Component {
   componentDidMount() {
     const { __map__, position, ...options } = this.props;
-    if (!__map__.addMarker) return;
-    this.marker = __map__.addMarker(position, options);
+    this.marker = __map__.addMarker && __map__.addMarker(position, options);
   }
 
   componentWillUnmount() {
