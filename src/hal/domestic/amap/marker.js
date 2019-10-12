@@ -22,7 +22,6 @@ export class Marker {
         height: 30,
         fillColor: options.fillColor || 'currentColor',
         strokeWidth: 0,
-        strokeColor: '#666'
       });
       this.marker = new SvgMarker(
         shape,
