@@ -1,7 +1,4 @@
-
-function PositionToLngLat(position) {
-  return new T.LngLat(position.longitude, position.latitude);
-}
+import { PositionToLngLat } from './utils';
 
 export class Marker {
   constructor(map, position, options) {

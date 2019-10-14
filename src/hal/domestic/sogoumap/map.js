@@ -1,4 +1,5 @@
 import { Marker } from './marker';
+import { Polyline } from './polyline';
 
 export class SogouMap {
   constructor(dom) {
@@ -24,5 +25,9 @@ export class SogouMap {
 
   addMarker(position, options) {
     return new Marker(this.map, position, options);
+  }
+
+  addPolyline(path, options) {
+    return new Polyline(this.map, path, options);
   }
 }

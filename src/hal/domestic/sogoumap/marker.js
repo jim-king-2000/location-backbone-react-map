@@ -1,7 +1,4 @@
-
-function PositionToLatLng(position) {
-  return new sogou.maps.LatLng(position.latitude, position.longitude);
-}
+import { PositionToLatLng } from './utils';
 
 export class Marker {
   constructor(map, position, options) {
