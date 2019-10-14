@@ -1,4 +1,5 @@
 import { Marker } from './marker';
+import { Polyline } from './polyline';
 
 export class GoogleMap {
   constructor(dom) {
@@ -18,5 +19,9 @@ export class GoogleMap {
 
   addMarker(position, options) {
     return new Marker(this.map, position, options);
+  }
+
+  addPolyline(path, options) {
+    return new Polyline(this.map, path, options);
   }
 }
