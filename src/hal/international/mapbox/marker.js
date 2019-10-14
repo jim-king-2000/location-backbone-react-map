@@ -8,7 +8,8 @@ export class Marker {
         options: { angle: 0 },
         _setPos: function(pos) {
           L.Marker.prototype._setPos.call(this, pos);
-          this._icon.style[L.DomUtil.TRANSFORM] += ' rotate(' + this.options.angle + 'deg)';
+          this._icon.style['transform-origin'] = 'center';
+          this._icon.style[L.DomUtil.TRANSFORM] += ` rotate(${this.options.angle}deg)`;
         }
       });
       L.rotatedMarker = function(pos, options) {
@@ -21,6 +22,7 @@ export class Marker {
       icon: L.divIcon({
         className: 'svg-marker',
         html: buildSVGMarkup(options),
+        iconSize: [30, 30],
         iconAnchor: [15, 15]
       }),
       ...options
