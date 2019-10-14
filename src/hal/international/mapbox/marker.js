@@ -1,35 +1,38 @@
-import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
-import ReactDOM from 'react-dom';
+import { PositionToLatLng } from './utils';
+import { buildSVGMarkup } from '../../../utils/svg';
 
 export class Marker {
   constructor(map, position, options) {
-    this.iconContainer = document.createElement('div');
-    ReactDOM.render((
-      <svg
-        preserveAspectRatio='xMidYMid meet'
-        fontSize={options.size || 30}
-        fill={options.fill || 'currentColor'}
-        viewBox='0 0 47.032 47.032'
-        width='30px'
-        height='30px'
-      >
-        <g>
-          <path d={options.svgIcon} />
-        </g>
-      </svg>
-    ), this.iconContainer);
-    this.marker = new mapboxgl.Marker(this.iconContainer)
-      .setLngLat([position.longitude, position.latitude])
-      .addTo(map);
-      
+    if (!L.RotatedMarker) {
+      L.RotatedMarker = L.Marker.extend({
+        options: { angle: 0 },
+        _setPos: function(pos) {
+          L.Marker.prototype._setPos.call(this, pos);
+          this._icon.style[L.DomUtil.TRANSFORM] += ' rotate(' + this.options.angle + 'deg)';
+        }
+      });
+      L.rotatedMarker = function(pos, options) {
+        return new L.RotatedMarker(pos, options);
+      };
+    }
+
+    this.marker = new L.rotatedMarker(PositionToLatLng(position), {
+      angle: options.angle,
+      icon: L.divIcon({
+        className: 'svg-marker',
+        html: buildSVGMarkup(options),
+        iconAnchor: [15, 15]
+      }),
+      ...options
+    }).addTo(map);
   }
 
   setPosition(position) {
-    this.marker.setLngLat([position.longitude, position.latitude]);
+    this.marker.setLatLng(PositionToLatLng(position));
   }
 
   setAngle(angle) {
-    // this.marker.setAngle(angle);
+    this.marker.options.angle = angle;
   }
 
   setTitle(title) {

@@ -1,9 +1,9 @@
-import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
+import { PositionToLatLng } from './utils';
 
 export class Polyline {
   constructor(map, path, options) {
-    this.polyline = new mapboxgl.Polyline(
-      path.map(position => [position.longitude, position.latitude]),
+    this.polyline = new L.polyline(
+      path.map(position => PositionToLatLng(position)),
       options
     ).addTo(map);
   }

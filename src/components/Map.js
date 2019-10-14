@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import LoadAPI from '../utils/APILoader';
+import LoadCSS from '../utils/CSSLoader';
 import GetMapClass from '../utils/MapFactory';
 
 export class Map extends Component {
@@ -10,6 +11,7 @@ export class Map extends Component {
   async componentDidMount() {
     const mapKey = this.props.mapKey;
     const NativeMapClass = GetMapClass(this.props.mapVendor);
+    LoadCSS(NativeMapClass);
     if (NativeMapClass.LoadType.async) {
       window[NativeMapClass.LoadType.startup] =
         () => this.createMap(NativeMapClass, mapKey);

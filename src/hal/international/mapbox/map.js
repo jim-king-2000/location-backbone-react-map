@@ -1,18 +1,12 @@
-import 'mapbox-gl/dist/mapbox-gl.css';
-import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
 import { Marker } from './marker';
 import { Polyline } from './polyline';
 
 export class MapBox {
   constructor(dom, mapKey) {
-    mapboxgl.accessToken = mapKey;
-    this.map = new mapboxgl.Map({
-      container: dom,
-      antialias: true,
-      center: [121, 31],
-      zoom: 11,
-      style: 'mapbox://styles/mapbox/streets-v11'
-    });
+    L.mapbox.accessToken = mapKey;
+    this.map = L.mapbox.map(dom)
+      .setView([31, 121], 11)
+      .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'));
   }
 
   static get LoadType() {
@@ -20,14 +14,18 @@ export class MapBox {
   }
 
   static buildScriptTag() {
-    return [];
+    return ['https://api.mapbox.com/mapbox.js/v3.2.0/mapbox.js'];
+  }
+
+  static buildCssTag() {
+    return '//api.mapbox.com/mapbox.js/v3.2.0/mapbox.css';
   }
   
   addMarker(position, options) {
     return new Marker(this.map, position, options);
   }
 
-  // addPolyline(path, options) {
-  //   return new Polyline(this.map, path, options);
-  // }
+  addPolyline(path, options) {
+    return new Polyline(this.map, path, options);
+  }
 }
