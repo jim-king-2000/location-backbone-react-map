@@ -5,7 +5,8 @@ export class GoogleMap {
   constructor(dom) {
     this.map = new google.maps.Map(dom, {
       center: {lat: 31, lng: 121},
-      zoom: 11
+      zoom: 11,
+      disableDefaultUI: true,
     });
   }
 
