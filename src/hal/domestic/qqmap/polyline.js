@@ -5,7 +5,7 @@ export class Polyline {
     this.polyline = new qq.maps.Polyline({
       map,
       path: path.map(position => PositionToLatLng(position)),
-      ...options
+      ...options,
     });
   }
 

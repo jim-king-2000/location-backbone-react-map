@@ -1,11 +1,18 @@
 import { PositionToLocation } from './utils';
 
+function translatePolylineOptions(options) {
+  return {
+    strokeThickness: options.strokeWeight,
+    ...options,
+  }
+}
+
 export class Polyline {
   constructor(map, path, options) {
     this.map = map;
     this.polyline = new Microsoft.Maps.Polyline(
       path.map(position => PositionToLocation(position)),
-      options
+      translatePolylineOptions(options)
     );
     this.map.entities.push(this.polyline);
   }

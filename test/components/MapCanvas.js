@@ -22,6 +22,7 @@ export default class extends Component {
             title={JSON.stringify(this.state.position)}
             angle={this.state.angle}
             svgIcon={CarTopView}
+            fillColor='red'
           />
         }
         {this.state.showOverlays &&
@@ -38,6 +39,9 @@ export default class extends Component {
               longitude: 121.05,
               latitude: 31.15
             }]}
+            strokeColor='#FF0000'
+            strokeWeight={10}
+            strokeOpacity={0.5}
           />
         }
         <div

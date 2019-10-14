@@ -5,6 +5,8 @@ export class Polyline {
     this.polyline = new window.AMap.Polyline({
       map,
       path: path.map(position => PositionToLngLat(position)),
+      lineJoin: 'round',
+      lineCap: 'round',
       ...options
     });
   }
