@@ -1,15 +1,19 @@
 import { Marker } from './marker';
 import { Polyline } from './polyline';
+import { PositionToPoint } from './utils';
 
 export class BMap {
-  constructor(dom) {
+  constructor(dom, options) {
     this.map = new window.BMap.Map(dom, {
       enableHighResolution: true
     });
     this.map.enableScrollWheelZoom();
     this.map.enableContinuousZoom();
     this.map.highResolutionEnabled();
-    this.map.centerAndZoom(new window.BMap.Point(121, 31), 11);
+    this.map.centerAndZoom(
+      PositionToPoint(options.center),
+      options.zoom
+    );
   }
 
   static get LoadType() {

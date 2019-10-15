@@ -1,11 +1,12 @@
 import { Marker } from './marker';
 import { Polyline } from './polyline';
+import { PositionToLngLat } from './utils';
 
 export class TianMap {
-  constructor(dom) {
+  constructor(dom, options) {
     this.map = new T.Map(dom, {
-      center: new T.LngLat(121, 31),
-      zoom: 11,
+      center: PositionToLngLat(options.center),
+      zoom: options.zoom,
     });
   }
 

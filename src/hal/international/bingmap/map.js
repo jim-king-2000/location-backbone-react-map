@@ -1,12 +1,13 @@
 import { Marker } from './marker';
 import { Polyline } from './polyline';
+import { PositionToLocation } from './utils';
 
 export class BingMap {
-  constructor(dom) {
+  constructor(dom, options) {
     this.map = new Microsoft.Maps.Map(dom, {
       enableHighDpi: true,
-      zoom: 11,
-      center: new Microsoft.Maps.Location(31, 121),
+      zoom: options.zoom,
+      center: PositionToLocation(options.center),
     });
   }
 

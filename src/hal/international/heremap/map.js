@@ -2,7 +2,7 @@ import { Marker } from './marker';
 import { Polyline } from './polyline';
 
 export class HereMap {
-  constructor(dom, mapKey) {
+  constructor(dom, options, mapKey) {
     const platform = new H.service.Platform({
       apikey: mapKey
     });

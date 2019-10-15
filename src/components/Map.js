@@ -9,16 +9,16 @@ export class Map extends Component {
   child = React.createRef();
 
   async componentDidMount() {
-    const mapKey = this.props.mapKey;
-    const NativeMapClass = GetMapClass(this.props.mapVendor);
+    const { mapVendor, mapKey, ...options } = this.props;
+    const NativeMapClass = GetMapClass(mapVendor);
     LoadCSS(NativeMapClass);
     if (NativeMapClass.LoadType.async) {
       window[NativeMapClass.LoadType.startup] =
-        () => this.createMap(NativeMapClass, mapKey);
+        () => this.createMap(NativeMapClass, options, mapKey);
     }
     await LoadAPI(NativeMapClass, mapKey);
     if (!NativeMapClass.LoadType.async) {
-      this.createMap(NativeMapClass, mapKey);
+      this.createMap(NativeMapClass, options, mapKey);
     }
   }
 
@@ -26,9 +26,9 @@ export class Map extends Component {
     this.renderChildren();
   }
 
-  createMap(NativeMapClass, mapKey) {
+  createMap(NativeMapClass, options, mapKey) {
     if (!this.map) {
-      this.map = new NativeMapClass(this.container.current, mapKey);
+      this.map = new NativeMapClass(this.container.current, options, mapKey);
       this.renderChildren();
     }
   }

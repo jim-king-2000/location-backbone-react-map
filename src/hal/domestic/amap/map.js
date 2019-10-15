@@ -1,11 +1,12 @@
 import { Marker } from './marker';
 import { Polyline } from './polyline';
+import { PositionToLngLat } from './utils';
 
 export class AMap {
-  constructor(dom) {
+  constructor(dom, options) {
     this.map = new window.AMap.Map(dom, {
-      zoom: 11,
-      center: [121, 31],
+      zoom: options.zoom,
+      center: PositionToLngLat(options.center),
     });
   }
 

@@ -1,11 +1,12 @@
 import { Marker } from './marker';
 import { Polyline } from './polyline';
+import { PositionToLatLng } from './utils';
 
 export class QQMap {
-  constructor(dom) {
+  constructor(dom, options) {
     this.map = new qq.maps.Map(dom, {
-      zoom: 11,
-      center: new qq.maps.LatLng(31, 121),
+      zoom: options.zoom,
+      center: PositionToLatLng(options.center),
       mapTypeControl: false,
       panControl: false,
       zoomControl: false,

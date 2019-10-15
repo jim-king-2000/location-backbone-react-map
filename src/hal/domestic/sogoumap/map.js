@@ -1,12 +1,13 @@
 import { Marker } from './marker';
 import { Polyline } from './polyline';
+import { PositionToLatLng } from './utils';
 
 export class SogouMap {
-  constructor(dom) {
+  constructor(dom, options) {
     this.map = new sogou.maps.Map(dom, {
       hdMap: true,
-      center: new sogou.maps.LatLng(31,121),
-      zoom: 11,
+      center: PositionToLatLng(options.center),
+      zoom: options.zoom,
       mapControlType: 4,
     });
   }

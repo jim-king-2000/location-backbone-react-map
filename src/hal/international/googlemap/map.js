@@ -1,11 +1,12 @@
 import { Marker } from './marker';
 import { Polyline } from './polyline';
+import { PositionToLatLng } from './utils';
 
 export class GoogleMap {
-  constructor(dom) {
+  constructor(dom, options) {
     this.map = new google.maps.Map(dom, {
-      center: {lat: 31, lng: 121},
-      zoom: 11,
+      center: PositionToLatLng(options.center),
+      zoom: options.zoom,
       disableDefaultUI: true,
     });
   }

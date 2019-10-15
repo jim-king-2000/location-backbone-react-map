@@ -1,11 +1,12 @@
 import { Marker } from './marker';
 import { Polyline } from './polyline';
+import { PositionToLatLng } from './utils';
 
 export class MapBox {
-  constructor(dom, mapKey) {
+  constructor(dom, options, mapKey) {
     L.mapbox.accessToken = mapKey;
     this.map = L.mapbox.map(dom)
-      .setView([31, 121], 11)
+      .setView(PositionToLatLng(options.center), options.zoom)
       .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'));
   }
 

@@ -15,7 +15,10 @@ export default class extends Component {
     return (
       <Map
         mapKey={this.props.mapKey}
-        mapVendor={this.props.mapVendor}>
+        mapVendor={this.props.mapVendor}
+        center={this.state.position}
+        zoom={11}
+      >
         {this.state.showOverlays &&
           <Marker
             position={this.state.position}
