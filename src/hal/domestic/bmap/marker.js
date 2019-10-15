@@ -30,12 +30,9 @@ export class Marker {
     this.marker.setPosition(PositionToPoint(position));
   }
 
-  setAngle(angle) {
-    this.marker.setRotation(angle);
-  }
-
-  setTitle(title) {
-    this.marker.setTitle(title);
+  setOptions(options) {
+    this.marker.setRotation(options.angle);
+    this.marker.setTitle(options.title);
   }
 
   remove() {

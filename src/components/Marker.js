@@ -11,8 +11,10 @@ export class Marker extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    this.marker.setAngle(this.props.angle);
-    this.marker.setTitle(this.props.title);
+    this.marker.setOptions({
+      angle: this.props.angle,
+      title: this.props.title
+    });
     this.marker.setPosition(this.props.position);
   }
 

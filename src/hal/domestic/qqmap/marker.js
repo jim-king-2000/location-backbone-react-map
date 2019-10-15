@@ -22,14 +22,11 @@ export class Marker {
     this.marker.setPosition(PositionToLatLng(position));
   }
 
-  setAngle(angle) {
-    this.marker.setRotation(angle);
+  setOptions(options) {
+    this.marker.setRotation(options.angle);
+    this.marker.setTitle(options.title);
   }
-
-  setTitle(title) {
-    this.marker.setTitle(title);
-  }
-
+  
   remove() {
     this.marker.setMap(null);
   }

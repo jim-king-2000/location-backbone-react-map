@@ -42,7 +42,7 @@ export default class extends Component {
               longitude: 121.05,
               latitude: 31.15
             }]}
-            strokeColor='#FFFF007F'
+            strokeColor='#00FF007F'
             // strokeColor='rgba(0, 0, 255, 0.3)'
             // strokeColor='rgb(255, 0, 0)'
             // strokeColor='blue'

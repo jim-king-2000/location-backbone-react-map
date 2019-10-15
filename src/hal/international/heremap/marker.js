@@ -19,12 +19,7 @@ export class Marker {
     this.marker.setGeometry(PositionToLatLng(position));
   }
 
-  setAngle(angle) {
-    // this.marker.setAngle(angle);
-  }
-
-  setTitle(title) {
-    // this.marker.setOptions({ title });
+  setOptions(options) {
   }
 
   remove() {

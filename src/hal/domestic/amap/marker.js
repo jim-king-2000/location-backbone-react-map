@@ -35,12 +35,9 @@ export class Marker {
     this.marker.setPosition(PositionToLngLat(position));
   }
 
-  setAngle(angle) {
-    this.marker.setAngle(angle);
-  }
-
-  setTitle(title) {
-    this.marker.setTitle(title);
+  setOptions(options) {
+    this.marker.setAngle(options.angle);
+    this.marker.setTitle(options.title);
   }
 
   remove() {
