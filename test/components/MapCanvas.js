@@ -40,6 +40,8 @@ export default class extends Component {
               latitude: 31.15
             }]}
             strokeColor='#FF0000'
+            // strokeColor='rgba(255, 0, 0, 0.5)'
+            // strokeColor='red'
             strokeWeight={10}
             strokeOpacity={0.5}
           />
