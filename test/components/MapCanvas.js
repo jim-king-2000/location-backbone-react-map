@@ -42,11 +42,12 @@ export default class extends Component {
               longitude: 121.05,
               latitude: 31.15
             }]}
-            strokeColor='#FF0000'
-            // strokeColor='rgba(255, 0, 0, 0.5)'
-            // strokeColor='red'
+            strokeColor='#FFFF007F'
+            // strokeColor='rgba(0, 0, 255, 0.3)'
+            // strokeColor='rgb(255, 0, 0)'
+            // strokeColor='blue'
+            // strokeOpacity={0.5}
             strokeWeight={10}
-            strokeOpacity={0.5}
           />
         }
         <div

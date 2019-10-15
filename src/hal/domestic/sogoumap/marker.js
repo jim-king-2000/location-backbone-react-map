@@ -4,8 +4,8 @@ export class Marker {
   constructor(map, position, options) {
     this.marker = new sogou.maps.Marker({
       map,
+      ...options,
       position: PositionToLatLng(position),
-      ...options
     });
   }
 

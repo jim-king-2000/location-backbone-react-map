@@ -1,11 +1,12 @@
 import { PositionToLngLat } from './utils';
 
 function translatePolylineOptions(options) {
+  const { strokeColor, strokeOpacity, strokeWeight, ...others } = options;
   return {
-    color: options.strokeColor,
-    weight: options.strokeWeight,
-    opacity: options.strokeOpacity,
-    ...options,
+    color: strokeColor,
+    opacity: strokeOpacity,
+    weight: strokeWeight,
+    ...others,
   }
 }
 

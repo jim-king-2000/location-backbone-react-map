@@ -1,9 +1,12 @@
 import { PositionToLocation } from './utils';
+import { transformColorToRgb } from '../../../utils/Color';
 
 function translatePolylineOptions(options) {
+  const { strokeColor, strokeOpacity, strokeWeight, ...others } = options;
   return {
-    strokeThickness: options.strokeWeight,
-    ...options,
+    strokeColor: transformColorToRgb(strokeColor, strokeOpacity),
+    strokeThickness: strokeWeight,
+    ...others,
   }
 }
 

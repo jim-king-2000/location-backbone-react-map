@@ -13,8 +13,8 @@ export class Marker {
         scale : 0.6,
         anchor: new google.maps.Point(24, 24)
       },
-      position: PositionToLatLng(position),
       ...options,
+      position: PositionToLatLng(position),
     });
   }
 

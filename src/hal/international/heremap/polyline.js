@@ -1,11 +1,14 @@
 import { PositionToLatLng } from './utils';
+import { transformColorToRgb } from '../../../utils/Color';
 
 function translatePolylineOptions(options) {
+  const { strokeWeight, strokeColor, strokeOpacity, ...others } = options;
   return {
-    lineWidth: options.strokeWeight,
+    strokeColor: transformColorToRgb(strokeColor, strokeOpacity),
+    lineWidth: strokeWeight,
     lineJoin: 'round',
     lineCap: 'round',
-    ...options,
+    ...others,
   }
 }
 
