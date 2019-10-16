@@ -6,7 +6,7 @@ export class Polyline {
     this.polyline = new google.maps.Polyline({
       map,
       path: path.map(position => PositionToLatLng(position)),
-      others
+      ...others
     });
   }
 
