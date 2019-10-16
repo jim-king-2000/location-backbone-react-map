@@ -3,7 +3,7 @@ import { PositionToLatLng } from './utils';
 function translateProperties(options) {
   const { angle, ...others } = options;
   return {
-    rotation: angle,
+    rotation: angle || 0,
     ...others
   };
 }

@@ -19,7 +19,8 @@ function draw(svgIcon, fillColor, angle) {
 export class Marker {
   constructor(map, position, options) {
     this.marker = new Microsoft.Maps.Pushpin(PositionToLocation(position), {
-      icon: draw(options.svgIcon, options.fillColor, options.angle),
+      icon: options.svgIcon && draw(
+        options.svgIcon, options.fillColor, options.angle),
       ...options,
       anchor: new Microsoft.Maps.Point(24, 24)
     });

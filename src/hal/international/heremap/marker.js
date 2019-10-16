@@ -4,7 +4,7 @@ import { buildSVGMarkup } from '../../../utils/svg';
 export class Marker {
   constructor(map, position, options) {
     this.marker = new H.map.Marker(PositionToLatLng(position), {
-      icon: new H.map.Icon(buildSVGMarkup(options), {
+      icon: options.svgIcon && new H.map.Icon(buildSVGMarkup(options), {
         anchor: {
           x: 15,
           y: 15

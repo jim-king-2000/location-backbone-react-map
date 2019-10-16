@@ -1,32 +1,39 @@
 import { PositionToLatLng } from './utils';
 import { buildSVGMarkup } from '../../../utils/svg';
 
+function createRotatedMarker() {
+  if (!L.RotatedMarker) {
+    L.RotatedMarker = L.Marker.extend({
+      options: { angle: 0 },
+      _setPos: function(pos) {
+        L.Marker.prototype._setPos.call(this, pos);
+        this._icon.style['transform-origin'] = 'center';
+        this._icon.style[L.DomUtil.TRANSFORM] += ` rotate(${this.options.angle}deg)`;
+      }
+    });
+    L.rotatedMarker = function(pos, options) {
+      return new L.RotatedMarker(pos, options);
+    };
+  }
+}
+
 export class Marker {
   constructor(map, position, options) {
-    if (!L.RotatedMarker) {
-      L.RotatedMarker = L.Marker.extend({
-        options: { angle: 0 },
-        _setPos: function(pos) {
-          L.Marker.prototype._setPos.call(this, pos);
-          this._icon.style['transform-origin'] = 'center';
-          this._icon.style[L.DomUtil.TRANSFORM] += ` rotate(${this.options.angle}deg)`;
-        }
-      });
-      L.rotatedMarker = function(pos, options) {
-        return new L.RotatedMarker(pos, options);
-      };
-    }
+    createRotatedMarker();
 
-    this.marker = new L.rotatedMarker(PositionToLatLng(position), {
-      angle: options.angle,
-      icon: L.divIcon({
+    const markerOptions = {
+      ...options
+    };
+    if (options.svgIcon) {
+      markerOptions.icon = L.divIcon({
         className: 'svg-marker',
         html: buildSVGMarkup(options),
         iconSize: [30, 30],
         iconAnchor: [15, 15]
-      }),
-      ...options
-    }).addTo(map);
+      });
+    }
+    this.marker = new L.rotatedMarker(
+      PositionToLatLng(position), markerOptions).addTo(map);
   }
 
   setPosition(position) {

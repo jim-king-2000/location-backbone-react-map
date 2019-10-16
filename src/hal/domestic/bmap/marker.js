@@ -13,7 +13,7 @@ export class Marker {
     this.map = map;
     this.marker = new window.BMap.Marker(PositionToPoint(position), {
       ...translateProperties(options),
-      icon: new window.BMap.Symbol(options.svgIcon, {
+      icon: options.svgIcon && new window.BMap.Symbol(options.svgIcon, {
         fillColor: options.fillColor || 'currentColor',
         strokeColor: options.fillColor || 'currentColor',
         strokeWidth: 0,

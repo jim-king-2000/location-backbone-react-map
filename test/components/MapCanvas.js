@@ -20,13 +20,38 @@ export default class extends Component {
         zoom={11}
       >
         {this.state.showOverlays &&
-          <Marker
-            position={this.state.position}
-            title={JSON.stringify(this.state.position)}
-            angle={this.state.angle}
-            svgIcon={CarTopView}
-            fillColor='red'
-          />
+          <>
+            <Marker
+              position={this.state.position}
+              title={JSON.stringify(this.state.position)}
+              angle={this.state.angle}
+              svgIcon={CarTopView}
+              fillColor='red'
+            />
+            <Marker
+              position={{
+                latitude: 31.05,
+                longitude: 120.95
+              }}
+              title={JSON.stringify(this.state.position)}
+              svgIcon={CarTopView}
+              fillColor='green'
+            />
+            <Marker
+              position={{
+                latitude: 30.95,
+                longitude: 121.05
+              }}
+              title={JSON.stringify(this.state.position)}
+              svgIcon={CarTopView}
+            />
+            <Marker
+              position={{
+                latitude: 30.95,
+                longitude: 120.95
+              }}
+            />
+          </>
         }
         {this.state.showOverlays &&
           <Polyline path={[{

@@ -4,7 +4,7 @@ export class Marker {
   constructor(map, position, options) {
     this.marker = new google.maps.Marker({
       map,
-      icon: {
+      icon: options.svgIcon && {
         path: options.svgIcon,
         fillColor: options.fillColor || 'currentColor',
         fillOpacity: 1,

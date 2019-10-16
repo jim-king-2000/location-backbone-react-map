@@ -23,7 +23,7 @@ export class Map extends Component {
   }
 
   componentDidUpdate() {
-    this.renderChildren();
+      this.renderChildren();
   }
 
   createMap(NativeMapClass, options, mapKey) {
@@ -33,12 +33,25 @@ export class Map extends Component {
     }
   }
 
-  renderChildren() {
-    const children = React.Children.map(
-      this.props.children,
-      child => child && React.cloneElement(child, { __map__: this.map })
+  cloneChildren(children) {
+    return React.Children.map(
+      children,
+      child => {
+        if (!child || typeof child === 'string')
+          return child;
+        return React.cloneElement(
+          child,
+          { __map__: this.map },
+          this.cloneChildren(child.props && child.props.children)
+        );
+      }
     );
-    ReactDOM.render(children, this.child.current);
+  }
+
+  renderChildren() {
+    ReactDOM.render(
+      this.cloneChildren(this.props.children),
+      this.child.current);
   }
 
   render() {
