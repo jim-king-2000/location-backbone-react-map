@@ -19,8 +19,8 @@ export default class extends window.BMap.Overlay {
 
   draw() {
     const position = this._map.pointToOverlayPixel(this._center);
-    this._div.style.left = position.x + 'px';
-    this._div.style.top = position.y + 'px';
+    this._div.style.left = position.x - this._div.offsetWidth / 2 + 'px';
+    this._div.style.top = position.y - this._div.offsetHeight / 2 + 'px';
   }
 
   show() {
