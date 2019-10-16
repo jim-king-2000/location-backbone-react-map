@@ -13,13 +13,14 @@ function translatePolylineOptions(options) {
 }
 
 export class Polyline {
-  constructor(map, path, options) {
+  constructor(map, options) {
+    const { path, ...others } = options;
     this.map = map;
     const lineString = new H.geo.LineString();
     path.forEach(position => lineString.pushPoint(PositionToLatLng(position)));
     this.polyline = new H.map.Polyline(
       lineString,
-      { style: { ...translatePolylineOptions(options) } }
+      { style: { ...translatePolylineOptions(others) } }
     );
     this.map.addObject(this.polyline);
   }

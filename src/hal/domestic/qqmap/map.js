@@ -25,6 +25,10 @@ export class QQMap {
     return [`//map.qq.com/api/js?v=2.exp&key=${mapKey}&callback=${this.LoadType.startup}`];
   }
 
+  addDomMarker(options) {
+    return new Marker(this.map, options);
+  }
+  
   addMarker(position, options) {
     return new Marker(this.map, position, options);
   }

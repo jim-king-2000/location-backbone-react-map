@@ -1,10 +1,11 @@
 import { PositionToLatLng } from './utils';
 
 export class Marker {
-  constructor(map, position, options) {
+  constructor(map, options) {
+    const { position, ...others } = options;
     this.marker = new sogou.maps.Marker({
       map,
-      ...options,
+      ...others,
       position: PositionToLatLng(position),
     });
   }

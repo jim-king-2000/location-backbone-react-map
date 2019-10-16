@@ -1,11 +1,12 @@
 import { PositionToLatLng } from './utils';
 
 export class Polyline {
-  constructor(map, path, options) {
+  constructor(map, options) {
+    const { path, ...others } = options;
     this.polyline = new google.maps.Polyline({
       map,
       path: path.map(position => PositionToLatLng(position)),
-      options
+      others
     });
   }
 

@@ -2,9 +2,10 @@ import { PositionToLatLng } from './utils';
 import { buildSVGMarkup } from '../../../utils/svg';
 
 export class Marker {
-  constructor(map, position, options) {
+  constructor(map, options) {
+    const { position, ...others } = options;
     this.marker = new H.map.Marker(PositionToLatLng(position), {
-      icon: options.svgIcon && new H.map.Icon(buildSVGMarkup(options), {
+      icon: others.svgIcon && new H.map.Icon(buildSVGMarkup(others), {
         anchor: {
           x: 15,
           y: 15

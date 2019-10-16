@@ -1,4 +1,5 @@
 import { PositionToLatLng } from './utils';
+import { renderToDiv } from '../../../utils/Render';
 
 function translateProperties(options) {
   const { angle, ...others } = options;
@@ -9,13 +10,19 @@ function translateProperties(options) {
 }
 
 export class Marker {
-  constructor(map, position, options) {
-    this.marker = new qq.maps.Marker({
+  constructor(map, options) {
+    const { position, ...others } = options;
+    const markerOptions = {
       map,
       flat: true,
-      ...translateProperties(options),
+      ...translateProperties(others),
       position: PositionToLatLng(position),
-    });
+    };
+    if (others.children) {
+      markerOptions.decoration = new qq.maps.MarkerDecoration(
+        renderToDiv(others.children));
+    }
+    this.marker = new qq.maps.Marker(markerOptions);
   }
 
   setPosition(position) {

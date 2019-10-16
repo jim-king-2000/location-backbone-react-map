@@ -1,4 +1,5 @@
 import { PositionToLngLat } from './utils';
+import { renderToDiv } from '../../../utils/Render';
 
 function carTopViewShape(utils, SvgMarker, path) {
   function CarTopViewShape(opts) {
@@ -15,34 +16,45 @@ function carTopViewShape(utils, SvgMarker, path) {
   return CarTopViewShape;
 }
 
-export class Marker {
-  constructor(map, position, options) {
-    if (!options.svgIcon) {
-      this.marker = new window.AMap.Marker({
+function createSvgMarker(map, position, options, assigner) {
+  AMapUI.load(['lib/utils', 'ui/overlay/SvgMarker'], (utils, SvgMarker) => {
+    const CarTopViewShape = carTopViewShape(
+      utils, SvgMarker, options.svgIcon);
+    const shape = new CarTopViewShape({
+      height: 30,
+      fillColor: options.fillColor || 'currentColor',
+      strokeWidth: 0,
+    });
+    assigner && assigner(new SvgMarker(
+      shape,
+      {
         map,
         ...options,
-        position: PositionToLngLat(position),
-      });
+        position: PositionToLngLat(position)
+      }
+    ));
+  });
+}
+
+export class Marker {
+  constructor(map, options) {
+    const { position, ...others } = options;
+    const markerOptions = {
+      map,
+      ...others,
+      position: PositionToLngLat(position),
+    };
+    if (others.children) {
+      markerOptions.content = renderToDiv(others.children);
+      markerOptions.anchor = 'center';
+      markerOptions.offset = new window.AMap.Pixel(0, 0);
+    }
+    if (!others.svgIcon) {
+      this.marker = new window.AMap.Marker(markerOptions);
       return;
     }
 
-    AMapUI.load(['lib/utils', 'ui/overlay/SvgMarker'], (utils, SvgMarker) => {
-      const CarTopViewShape = carTopViewShape(
-        utils, SvgMarker, options.svgIcon);
-      const shape = new CarTopViewShape({
-        height: 30,
-        fillColor: options.fillColor || 'currentColor',
-        strokeWidth: 0,
-      });
-      this.marker = new SvgMarker(
-        shape,
-        {
-          map,
-          ...options,
-          position: PositionToLngLat(position)
-        }
-      );
-    });
+    createSvgMarker(map, position, others, marker => this.marker = marker);
   }
 
   setPosition(position) {

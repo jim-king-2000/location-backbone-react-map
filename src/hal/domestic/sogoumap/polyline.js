@@ -2,8 +2,8 @@ import { PositionToLatLng } from './utils';
 import { transformColorToRgb } from '../../../utils/Color';
 
 export class Polyline {
-  constructor(map, path, options) {
-    const { strokeColor, strokeOpacity, ...others } = options;
+  constructor(map, options) {
+    const { path, strokeColor, strokeOpacity, ...others } = options;
     this.polyline = new sogou.maps.Polyline({
       map,
       path: path.map(position => PositionToLatLng(position)),

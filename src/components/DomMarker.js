@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-export class Marker extends Component {
+export class DomMarker extends Component {
   componentDidMount() {
     const { __map__, ...options } = this.props;
-    this.marker = __map__.addMarker && __map__.addMarker(options);
+    this.marker = __map__.addDomMarker && __map__.addDomMarker(options);
   }
 
   componentWillUnmount() {
@@ -13,7 +13,7 @@ export class Marker extends Component {
   shouldComponentUpdate() {
     return false;
   }
-
+  
   render() {
     return null;
   }

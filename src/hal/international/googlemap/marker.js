@@ -1,19 +1,20 @@
 import { PositionToLatLng } from './utils';
 
 export class Marker {
-  constructor(map, position, options) {
+  constructor(map, options) {
+    const { position, ...others } = options;
     this.marker = new google.maps.Marker({
       map,
-      icon: options.svgIcon && {
-        path: options.svgIcon,
-        fillColor: options.fillColor || 'currentColor',
+      icon: others.svgIcon && {
+        path: others.svgIcon,
+        fillColor: others.fillColor || 'currentColor',
         fillOpacity: 1,
         strokeWeight: 0,
-        rotation: options.angle,
+        rotation: others.angle,
         scale : 0.6,
         anchor: new google.maps.Point(24, 24)
       },
-      ...options,
+      ...others,
       position: PositionToLatLng(position),
     });
   }

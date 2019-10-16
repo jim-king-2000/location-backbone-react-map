@@ -21,11 +21,15 @@ export class AMap {
     ];
   }
 
-  addMarker(position, options) {
-    return new Marker(this.map, position, options);
+  addDomMarker(options) {
+    return new Marker(this.map, options);
   }
 
-  addPolyline(path, options) {
-    return new Polyline(this.map, path, options);
+  addMarker(options) {
+    return new Marker(this.map, options);
+  }
+
+  addPolyline(options) {
+    return new Polyline(this.map, options);
   }
 }

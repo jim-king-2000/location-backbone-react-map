@@ -1,9 +1,10 @@
 import { PositionToLngLat } from './utils';
 
 export class Marker {
-  constructor(map, position, options) {
+  constructor(map, options) {
+    const { position, ...others } = options;
     this.marker = new T.Marker(PositionToLngLat(position), {
-      ...options,
+      ...others,
     });
     map.addOverLay(this.marker);
     this.map = map;

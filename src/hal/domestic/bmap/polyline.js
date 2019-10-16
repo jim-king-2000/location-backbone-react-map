@@ -9,11 +9,12 @@ function transformOptions(options) {
 }
 
 export class Polyline {
-  constructor(map, path, options) {
+  constructor(map, options) {
+    const { path, ...others } = options;
     this.map = map;
     this.polyline = new window.BMap.Polyline(
       path.map(position => PositionToPoint(position)),
-      transformOptions(options),
+      transformOptions(others),
     );
     this.map.addOverlay(this.polyline);
   }

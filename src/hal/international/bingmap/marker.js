@@ -17,16 +17,17 @@ function draw(svgIcon, fillColor, angle) {
 }
 
 export class Marker {
-  constructor(map, position, options) {
+  constructor(map, options) {
+    const { position, ...others } = options;
     this.marker = new Microsoft.Maps.Pushpin(PositionToLocation(position), {
-      icon: options.svgIcon && draw(
-        options.svgIcon, options.fillColor, options.angle),
-      ...options,
+      icon: others.svgIcon && draw(
+        others.svgIcon, others.fillColor, others.angle),
+      ...others,
       anchor: new Microsoft.Maps.Point(24, 24)
     });
     map.entities.push(this.marker);
     this.map = map;
-    this.options = options;
+    this.options = others;
   }
 
   setPosition(position) {

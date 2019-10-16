@@ -9,13 +9,14 @@ function translateProperties(options) {
 }
 
 export class Marker {
-  constructor(map, position, options) {
+  constructor(map, options) {
     this.map = map;
+    const { position, ...others } = options;
     this.marker = new window.BMap.Marker(PositionToPoint(position), {
-      ...translateProperties(options),
-      icon: options.svgIcon && new window.BMap.Symbol(options.svgIcon, {
-        fillColor: options.fillColor || 'currentColor',
-        strokeColor: options.fillColor || 'currentColor',
+      ...translateProperties(others),
+      icon: others.svgIcon && new window.BMap.Symbol(others.svgIcon, {
+        fillColor: others.fillColor || 'currentColor',
+        strokeColor: others.fillColor || 'currentColor',
         strokeWidth: 0,
         strokeOpacity: 0,
         scale: 0.6,

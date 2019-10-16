@@ -10,10 +10,11 @@ function translatePolylineOptions(options) {
 }
 
 export class Polyline {
-  constructor(map, path, options) {
+  constructor(map, options) {
+    const { path, ...others } = options;
     this.polyline = new L.polyline(
       path.map(position => PositionToLatLng(position)),
-      translatePolylineOptions(options)
+      translatePolylineOptions(others)
     ).addTo(map);
   }
 

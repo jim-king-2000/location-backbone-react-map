@@ -12,8 +12,8 @@ function transformColor(color, opacity) {
 }
 
 export class Polyline {
-  constructor(map, path, options) {
-    const { strokeColor, strokeOpacity, ...others } = options;
+  constructor(map, options) {
+    const { path, strokeColor, strokeOpacity, ...others } = options;
     this.polyline = new qq.maps.Polyline({
       map,
       path: path.map(position => PositionToLatLng(position)),

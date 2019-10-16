@@ -18,16 +18,16 @@ function createRotatedMarker() {
 }
 
 export class Marker {
-  constructor(map, position, options) {
+  constructor(map, options) {
     createRotatedMarker();
-
+    const { position, ...others } = options;
     const markerOptions = {
-      ...options
+      ...others
     };
-    if (options.svgIcon) {
+    if (others.svgIcon) {
       markerOptions.icon = L.divIcon({
         className: 'svg-marker',
-        html: buildSVGMarkup(options),
+        html: buildSVGMarkup(others),
         iconSize: [30, 30],
         iconAnchor: [15, 15]
       });

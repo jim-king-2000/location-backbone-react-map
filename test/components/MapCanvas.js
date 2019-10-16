@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+  DomMarker,
   DynamicMarker,
   Map,
   Marker,
@@ -52,11 +53,27 @@ export default class extends Component {
             />
             <Marker
               position={{
-                latitude: 30.95,
-                longitude: 120.95
+                latitude: 31.05,
+                longitude: 121.05
               }}
               angle={90}
             />
+            <Marker
+              position={{
+                latitude: 31.05,
+                longitude: 121.05
+              }}
+              angle={-90}
+            />
+            <DomMarker
+              position={{
+                latitude: 31.05,
+                longitude: 121.05
+              }}
+              angle={-90}
+            >
+              <div style={{ border: '1px solid' }}>HTML Marker</div>
+            </DomMarker>
           </>
         }
         {this.state.showOverlays &&
