@@ -1,4 +1,5 @@
 import { Marker } from './marker';
+import { DomMarker } from './domMarker';
 import { Polyline } from './polyline';
 import { PositionToPoint } from './utils';
 
@@ -25,6 +26,10 @@ export class BMap {
 
   static buildScriptTag(mapKey) {
     return [`//api.map.baidu.com/api?v=3.0&ak=${mapKey}&callback=${this.LoadType.startup}`];
+  }
+
+  addDomMarker(options) {
+    return new DomMarker(this.map, options);
   }
 
   addMarker(position, options) {
