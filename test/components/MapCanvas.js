@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
-import { Map, Marker, Polyline, CarTopView } from 'location-backbone-react-map';
+import {
+  DynamicMarker,
+  Map,
+  Marker,
+  Polyline,
+  CarTopView } from 'location-backbone-react-map';
 
 export default class extends Component {
   state = {
@@ -21,7 +26,7 @@ export default class extends Component {
       >
         {this.state.showOverlays &&
           <>
-            <Marker
+            <DynamicMarker
               position={this.state.position}
               title={JSON.stringify(this.state.position)}
               angle={this.state.angle}
@@ -50,6 +55,7 @@ export default class extends Component {
                 latitude: 30.95,
                 longitude: 120.95
               }}
+              angle={90}
             />
           </>
         }
