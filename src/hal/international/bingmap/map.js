@@ -20,7 +20,7 @@ export class BingMap {
   }
 
   static buildScriptTag(mapKey) {
-    return [`//cn.bing.com/api/maps/mapcontrol?key=${mapKey}&callback=${this.LoadType.startup}&setMkt=zh-CN&setLang=zh`];
+    return [`//cn.bing.com/api/maps/mapcontrol?key=${mapKey}&callback=${this.LoadType.startup}`];
   }
 
   addDomMarker(options) {
