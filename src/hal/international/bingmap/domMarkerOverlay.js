@@ -1,37 +1,28 @@
 import { renderToDiv } from '../../../utils/Render';
 
-export default class extends window.BMap.Overlay {
+export default class HtmlPushpin extends Microsoft.Maps.CustomOverlay {
   constructor(position, options) {
     super();
     this._position = position;
     this.options = options;
   }
 
-  initialize(map) {
-    this._map = map;
+  onAdd() {
     const div = renderToDiv(this.options.children);
     div.style.position = 'absolute';
     div.style.transform = `rotate(${this.options.angle}deg)`;
-    map.getPanes().markerPane.appendChild(div);
+    this.setHtmlElement(div);
     this._div = div;
     return div;
   }
 
-  draw() {
-    const position = this._map.pointToOverlayPixel(this._position);
+  onLoad() {
+    const position = this.getMap().tryLocationToPixel(
+      this._position, Microsoft.Maps.PixelReference.control);
     this._div.style.left = position.x - this._div.offsetWidth / 2 + 'px';
     this._div.style.top = position.y - this._div.offsetHeight / 2 + 'px';
   }
 
-  show() {
-    if (this._div){    
-      this._div.style.display = '';
-    }
-  }
-
-  hide() {
-    if (this._div){    
-      this._div.style.display = 'none';
-    }
+  onRemove() {
   }
 }
