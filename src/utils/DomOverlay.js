@@ -5,13 +5,13 @@ export default (appendChild, fromPositionToPixel) => {
     class {
       constructor(position, options) {
         this.position_ = position;
-        this.options = options;
+        this.options_ = options;
       }
     
       onAdd(map) {
-        const div = renderToDiv(this.options.children);
+        const div = renderToDiv(this.options_.children);
         div.style.position = 'absolute';
-        div.style.transform = `rotate(${this.options.angle}deg)`;
+        div.style.transform = `rotate(${this.options_.angle}deg)`;
         appendChild(div, map);
         this.div_ = div;
         this.map_ = map;
