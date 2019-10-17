@@ -13,15 +13,6 @@ export class DomMarker {
     });
   }
 
-  setPosition(position) {
-    this.marker.setPosition(PositionToLocation(position));
-  }
-
-  setOptions(options) {
-    this.marker.setRotation(options.angle);
-    this.marker.setTitle(options.title);
-  }
-
   remove() {
     this.map.layers.remove(this.marker);
   }

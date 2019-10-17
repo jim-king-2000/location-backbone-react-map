@@ -13,15 +13,6 @@ export class DomMarker {
     });
   }
 
-  setPosition(position) {
-    this.marker.setPosition(PositionToLatLng(position));
-  }
-
-  setOptions(options) {
-    this.marker.setRotation(options.angle);
-    this.marker.setTitle(options.title);
-  }
-
   remove() {
     this.marker.setMap(null);
   }

@@ -1,4 +1,5 @@
 import { Marker } from './marker';
+import { DomMarker } from './domMarker';
 import { Polyline } from './polyline';
 import { PositionToLatLng } from './utils';
 
@@ -19,6 +20,10 @@ export class GoogleMap {
     return [`//maps.google.cn/maps/api/js?key=${mapKey}`];
   }
 
+  addDomMarker(options) {
+    return new DomMarker(this.map, options);
+  }
+  
   addMarker(options) {
     return new Marker(this.map, options);
   }

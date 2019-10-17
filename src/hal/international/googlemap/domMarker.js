@@ -1,4 +1,4 @@
-import { PositionToPoint } from './utils';
+import { PositionToLatLng } from './utils';
 
 export class DomMarker {
   constructor(map, options) {
@@ -7,13 +7,12 @@ export class DomMarker {
     import('./domMarkerOverlay')
     .then(({ default: DomMarkerOverlay }) => {
       this.marker = new DomMarkerOverlay(
-        PositionToPoint(position),
-        others);
-      map.addOverlay(this.marker);
+        PositionToLatLng(position),
+        { map, ...others });
     });
   }
 
   remove() {
-    this.map.removeOverlay(this.marker);
+    this.marker && this.marker.setMap(null);
   }
 }
