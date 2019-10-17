@@ -3,8 +3,8 @@ import { PositionToPoint } from './utils';
 function transformOptions(options) {
   const { strokeOpacity, ...others } = options;
   return {
-    strokeOpacity: strokeOpacity || 1,
     ...others,
+    strokeOpacity: strokeOpacity || 1,
   }
 }
 

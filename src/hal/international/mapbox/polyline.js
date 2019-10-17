@@ -2,10 +2,10 @@ import { PositionToLatLng } from './utils';
 
 function translatePolylineOptions(options) {
   return {
+    ...options,
     color: options.strokeColor,
     weight: options.strokeWeight,
     opacity: options.strokeOpacity,
-    ...options,
   }
 }
 

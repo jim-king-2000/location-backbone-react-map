@@ -4,9 +4,9 @@ import { transformColorToRgb } from '../../../utils/Color';
 function translatePolylineOptions(options) {
   const { strokeColor, strokeOpacity, strokeWeight, ...others } = options;
   return {
+    ...others,
     strokeColor: transformColorToRgb(strokeColor, strokeOpacity),
     strokeThickness: strokeWeight,
-    ...others,
   }
 }
 

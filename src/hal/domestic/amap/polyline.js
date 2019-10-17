@@ -5,10 +5,10 @@ export class Polyline {
     const { path, ...others } = options;
     this.polyline = new window.AMap.Polyline({
       map,
+      ...others,
       path: path.map(position => PositionToLngLat(position)),
       lineJoin: 'round',
       lineCap: 'round',
-      ...others
     });
   }
 

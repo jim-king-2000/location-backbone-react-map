@@ -5,8 +5,8 @@ export class Polyline {
     const { path, ...others } = options;
     this.polyline = new google.maps.Polyline({
       map,
+      ...others,
       path: path.map(position => PositionToLatLng(position)),
-      ...others
     });
   }
 

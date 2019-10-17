@@ -16,9 +16,9 @@ export class Polyline {
     const { path, strokeColor, strokeOpacity, ...others } = options;
     this.polyline = new qq.maps.Polyline({
       map,
+      ...others,
       path: path.map(position => PositionToLatLng(position)),
       strokeColor: transformColor(strokeColor, strokeOpacity),
-      ...others,
     });
   }
 

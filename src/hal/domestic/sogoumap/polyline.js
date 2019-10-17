@@ -6,9 +6,9 @@ export class Polyline {
     const { path, strokeColor, strokeOpacity, ...others } = options;
     this.polyline = new sogou.maps.Polyline({
       map,
+      ...others,
       path: path.map(position => PositionToLatLng(position)),
       strokeColor: transformColorToRgb(strokeColor, strokeOpacity),
-      ...others,
     });
   }
 
