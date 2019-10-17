@@ -18,11 +18,11 @@ export class TianMap {
     return [`http://api.tianditu.gov.cn/api?v=4.0&tk=${mapKey}`];
   }
 
-  addMarker(position, options) {
-    return new Marker(this.map, position, options);
+  addMarker(options) {
+    return new Marker(this.map, options);
   }
 
-  addPolyline(path, options) {
-    return new Polyline(this.map, path, options);
+  addPolyline(options) {
+    return new Polyline(this.map, options);
   }
 }

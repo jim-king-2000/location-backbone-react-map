@@ -22,11 +22,11 @@ export class BingMap {
     return [`//cn.bing.com/api/maps/mapcontrol?key=${mapKey}&callback=${this.LoadType.startup}&setMkt=zh-CN&setLang=zh`];
   }
 
-  addMarker(position, options) {
-    return new Marker(this.map, position, options);
+  addMarker(options) {
+    return new Marker(this.map, options);
   }
 
-  addPolyline(path, options) {
-    return new Polyline(this.map, path, options);
+  addPolyline(options) {
+    return new Polyline(this.map, options);
   }
 }

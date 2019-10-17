@@ -70,7 +70,7 @@ export default class extends Component {
                 latitude: 31.05,
                 longitude: 121.05
               }}
-              angle={-90}
+              angle={-45}
             >
               <div style={{ border: '1px solid' }}>HTML Marker</div>
             </DomMarker>

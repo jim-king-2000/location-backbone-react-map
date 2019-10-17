@@ -18,10 +18,6 @@ export class Marker {
       ...translateProperties(others),
       position: PositionToLatLng(position),
     };
-    if (others.children) {
-      markerOptions.decoration = new qq.maps.MarkerDecoration(
-        renderToDiv(others.children));
-    }
     this.marker = new qq.maps.Marker(markerOptions);
   }
 

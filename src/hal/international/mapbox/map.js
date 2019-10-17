@@ -22,11 +22,11 @@ export class MapBox {
     return '//api.mapbox.com/mapbox.js/v3.2.0/mapbox.css';
   }
   
-  addMarker(position, options) {
-    return new Marker(this.map, position, options);
+  addMarker(options) {
+    return new Marker(this.map, options);
   }
 
-  addPolyline(path, options) {
-    return new Polyline(this.map, path, options);
+  addPolyline(options) {
+    return new Polyline(this.map, options);
   }
 }
