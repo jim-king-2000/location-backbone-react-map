@@ -1,37 +1,20 @@
-import { renderToDiv } from '../../../utils/Render';
+import buildDomOverlay from '../../../utils/DomOverlay';
 
 export default class extends window.BMap.Overlay {
   constructor(position, options) {
     super();
-    this._position = position;
-    this.options = options;
+    const DomOverlay = buildDomOverlay(
+      (div, map) => map.getPanes().markerPane.appendChild(div),
+      (position, map) => map.pointToOverlayPixel(position)
+    );
+    this.DomMarkerOverlay_ = new DomOverlay(position, options);
   }
 
   initialize(map) {
-    this._map = map;
-    const div = renderToDiv(this.options.children);
-    div.style.position = 'absolute';
-    div.style.transform = `rotate(${this.options.angle}deg)`;
-    map.getPanes().markerPane.appendChild(div);
-    this._div = div;
-    return div;
+    return this.DomMarkerOverlay_.onAdd(map);
   }
 
   draw() {
-    const position = this._map.pointToOverlayPixel(this._position);
-    this._div.style.left = position.x - this._div.offsetWidth / 2 + 'px';
-    this._div.style.top = position.y - this._div.offsetHeight / 2 + 'px';
-  }
-
-  show() {
-    if (this._div){    
-      this._div.style.display = '';
-    }
-  }
-
-  hide() {
-    if (this._div){    
-      this._div.style.display = 'none';
-    }
+    return this.DomMarkerOverlay_.draw();
   }
 }
