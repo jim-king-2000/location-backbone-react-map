@@ -4,14 +4,14 @@ export default class extends qq.maps.Overlay {
   constructor(position, options) {
     super();
     const DomOverlay = buildDomOverlay(
-      div => this.getPanes().overlayMouseTarget.appendChild(div),
       position => this.getProjection().fromLatLngToDivPixel(position)
     );
     this.DomMarkerOverlay_ = new DomOverlay(position, options);
   }
 
   construct() {
-    return this.DomMarkerOverlay_.onAdd();
+    const div = this.DomMarkerOverlay_.onAdd();
+    this.getPanes().overlayLayer.appendChild(div);
   }
 
   draw() {

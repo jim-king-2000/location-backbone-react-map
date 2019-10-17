@@ -4,7 +4,6 @@ export default class extends Microsoft.Maps.CustomOverlay {
   constructor(position, options) {
     super({ beneathLabels: false });
     const DomOverlay = buildDomOverlay(
-      div => this.setHtmlElement(div),
       position => this.getMap().tryLocationToPixel(
         position, Microsoft.Maps.PixelReference.control)
     );
@@ -12,7 +11,8 @@ export default class extends Microsoft.Maps.CustomOverlay {
   }
 
   onAdd() {
-    return this.DomMarkerOverlay_.onAdd();
+    const div = this.DomMarkerOverlay_.onAdd();
+    this.setHtmlElement(div);
   }
 
   onLoad() {

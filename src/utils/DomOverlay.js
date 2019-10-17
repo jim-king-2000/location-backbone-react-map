@@ -1,6 +1,6 @@
 import { renderToDiv } from './Render';
 
-export default (appendChild, fromPositionToPixel) => {
+export default (fromPositionToPixel) => {
   return (
     class {
       constructor(position, options) {
@@ -13,7 +13,6 @@ export default (appendChild, fromPositionToPixel) => {
         div.style.visibility = 'hidden';
         div.style.position = 'absolute';
         div.style.transform = `rotate(${this.options_.angle}deg)`;
-        appendChild(div, map);
         this.div_ = div;
         this.map_ = map;
         return div;

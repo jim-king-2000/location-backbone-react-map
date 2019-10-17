@@ -4,7 +4,6 @@ export default class extends google.maps.OverlayView {
   constructor(position, options) {
     super();
     const DomOverlay = buildDomOverlay(
-      div => this.getPanes().overlayLayer.appendChild(div),
       position => this.getProjection().fromLatLngToDivPixel(position)
     );
     this.DomMarkerOverlay_ = new DomOverlay(position, options);
@@ -12,7 +11,8 @@ export default class extends google.maps.OverlayView {
   }
 
   onAdd() {
-    return this.DomMarkerOverlay_.onAdd();
+    const div = this.DomMarkerOverlay_.onAdd();
+    this.getPanes().overlayLayer.appendChild(div);
   }
 
   draw() {

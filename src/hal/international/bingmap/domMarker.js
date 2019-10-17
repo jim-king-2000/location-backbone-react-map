@@ -9,7 +9,7 @@ export class DomMarker {
       this.marker = new DomMarkerOverlay(
         PositionToLocation(position),
         others);
-      map.layers.insert(this.marker);
+      map.layers.insert(this.marker)
     });
   }
 

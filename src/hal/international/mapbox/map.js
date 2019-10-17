@@ -15,11 +15,11 @@ export class MapBox {
   }
 
   static buildScriptTag() {
-    return ['https://api.mapbox.com/mapbox.js/v3.2.0/mapbox.js'];
+    return ['//api.mapbox.com/mapbox.js/v3.2.1/mapbox.js'];
   }
 
   static buildCssTag() {
-    return '//api.mapbox.com/mapbox.js/v3.2.0/mapbox.css';
+    return '//api.mapbox.com/mapbox.js/v3.2.1/mapbox.css';
   }
   
   addMarker(options) {
