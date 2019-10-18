@@ -38,14 +38,14 @@ function createSvgMarker(map, position, options, assigner) {
 
 export class Marker {
   constructor(map, options) {
-    const { position, ...others } = options;
+    const { position, children, ...others } = options;
     const markerOptions = {
       map,
       ...others,
       position: PositionToLngLat(position),
     };
-    if (others.children) {
-      markerOptions.content = renderToDiv(others.children);
+    if (children) {
+      markerOptions.content = renderToDiv(children);
       markerOptions.anchor = 'center';
       markerOptions.offset = new window.AMap.Pixel(0, 0);
     }

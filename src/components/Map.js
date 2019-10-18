@@ -37,7 +37,7 @@ export class Map extends Component {
     return React.Children.map(
       children,
       child => {
-        if (!child || typeof child === 'string')
+        if (!child || typeof child === 'string' || typeof child.type === 'string')
           return child;
         return React.cloneElement(
           child,

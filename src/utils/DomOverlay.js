@@ -1,6 +1,6 @@
 import { renderToDiv } from './Render';
 
-export default (fromPositionToPixel) => {
+export default fromPositionToPixel => {
   return (
     class {
       constructor(position, options) {

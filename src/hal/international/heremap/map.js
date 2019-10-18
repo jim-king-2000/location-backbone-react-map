@@ -1,4 +1,5 @@
 import { Marker } from './marker';
+import { DomMarker } from './domMarker';
 import { Polyline } from './polyline';
 
 export class HereMap {
@@ -27,6 +28,10 @@ export class HereMap {
     ];
   }
 
+  addDomMarker(options) {
+    return new DomMarker(this.map, options);
+  }
+  
   addMarker(options) {
     return new Marker(this.map, options);
   }
