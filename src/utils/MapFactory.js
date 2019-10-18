@@ -8,6 +8,7 @@ import { BingMap } from '../hal/international/bingmap';
 import { GoogleMap } from '../hal/international/googlemap';
 import { HereMap } from '../hal/international/heremap';
 import { MapBox } from '../hal/international/mapbox';
+import { MapBoxGL } from '../hal/international/mapbox-gl';
 
 const MapClasses = {
   AMap,
@@ -20,6 +21,7 @@ const MapClasses = {
   TianMap,
   HereMap,
   MapBox,
+  MapBoxGL,
 };
 
 export default mapVendor => {

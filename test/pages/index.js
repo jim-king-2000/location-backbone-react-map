@@ -19,14 +19,14 @@ export default class extends Component {
             <Box flex><MapCanvas mapKey={Config.MAP_KEY_TMAP} mapVendor='QQMap' /></Box>
           </Box>
           <Box direction='row' flex>
-            <Box flex><MapCanvas mapVendor='SogouMap' /></Box>
-            <Box flex><MapCanvas mapKey={Config.MAP_KEY_TIANMAP} mapVendor='TianMap' /></Box>
-            <Box flex><MapCanvas mapKey={Config.MAP_KEY_MAPBOX} mapVendor='MapBox' /></Box>
+            <Box flex><MapCanvas mapKey={Config.MAP_KEY_BINGMAP} mapVendor='BingMap' /></Box>
+            <Box flex><MapCanvas mapKey={Config.MAP_KEY_GOOGLEMAP} mapVendor='GoogleMap' /></Box>
+            <Box flex><MapCanvas mapKey={Config.MAP_KEY_MAPBOX} mapVendor='MapBoxGL' /></Box>
           </Box>
           <Box direction='row' flex>
             <Box flex><MapCanvas mapKey={Config.MAP_KEY_HEREMAP} mapVendor='HereMap' /></Box>
-            <Box flex><MapCanvas mapKey={Config.MAP_KEY_BINGMAP} mapVendor='BingMap' /></Box>
-            <Box flex><MapCanvas mapKey={Config.MAP_KEY_GOOGLEMAP} mapVendor='GoogleMap' /></Box>
+            <Box flex><MapCanvas mapVendor='SogouMap' /></Box>
+            <Box flex><MapCanvas mapKey={Config.MAP_KEY_TIANMAP} mapVendor='TianMap' /></Box>
           </Box>
         </Box>
       </Grommet>

@@ -1,39 +1,36 @@
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
-import ReactDOM from 'react-dom';
+import { PositionToLngLat } from './utils';
+import { renderToDiv } from '../../../utils/Render';
+import { buildSVGElement } from '../../../utils/svg';
 
 export class Marker {
-  constructor(map, position, options) {
-    this.iconContainer = document.createElement('div');
-    ReactDOM.render((
-      <svg
-        preserveAspectRatio='xMidYMid meet'
-        fontSize={options.size || 30}
-        fill={options.fill || 'currentColor'}
-        viewBox='0 0 47.032 47.032'
-        width='30px'
-        height='30px'
-      >
-        <g>
-          <path d={options.svgIcon} />
-        </g>
-      </svg>
-    ), this.iconContainer);
-    this.marker = new mapboxgl.Marker(this.iconContainer, {
-      rotation: options.angle
-    }).setLngLat([position.longitude, position.latitude])
-    .addTo(map);
+  constructor(map, options) {
+    const { position, angle, svgIcon, children, ...others } = options;
+    const div = document.createElement('div');
+    if (children) {
+      const content = renderToDiv(children);
+      if (angle) content.style.transform = `rotate(${angle}deg)`;
+      div.appendChild(content);
+      this.iconContainer = content;
+    } else if (svgIcon) {
+      const content = renderToDiv(buildSVGElement(options));
+      if (angle) content.style.transform = `rotate(${angle}deg)`;
+      div.appendChild(content);
+      this.iconContainer = content;
+    }
+
+    this.marker = new mapboxgl.Marker(this.iconContainer && div)
+      .setLngLat(PositionToLngLat(position))
+      .addTo(map);
   }
 
   setPosition(position) {
-    this.marker.setLngLat([position.longitude, position.latitude]);
+    this.marker.setLngLat(PositionToLngLat(position));
   }
 
-  setAngle(angle) {
-    // this.marker.setAngle(angle);
-  }
-
-  setTitle(title) {
-    // this.marker.setTitle(title);
+  setOptions(options) {
+    if (!this.iconContainer) return;
+    this.iconContainer.style.transform = `rotate(${options.angle}deg)`;
   }
 
   remove() {

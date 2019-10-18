@@ -14,7 +14,7 @@ export default class extends Component {
       latitude: 31,
       longitude: 121
     },
-    angle: 0
+    angle: 45
   }
 
   render() {
