@@ -2,6 +2,12 @@ import { Marker } from './marker';
 import { Polyline } from './polyline';
 import { PositionToLngLat } from './utils';
 
+const OverlayClasses = new Map([
+  ['Marker', Marker],
+  ['DomMarker', Marker],
+  ['Polyline', Polyline],
+]);
+
 export class AMap {
   constructor(dom, options) {
     this.map = new window.AMap.Map(dom, {
@@ -21,15 +27,8 @@ export class AMap {
     ];
   }
 
-  addDomMarker(options) {
-    return new Marker(this.map, options);
-  }
-
-  addMarker(options) {
-    return new Marker(this.map, options);
-  }
-
-  addPolyline(options) {
-    return new Polyline(this.map, options);
+  addOverlay(overlayType, options) {
+    const OverlayClass = OverlayClasses.get(overlayType);
+    return new OverlayClass(this.map, options);
   }
 }

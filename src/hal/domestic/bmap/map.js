@@ -3,6 +3,12 @@ import { DomMarker } from './domMarker';
 import { Polyline } from './polyline';
 import { PositionToPoint } from './utils';
 
+const OverlayClasses = new Map([
+  ['Marker', Marker],
+  ['DomMarker', DomMarker],
+  ['Polyline', Polyline],
+]);
+
 export class BMap {
   constructor(dom, options) {
     this.map = new window.BMap.Map(dom, {
@@ -28,15 +34,8 @@ export class BMap {
     return [`//api.map.baidu.com/api?v=3.0&ak=${mapKey}&callback=${this.LoadType.startup}`];
   }
 
-  addDomMarker(options) {
-    return new DomMarker(this.map, options);
-  }
-
-  addMarker(options) {
-    return new Marker(this.map, options);
-  }
-
-  addPolyline(options) {
-    return new Polyline(this.map, options);
+  addOverlay(overlayType, options) {
+    const OverlayClass = OverlayClasses.get(overlayType);
+    return new OverlayClass(this.map, options);
   }
 }
