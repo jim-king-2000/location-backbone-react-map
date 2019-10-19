@@ -2,6 +2,11 @@ import { Marker } from './marker';
 import { Polyline } from './polyline';
 import { PositionToLatLng } from './utils';
 
+const OverlayClasses = new Map([
+  ['Marker', Marker],
+  ['Polyline', Polyline],
+]);
+
 export class SogouMap {
   constructor(dom, options) {
     this.map = new sogou.maps.Map(dom, {
@@ -24,11 +29,8 @@ export class SogouMap {
     return ['//api.map.sogou.com/maps/js/api_v2.5.1.js'];
   }
 
-  addMarker(options) {
-    return new Marker(this.map, options);
-  }
-
-  addPolyline(options) {
-    return new Polyline(this.map, options);
+  addOverlay(overlayType, options) {
+    const OverlayClass = OverlayClasses.get(overlayType);
+    return OverlayClass && new OverlayClass(this.map, options);
   }
 }

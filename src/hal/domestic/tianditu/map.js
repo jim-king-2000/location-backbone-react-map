@@ -2,6 +2,11 @@ import { Marker } from './marker';
 import { Polyline } from './polyline';
 import { PositionToLngLat } from './utils';
 
+const OverlayClasses = new Map([
+  ['Marker', Marker],
+  ['Polyline', Polyline],
+]);
+
 export class TianMap {
   constructor(dom, options) {
     this.map = new T.Map(dom, {
@@ -18,11 +23,8 @@ export class TianMap {
     return [`http://api.tianditu.gov.cn/api?v=4.0&tk=${mapKey}`];
   }
 
-  addMarker(options) {
-    return new Marker(this.map, options);
-  }
-
-  addPolyline(options) {
-    return new Polyline(this.map, options);
+  addOverlay(overlayType, options) {
+    const OverlayClass = OverlayClasses.get(overlayType);
+    return OverlayClass && new OverlayClass(this.map, options);
   }
 }

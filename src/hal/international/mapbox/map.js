@@ -2,6 +2,11 @@ import { Marker } from './marker';
 import { Polyline } from './polyline';
 import { PositionToLatLng } from './utils';
 
+const OverlayClasses = new Map([
+  ['Marker', Marker],
+  ['Polyline', Polyline],
+]);
+
 export class MapBox {
   constructor(dom, options, mapKey) {
     L.mapbox.accessToken = mapKey;
@@ -22,11 +27,8 @@ export class MapBox {
     return '//api.mapbox.com/mapbox.js/v3.2.1/mapbox.css';
   }
   
-  addMarker(options) {
-    return new Marker(this.map, options);
-  }
-
-  addPolyline(options) {
-    return new Polyline(this.map, options);
+  addOverlay(overlayType, options) {
+    const OverlayClass = OverlayClasses.get(overlayType);
+    return OverlayClass && new OverlayClass(this.map, options);
   }
 }

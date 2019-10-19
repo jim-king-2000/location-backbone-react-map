@@ -4,6 +4,12 @@ import { Marker } from './marker';
 import { PositionToLngLat } from './utils';
 import { Polyline } from './polyline';
 
+const OverlayClasses = new Map([
+  ['Marker', Marker],
+  ['DomMarker', Marker],
+  ['Polyline', Polyline],
+]);
+
 export class MapBoxGL {
   constructor(dom, options, mapKey) {
     mapboxgl.accessToken = mapKey;
@@ -24,15 +30,8 @@ export class MapBoxGL {
     return [];
   }
   
-  addMarker(options) {
-    return new Marker(this.map, options);
-  }
-
-  addDomMarker(options) {
-    return new Marker(this.map, options);
-  }
-
-  addPolyline(options) {
-    return new Polyline(this.map, options);
+  addOverlay(overlayType, options) {
+    const OverlayClass = OverlayClasses.get(overlayType);
+    return OverlayClass && new OverlayClass(this.map, options);
   }
 }

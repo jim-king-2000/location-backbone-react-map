@@ -3,11 +3,8 @@ import React, { Component } from 'react';
 export class Polyline extends Component {
   componentDidMount() {
     const { __map__, ...options } = this.props;
-    if (__map__.addOverlay) {
-      this.polyline = __map__.addOverlay('Polyline', options);
-      return;
-    }
-    this.polyline = __map__.addPolyline && __map__.addPolyline(options);
+    this.polyline = __map__.addOverlay &&
+      __map__.addOverlay('Polyline', options);
   }
 
   componentWillUnmount() {

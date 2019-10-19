@@ -36,6 +36,6 @@ export class BMap {
 
   addOverlay(overlayType, options) {
     const OverlayClass = OverlayClasses.get(overlayType);
-    return new OverlayClass(this.map, options);
+    return OverlayClass && new OverlayClass(this.map, options);
   }
 }

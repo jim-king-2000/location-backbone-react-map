@@ -2,6 +2,12 @@ import { Marker } from './marker';
 import { DomMarker } from './domMarker';
 import { Polyline } from './polyline';
 
+const OverlayClasses = new Map([
+  ['Marker', Marker],
+  ['DomMarker', DomMarker],
+  ['Polyline', Polyline],
+]);
+
 export class HereMap {
   constructor(dom, options, mapKey) {
     const platform = new H.service.Platform({
@@ -28,15 +34,8 @@ export class HereMap {
     ];
   }
 
-  addDomMarker(options) {
-    return new DomMarker(this.map, options);
-  }
-  
-  addMarker(options) {
-    return new Marker(this.map, options);
-  }
-
-  addPolyline(options) {
-    return new Polyline(this.map, options);
+  addOverlay(overlayType, options) {
+    const OverlayClass = OverlayClasses.get(overlayType);
+    return OverlayClass && new OverlayClass(this.map, options);
   }
 }
