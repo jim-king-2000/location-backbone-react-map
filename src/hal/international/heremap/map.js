@@ -15,7 +15,7 @@ export class RHereMap {
     });
     const maptypes = platform.createDefaultLayers();
     this.map = new H.Map(dom, maptypes.vector.normal.map, {
-      pixelRatio: window.devicePixelRatio || 1,
+      pixelRatio: devicePixelRatio || 1,
       center: { lat: 31, lng: 121 },
       zoom: 11,
     });
