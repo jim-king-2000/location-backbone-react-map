@@ -22,8 +22,8 @@ export class RMapBoxGL {
     });
   }
 
-  static async loadMap(dom, options) {
-    return new RMapBoxGL(dom, options);
+  static async loadMap(dom, options, mapKey) {
+    return new RMapBoxGL(dom, options, mapKey);
   }
 
   static get LoadType() {

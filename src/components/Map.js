@@ -26,9 +26,12 @@ export class Map extends Component {
       this.renderChildren();
   }
 
-  createMap(NativeMapClass, options, mapKey) {
+  async createMap(NativeMapClass, options, mapKey) {
     if (!this.map) {
-      this.map = new NativeMapClass(this.container.current, options, mapKey);
+      this.map = await NativeMapClass.loadMap(
+        this.container.current,
+        options,
+        mapKey);
       this.renderChildren();
     }
   }

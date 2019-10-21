@@ -22,8 +22,8 @@ export class RHereMap {
     new H.mapevents.Behavior(new H.mapevents.MapEvents(this.map));
   }
 
-  static async loadMap(dom, options) {
-    return new RHereMap(dom, options);
+  static async loadMap(dom, options, mapKey) {
+    return new RHereMap(dom, options, mapKey);
   }
 
   static get LoadType() {
