@@ -22,7 +22,7 @@ export class RSogouMap {
   }
 
   static callbackName() {
-    return 'initializeSougouMap';
+    return 'initializeRSougouMap';
   }
 
   static get LoadType() {

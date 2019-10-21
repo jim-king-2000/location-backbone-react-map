@@ -25,7 +25,7 @@ export class RBingMap {
   static get LoadType() {
     return {
       async: true,
-      startup: 'initializeBingMap'
+      startup: 'initializeRBingMap'
     }
   }
 

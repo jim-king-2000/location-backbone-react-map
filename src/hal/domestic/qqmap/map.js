@@ -28,7 +28,7 @@ export class RQQMap {
   static get LoadType() {
     return {
       async: true,
-      startup: 'initializeQQMap'
+      startup: 'initializeRQQMap'
     }
   }
 
