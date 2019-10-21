@@ -23,7 +23,9 @@ export class RMapBoxGL {
   }
 
   static async loadMap(dom, options, mapKey) {
-    return new RMapBoxGL(dom, options, mapKey);
+    const nativeMap = new RMapBoxGL(dom, options, mapKey);
+    await new Promise(resolve => nativeMap.map.on('load', resolve));
+    return nativeMap;
   }
 
   static get LoadType() {
