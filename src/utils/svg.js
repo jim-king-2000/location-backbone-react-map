@@ -5,12 +5,12 @@ export function buildSVGMarkup(options) {
       xmlns='http://www.w3.org/2000/svg'
       preserveAspectRatio='xMidYMid meet'
       fill='${options.fillColor || 'currentColor'}'
-      viewBox='0 0 47.032 47.032'
-      width='30px'
-      height='30px'
+      viewBox='0 0 ${options.svgIcon.viewWidth} ${options.svgIcon.viewHeight}'
+      width='${options.svgIcon.width}px'
+      height='${options.svgIcon.height}px'
     >
       <g>
-        <path d='${options.svgIcon}' />
+        <path d='${options.svgIcon.path}' />
       </g>
     </svg>`;
 }
@@ -21,12 +21,12 @@ export function buildSVGElement(options) {
       xmlns='http://www.w3.org/2000/svg'
       preserveAspectRatio='xMidYMid meet'
       fill={options.fillColor || 'currentColor'}
-      viewBox='0 0 47.032 47.032'
-      width='30px'
-      height='30px'
+      viewBox={`0 0 ${options.svgIcon.viewWidth} ${options.svgIcon.viewHeight}`}
+      width={`${options.svgIcon.width}px`}
+      height={`${options.svgIcon.height}px`}
     >
       <g>
-        <path d={options.svgIcon} />
+        <path d={options.svgIcon.path} />
       </g>
     </svg>
   );

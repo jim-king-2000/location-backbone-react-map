@@ -6,13 +6,15 @@ export class Marker {
     this.marker = new google.maps.Marker({
       map,
       icon: others.svgIcon && {
-        path: others.svgIcon,
+        path: others.svgIcon.path,
         fillColor: others.fillColor || 'currentColor',
         fillOpacity: 1,
         strokeWeight: 0,
         rotation: others.angle,
         scale : 0.6,
-        anchor: new google.maps.Point(24, 24)
+        anchor: new google.maps.Point(
+          others.svgIcon.viewWidth / 2,
+          others.svgIcon.viewHeight / 2)
       },
       ...others,
       position: PositionToLatLng(position),

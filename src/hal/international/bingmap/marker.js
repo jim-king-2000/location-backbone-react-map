@@ -2,17 +2,18 @@ import { PositionToLocation } from './utils';
 
 function draw(svgIcon, fillColor, angle) {
   const canvas = document.createElement('canvas');
-  canvas.width = 47.032;
-  canvas.height = 47.032;
+  canvas.width = svgIcon.viewWidth;
+  canvas.height = svgIcon.viewHeight;
   const ctx = canvas.getContext('2d');
   const offsetX = canvas.width / 2;
   const offsetY = canvas.height / 2;
   ctx.translate(offsetX, offsetY);
   ctx.rotate(angle * Math.PI / 180);
-  ctx.scale(0.6, 0.6);
+  const scale = svgIcon.width / svgIcon.viewWidth;
+  ctx.scale(scale, scale);
   ctx.translate(-offsetX, -offsetY);
   ctx.fillStyle = fillColor;
-  ctx.fill(new Path2D(svgIcon));
+  ctx.fill(new Path2D(svgIcon.path));
   return canvas.toDataURL();
 }
 

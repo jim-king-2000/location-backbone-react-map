@@ -19,9 +19,9 @@ function carTopViewShape(utils, SvgMarker, path) {
 function createSvgMarker(map, position, options, assigner) {
   AMapUI.load(['lib/utils', 'ui/overlay/SvgMarker'], (utils, SvgMarker) => {
     const CarTopViewShape = carTopViewShape(
-      utils, SvgMarker, options.svgIcon);
+      utils, SvgMarker, options.svgIcon.path);
     const shape = new CarTopViewShape({
-      height: 30,
+      height: options.svgIcon.height,
       fillColor: options.fillColor || 'currentColor',
       strokeWidth: 0,
     });
