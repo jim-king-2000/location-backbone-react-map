@@ -29,13 +29,10 @@ export class Marker {
     map.addOverlay(this.marker);
   }
 
-  setPosition(position) {
-    this.marker.setPosition(PositionToPoint(position));
-  }
-
   setOptions(options) {
     this.marker.setRotation(options.angle);
     this.marker.setTitle(options.title);
+    this.marker.setPosition(PositionToPoint(options.position));
   }
 
   remove() {

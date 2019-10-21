@@ -16,11 +16,8 @@ export class Marker {
     this.map.addObject(this.marker);
   }
 
-  setPosition(position) {
-    this.marker.setGeometry(PositionToLatLng(position));
-  }
-
   setOptions(options) {
+    this.marker.setGeometry(PositionToLatLng(options.position));
   }
 
   remove() {

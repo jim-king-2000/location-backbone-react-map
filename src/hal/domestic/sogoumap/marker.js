@@ -10,12 +10,9 @@ export class Marker {
     });
   }
 
-  setPosition(position) {
-    this.marker.setPosition(PositionToLatLng(position));
-  }
-
   setOptions(options) {
     this.marker.setTitle(options.title);
+    this.marker.setPosition(PositionToLatLng(options.position));
   }
 
   remove() {

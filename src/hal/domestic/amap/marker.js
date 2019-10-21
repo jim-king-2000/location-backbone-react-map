@@ -57,13 +57,10 @@ export class Marker {
     createSvgMarker(map, position, others, marker => this.marker = marker);
   }
 
-  setPosition(position) {
-    this.marker.setPosition(PositionToLngLat(position));
-  }
-
   setOptions(options) {
     this.marker.setAngle(options.angle);
     this.marker.setTitle(options.title);
+    this.marker.setPosition(PositionToLngLat(options.position));
   }
 
   remove() {

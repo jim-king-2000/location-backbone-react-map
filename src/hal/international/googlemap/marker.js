@@ -21,15 +21,12 @@ export class Marker {
     });
   }
 
-  setPosition(position) {
-    this.marker.setPosition(PositionToLatLng(position));
-  }
-
   setOptions(options) {
     const icon = this.marker.getIcon();
     icon.rotation = options.angle;
     this.marker.setIcon(icon);
     this.marker.setTitle(options.title);
+    this.marker.setPosition(PositionToLatLng(options.position));
   }
 
   remove() {

@@ -24,13 +24,11 @@ export class Marker {
       .addTo(map);
   }
 
-  setPosition(position) {
-    this.marker.setLngLat(PositionToLngLat(position));
-  }
-
   setOptions(options) {
-    if (!this.iconContainer) return;
-    this.iconContainer.style.transform = `rotate(${options.angle}deg)`;
+    if (this.iconContainer) {
+      this.iconContainer.style.transform = `rotate(${options.angle}deg)`;
+    }
+    this.marker.setLngLat(PositionToLngLat(options.position));
   }
 
   remove() {

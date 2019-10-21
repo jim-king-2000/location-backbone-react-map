@@ -10,11 +10,8 @@ export class Marker {
     this.map = map;
   }
 
-  setPosition(position) {
-    this.marker.setLngLat(PositionToLngLat(position));
-  }
-
   setOptions(options) {
+    this.marker.setLngLat(PositionToLngLat(options.position));
   }
 
   remove() {

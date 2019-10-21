@@ -31,15 +31,12 @@ export class Marker {
     this.options = others;
   }
 
-  setPosition(position) {
-    this.marker.setLocation(PositionToLocation(position));
-  }
-
   setOptions(options) {
     this.marker.setOptions({
       icon: draw(this.options.svgIcon, this.options.fillColor, options.angle),
       title: options.title
     });
+    this.marker.setLocation(PositionToLocation(options.position));
   }
 
   remove() {

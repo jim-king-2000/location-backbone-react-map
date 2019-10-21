@@ -21,13 +21,10 @@ export class Marker {
     this.marker = new qq.maps.Marker(markerOptions);
   }
 
-  setPosition(position) {
-    this.marker.setPosition(PositionToLatLng(position));
-  }
-
   setOptions(options) {
     this.marker.setRotation(options.angle);
     this.marker.setTitle(options.title);
+    this.marker.setPosition(PositionToLatLng(options.position));
   }
   
   remove() {
