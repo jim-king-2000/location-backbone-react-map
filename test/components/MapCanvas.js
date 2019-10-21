@@ -39,7 +39,7 @@ export default class extends Component {
                 latitude: 31.05,
                 longitude: 120.95
               }}
-              title={JSON.stringify(this.state.position)}
+              title='green'
               svgIcon={CarTopView}
               fillColor='green'
             />
@@ -48,7 +48,8 @@ export default class extends Component {
                 latitude: 30.95,
                 longitude: 121.05
               }}
-              title={JSON.stringify(this.state.position)}
+              title='90'
+              angle={90}
               svgIcon={CarTopView}
             />
             <Marker
