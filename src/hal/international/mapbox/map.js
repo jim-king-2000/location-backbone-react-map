@@ -7,7 +7,7 @@ const OverlayClasses = new Map([
   ['Polyline', Polyline],
 ]);
 
-export class MapBox {
+export class RMapBox {
   constructor(dom, options, mapKey) {
     L.mapbox.accessToken = mapKey;
     this.map = L.mapbox.map(dom)

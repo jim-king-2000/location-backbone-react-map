@@ -1,13 +1,13 @@
 import uuid from 'uuid/v4';
 
 function PositionToLatLng(position) {
-  return new window.TMap.LatLng(position.latitude, position.longitude);
+  return new TMap.LatLng(position.latitude, position.longitude);
 }
 
 export class Marker {
   constructor(map, position, options) {
     this.id = uuid();
-    this.marker = new window.TMap.MultiMarker({
+    this.marker = new TMap.MultiMarker({
       map,
       geometries: [{
         id: this.id,

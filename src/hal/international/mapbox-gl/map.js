@@ -10,7 +10,7 @@ const OverlayClasses = new Map([
   ['Polyline', Polyline],
 ]);
 
-export class MapBoxGL {
+export class RMapBoxGL {
   constructor(dom, options, mapKey) {
     mapboxgl.accessToken = mapKey;
     this.map = new mapboxgl.Map({
@@ -20,6 +20,10 @@ export class MapBoxGL {
       zoom: options.zoom,
       style: 'mapbox://styles/mapbox/streets-v11'
     });
+  }
+
+  static async loadMap(dom, options) {
+    return new RMapBoxGL(dom, options);
   }
 
   static get LoadType() {

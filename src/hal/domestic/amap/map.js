@@ -8,12 +8,16 @@ const OverlayClasses = new Map([
   ['Polyline', Polyline],
 ]);
 
-export class AMap {
+export class RAMap {
   constructor(dom, options) {
-    this.map = new window.AMap.Map(dom, {
+    this.map = new AMap.Map(dom, {
       zoom: options.zoom,
       center: PositionToLngLat(options.center),
     });
+  }
+
+  static async loadMap(dom, options) {
+    return new RAMap(dom, options);
   }
 
   static get LoadType() {

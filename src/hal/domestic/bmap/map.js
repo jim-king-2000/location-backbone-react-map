@@ -9,9 +9,9 @@ const OverlayClasses = new Map([
   ['Polyline', Polyline],
 ]);
 
-export class BMap {
+export class RBMap {
   constructor(dom, options) {
-    this.map = new window.BMap.Map(dom, {
+    this.map = new BMap.Map(dom, {
       enableHighResolution: true
     });
     this.map.enableScrollWheelZoom();
@@ -23,15 +23,22 @@ export class BMap {
     );
   }
 
+  static async loadMap(dom, options) {
+    return new RBMap(dom, options);
+  }
+
   static get LoadType() {
     return {
       async: true,
-      startup: 'initializeBMap'
+      startup: 'initializeRBMap'
     }
   }
 
   static buildScriptTag(mapKey) {
-    return [`//api.map.baidu.com/api?v=3.0&ak=${mapKey}&callback=${this.LoadType.startup}`];
+    return [
+      `//api.map.baidu.com/api?v=3.0&ak=${mapKey}&
+        callback=${this.LoadType.startup}`
+    ];
   }
 
   addOverlay(overlayType, options) {

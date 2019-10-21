@@ -14,19 +14,19 @@ export default class extends Component {
       <Grommet full plain>
         <Box fill>
           <Box direction='row' flex>
-            <Box flex><MapCanvas mapKey={Config.MAP_KEY_AMAP} mapVendor='AMap' /></Box>
-            <Box flex><MapCanvas mapKey={Config.MAP_KEY_BMAP} mapVendor='BMap' /></Box>
-            <Box flex><MapCanvas mapKey={Config.MAP_KEY_TMAP} mapVendor='QQMap' /></Box>
+            <Box flex><MapCanvas mapKey={Config.MAP_KEY_AMAP} mapVendor='RAMap' /></Box>
+            <Box flex><MapCanvas mapKey={Config.MAP_KEY_BMAP} mapVendor='RBMap' /></Box>
+            <Box flex><MapCanvas mapKey={Config.MAP_KEY_TMAP} mapVendor='RQQMap' /></Box>
           </Box>
           <Box direction='row' flex>
-            <Box flex><MapCanvas mapKey={Config.MAP_KEY_BINGMAP} mapVendor='BingMap' /></Box>
-            <Box flex><MapCanvas mapKey={Config.MAP_KEY_GOOGLEMAP} mapVendor='GoogleMap' /></Box>
-            <Box flex><MapCanvas mapKey={Config.MAP_KEY_MAPBOX} mapVendor='MapBoxGL' /></Box>
+            <Box flex><MapCanvas mapKey={Config.MAP_KEY_BINGMAP} mapVendor='RBingMap' /></Box>
+            <Box flex><MapCanvas mapKey={Config.MAP_KEY_GOOGLEMAP} mapVendor='RGoogleMap' /></Box>
+            <Box flex><MapCanvas mapKey={Config.MAP_KEY_MAPBOX} mapVendor='RMapBoxGL' /></Box>
           </Box>
           <Box direction='row' flex>
-            <Box flex><MapCanvas mapKey={Config.MAP_KEY_HEREMAP} mapVendor='HereMap' /></Box>
-            <Box flex><MapCanvas mapVendor='SogouMap' /></Box>
-            <Box flex><MapCanvas mapKey={Config.MAP_KEY_TIANMAP} mapVendor='TianMap' /></Box>
+            <Box flex><MapCanvas mapKey={Config.MAP_KEY_HEREMAP} mapVendor='RHereMap' /></Box>
+            <Box flex><MapCanvas mapVendor='RSogouMap' /></Box>
+            <Box flex><MapCanvas mapKey={Config.MAP_KEY_TIANMAP} mapVendor='RTianMap' /></Box>
           </Box>
         </Box>
       </Grommet>

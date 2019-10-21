@@ -47,10 +47,10 @@ export class Marker {
     if (children) {
       markerOptions.content = renderToDiv(children);
       markerOptions.anchor = 'center';
-      markerOptions.offset = new window.AMap.Pixel(0, 0);
+      markerOptions.offset = new AMap.Pixel(0, 0);
     }
     if (!others.svgIcon) {
-      this.marker = new window.AMap.Marker(markerOptions);
+      this.marker = new AMap.Marker(markerOptions);
       return;
     }
 

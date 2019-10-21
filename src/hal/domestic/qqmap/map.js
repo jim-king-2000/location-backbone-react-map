@@ -9,7 +9,7 @@ const OverlayClasses = new Map([
   ['Polyline', Polyline],
 ]);
 
-export class QQMap {
+export class RQQMap {
   constructor(dom, options) {
     this.map = new qq.maps.Map(dom, {
       zoom: options.zoom,
@@ -19,6 +19,10 @@ export class QQMap {
       zoomControl: false,
       scaleControl: false,
     });
+  }
+
+  static async loadMap(dom, options) {
+    return new RQQMap(dom, options);
   }
 
   static get LoadType() {

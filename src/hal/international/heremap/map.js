@@ -8,7 +8,7 @@ const OverlayClasses = new Map([
   ['Polyline', Polyline],
 ]);
 
-export class HereMap {
+export class RHereMap {
   constructor(dom, options, mapKey) {
     const platform = new H.service.Platform({
       apikey: mapKey
@@ -20,6 +20,10 @@ export class HereMap {
       zoom: 11,
     });
     new H.mapevents.Behavior(new H.mapevents.MapEvents(this.map));
+  }
+
+  static async loadMap(dom, options) {
+    return new RHereMap(dom, options);
   }
 
   static get LoadType() {

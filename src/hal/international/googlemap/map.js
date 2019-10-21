@@ -9,13 +9,17 @@ const OverlayClasses = new Map([
   ['Polyline', Polyline],
 ]);
 
-export class GoogleMap {
+export class RGoogleMap {
   constructor(dom, options) {
     this.map = new google.maps.Map(dom, {
       center: PositionToLatLng(options.center),
       zoom: options.zoom,
       disableDefaultUI: true,
     });
+  }
+
+  static async loadMap(dom, options) {
+    return new RGoogleMap(dom, options);
   }
 
   static get LoadType() {

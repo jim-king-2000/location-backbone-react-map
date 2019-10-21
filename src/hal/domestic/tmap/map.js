@@ -1,10 +1,10 @@
 import { Marker } from './marker';
 
-export class TMap {
+export class RTMap {
   constructor(dom) {
-    this.map = new window.TMap.Map(dom, {
+    this.map = new TMap.Map(dom, {
       zoom: 11,
-      center: new window.TMap.LatLng(31, 121),
+      center: new TMap.LatLng(31, 121),
     });
   }
 

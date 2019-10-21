@@ -7,12 +7,16 @@ const OverlayClasses = new Map([
   ['Polyline', Polyline],
 ]);
 
-export class TianMap {
+export class RTianMap {
   constructor(dom, options) {
     this.map = new T.Map(dom, {
       center: PositionToLngLat(options.center),
       zoom: options.zoom,
     });
+  }
+
+  static async loadMap(dom, options) {
+    return new RTianMap(dom, options);
   }
 
   static get LoadType() {

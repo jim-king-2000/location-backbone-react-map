@@ -1,30 +1,28 @@
-import { AMap } from '../hal/domestic/amap';
-import { BMap } from '../hal/domestic/bmap';
-import { TMap } from '../hal/domestic/tmap';
-import { QQMap } from '../hal/domestic/qqmap';
-import { SogouMap } from '../hal/domestic/sogoumap';
-import { TianMap } from '../hal/domestic/tianditu';
-import { BingMap } from '../hal/international/bingmap';
-import { GoogleMap } from '../hal/international/googlemap';
-import { HereMap } from '../hal/international/heremap';
-import { MapBox } from '../hal/international/mapbox';
-import { MapBoxGL } from '../hal/international/mapbox-gl';
+import { RAMap } from '../hal/domestic/amap';
+import { RBMap } from '../hal/domestic/bmap';
+import { RTMap } from '../hal/domestic/tmap';
+import { RQQMap } from '../hal/domestic/qqmap';
+import { RSogouMap } from '../hal/domestic/sogoumap';
+import { RTianMap } from '../hal/domestic/tianditu';
+import { RBingMap } from '../hal/international/bingmap';
+import { RGoogleMap } from '../hal/international/googlemap';
+import { RHereMap } from '../hal/international/heremap';
+import { RMapBox } from '../hal/international/mapbox';
+import { RMapBoxGL } from '../hal/international/mapbox-gl';
 
 const MapClasses = {
-  AMap,
-  BMap,
-  TMap,
-  QQMap,
-  BingMap,
-  GoogleMap,
-  SogouMap,
-  TianMap,
-  HereMap,
-  MapBox,
-  MapBoxGL,
+  RAMap,
+  RBMap,
+  RQQMap,
+  RBingMap,
+  RGoogleMap,
+  RSogouMap,
+  RTianMap,
+  RHereMap,
+  RMapBoxGL,
 };
 
 export default mapVendor => {
   const mapClass = MapClasses[mapVendor];
-  return mapClass || AMap;
+  return mapClass || RAMap;
 }

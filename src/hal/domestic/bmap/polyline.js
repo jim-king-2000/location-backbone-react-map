@@ -12,7 +12,7 @@ export class Polyline {
   constructor(map, options) {
     const { path, ...others } = options;
     this.map = map;
-    this.polyline = new window.BMap.Polyline(
+    this.polyline = new BMap.Polyline(
       path.map(position => PositionToPoint(position)),
       transformOptions(others),
     );

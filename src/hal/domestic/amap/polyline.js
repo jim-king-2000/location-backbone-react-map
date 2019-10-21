@@ -3,7 +3,7 @@ import { PositionToLngLat } from './utils';
 export class Polyline {
   constructor(map, options) {
     const { path, ...others } = options;
-    this.polyline = new window.AMap.Polyline({
+    this.polyline = new AMap.Polyline({
       map,
       ...others,
       path: path.map(position => PositionToLngLat(position)),

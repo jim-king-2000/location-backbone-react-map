@@ -9,13 +9,17 @@ const OverlayClasses = new Map([
   ['Polyline', Polyline],
 ]);
 
-export class BingMap {
+export class RBingMap {
   constructor(dom, options) {
     this.map = new Microsoft.Maps.Map(dom, {
       enableHighDpi: true,
       zoom: options.zoom,
       center: PositionToLocation(options.center),
     });
+  }
+
+  static async loadMap(dom, options) {
+    return new RBingMap(dom, options);
   }
 
   static get LoadType() {

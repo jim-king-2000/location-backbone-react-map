@@ -7,7 +7,7 @@ const OverlayClasses = new Map([
   ['Polyline', Polyline],
 ]);
 
-export class SogouMap {
+export class RSogouMap {
   constructor(dom, options) {
     this.map = new sogou.maps.Map(dom, {
       hdMap: true,
@@ -15,6 +15,10 @@ export class SogouMap {
       zoom: options.zoom,
       mapControlType: 4,
     });
+  }
+
+  static async loadMap(dom, options) {
+    return new RSogouMap(dom, options);
   }
 
   static callbackName() {

@@ -1,6 +1,6 @@
 import buildDomOverlay from '../../../utils/DomOverlay';
 
-export default class extends window.BMap.Overlay {
+export default class extends BMap.Overlay {
   constructor(position, options) {
     super();
     const DomOverlay = buildDomOverlay(
