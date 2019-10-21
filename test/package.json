@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/plugin-proposal-private-methods": "^7.6.0",
     "@zeit/next-css": "^1.0.1",
     "babel-plugin-styled-components": "^1.10.6",
     "grommet": "^2.7.10",

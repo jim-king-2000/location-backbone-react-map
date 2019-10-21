@@ -1,13 +1,13 @@
 import { PositionToLngLat } from './utils';
 import { renderToDiv } from '../../../utils/Render';
 
-function carTopViewShape(utils, SvgMarker, path) {
+function carTopViewShape(utils, SvgMarker, svgIcon) {
   function CarTopViewShape(opts) {
     opts = utils.extend({
       sourcePath: {
-        path,
-        width: 47.032,
-        height: 47.032
+        path: svgIcon.path,
+        width: svgIcon.viewWidth,
+        height: svgIcon.viewHeight,
       }
     }, opts);
     CarTopViewShape.__super__.constructor.call(this, opts);
@@ -19,7 +19,7 @@ function carTopViewShape(utils, SvgMarker, path) {
 function createSvgMarker(map, position, options, assigner) {
   AMapUI.load(['lib/utils', 'ui/overlay/SvgMarker'], (utils, SvgMarker) => {
     const CarTopViewShape = carTopViewShape(
-      utils, SvgMarker, options.svgIcon.path);
+      utils, SvgMarker, options.svgIcon);
     const shape = new CarTopViewShape({
       height: options.svgIcon.height,
       fillColor: options.fillColor || 'currentColor',

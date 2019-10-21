@@ -4,6 +4,7 @@ module.exports = {
     'next/babel'
   ],
   plugins: [
+    '@babel/plugin-proposal-private-methods',
     [
       'babel-plugin-styled-components',
       {
