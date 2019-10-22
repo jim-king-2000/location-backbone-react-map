@@ -43,3 +43,4 @@ export const Marker = buildOverlay('Marker');
 export const Polyline = buildOverlay('Polyline');
 
 export const DynamicMarker = buildDynamicOverlay('Marker');
+export const InfoWindow = buildDynamicOverlay('InfoWindow');
