@@ -17,6 +17,12 @@ export class InfoWindow {
     );
   }
 
+  setOptions(options) {
+    const { position, children } = options;
+    this.infoWindow.setContent(renderToDiv(children));
+    this.infoWindow.setPosition(PositionToLngLat(position));
+  }
+
   remove() {
     this.infoWindow && this.infoWindow.close();
   }
