@@ -1,4 +1,4 @@
 
 export function PositionToLngLat(position) {
-  return new AMap.LngLat(position.longitude, position.latitude);
+  return position && new AMap.LngLat(position.longitude, position.latitude);
 }
