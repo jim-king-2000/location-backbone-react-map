@@ -6,9 +6,9 @@ export class InfoWindow {
     const { position, events, children, ...others } = options;
     this.infoWindow = new AMap.InfoWindow({
       ...others,
-      closeWhenClickMap,
-      visible,
-      autoMove,
+      closeWhenClickMap: true,
+      visible: true,
+      autoMove: true,
       content: renderToDiv(children),
     });
     this.infoWindow.open(map, PositionToLngLat(position));
