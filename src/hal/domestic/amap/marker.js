@@ -56,7 +56,7 @@ export class Marker {
 
     createSvgMarker(map, position, others, marker => this.marker = marker);
 
-    this.props.events && Object.entries(this.props.events).forEach(
+    othersevents && Object.entries(others.events).forEach(
       ([key, value]) => this.marker.on(key, value)
     );
   }
