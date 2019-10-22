@@ -64,7 +64,6 @@ export class Marker {
   }
 
   #setMarkerAndEvents(marker, events) {
-    console.log(events)
     this.marker = marker;
     events && Object.entries(events).forEach(
       ([key, value]) => marker.on(key, value)
