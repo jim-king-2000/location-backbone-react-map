@@ -50,14 +50,21 @@ export class Marker {
       markerOptions.offset = new AMap.Pixel(0, 0);
     }
     if (!others.svgIcon) {
-      this.marker = new AMap.Marker(markerOptions);
+      this.#setMarkerAndEvents(new AMap.Marker(markerOptions));
       return;
     }
 
-    createSvgMarker(map, position, others, marker => this.marker = marker);
+    createSvgMarker(
+      map,
+      position,
+      others,
+      marker => this.#setMarkerAndEvents(marker));
+  }
 
-    others.events && Object.entries(others.events).forEach(
-      ([key, value]) => this.marker.on(key, value)
+  #setMarkerAndEvents(marker, events) {
+    this.marker = marker;
+    events && Object.entries(events).forEach(
+      ([key, value]) => marker.on(key, value)
     );
   }
 
