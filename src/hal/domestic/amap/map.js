@@ -1,12 +1,14 @@
 import { Marker } from './marker';
 import { Polyline } from './polyline';
 import { MapView } from './mapView';
+import { InfoWindow } from './infoWindow';
 import { PositionToLngLat } from './utils';
 
 const OverlayClasses = new Map([
   ['Marker', Marker],
   ['DomMarker', Marker],
   ['Polyline', Polyline],
+  ['InfoWindow', InfoWindow],
 ]);
 
 export class RAMap {
