@@ -10,6 +10,8 @@ const OverlayClasses = new Map([
 ]);
 
 export class RAMap {
+  #mapView;
+  
   constructor(dom, options) {
     this.map = new AMap.Map(dom, {
       zoom: options.zoom,
