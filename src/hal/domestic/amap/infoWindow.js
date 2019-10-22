@@ -12,6 +12,9 @@ export class InfoWindow {
       content: renderToDiv(children),
     });
     this.infoWindow.open(map, PositionToLngLat(position));
+    events && Object.entries(events).forEach(
+      ([key, value]) => this.infoWindow.on(key, value)
+    );
   }
 
   remove() {
