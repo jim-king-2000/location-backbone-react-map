@@ -38,7 +38,7 @@ function createSvgMarker(map, position, options, assigner) {
 
 export class Marker {
   constructor(map, options) {
-    const { position, children, ...others } = options;
+    const { position, children, events, ...others } = options;
     const markerOptions = {
       map,
       ...others,
@@ -50,7 +50,9 @@ export class Marker {
       markerOptions.offset = new AMap.Pixel(0, 0);
     }
     if (!others.svgIcon) {
-      this.#setMarkerAndEvents(new AMap.Marker(markerOptions));
+      this.#setMarkerAndEvents(
+        new AMap.Marker(markerOptions),
+        events);
       return;
     }
 
@@ -58,7 +60,7 @@ export class Marker {
       map,
       position,
       others,
-      marker => this.#setMarkerAndEvents(marker));
+      marker => this.#setMarkerAndEvents(marker, events));
   }
 
   #setMarkerAndEvents(marker, events) {
