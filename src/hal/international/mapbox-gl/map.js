@@ -34,10 +34,6 @@ export class RMapBoxGL {
     return { async: false }
   }
 
-  static buildScriptTag() {
-    return [];
-  }
-  
   addOverlay(overlayType, options) {
     const OverlayClass = OverlayClasses.get(overlayType);
     return OverlayClass && new OverlayClass(this.map, options);

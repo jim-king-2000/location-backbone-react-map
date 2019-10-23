@@ -7,6 +7,7 @@ export class Marker {
   constructor(map, options) {
     const { position, angle, svgIcon, children, events, ...others } = options;
     const div = document.createElement('div');
+    div.style.cursor = 'pointer';
     if (children) {
       const content = renderToDiv(children);
       if (angle) content.style.transform = `rotate(${angle}deg)`;

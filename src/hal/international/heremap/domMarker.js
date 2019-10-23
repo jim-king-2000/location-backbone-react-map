@@ -7,7 +7,12 @@ export class DomMarker {
     this.marker = new H.map.DomMarker(PositionToLatLng(position), {
       icon: new H.map.DomIcon(renderToStaticMarkup(
         <div>
-          <div style={{ transform: `rotate(${angle}deg)` }}>
+          <div
+            style={{
+              transform: `rotate(${angle}deg)`,
+              cursor: 'pointer'
+            }}
+          >
             {children}
           </div>
         </div>

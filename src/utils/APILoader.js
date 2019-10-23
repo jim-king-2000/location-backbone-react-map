@@ -8,6 +8,7 @@ function buildScript(src, onLoad) {
 }
 
 export default async (NativeMapClass, mapKey) => {
+  if (!NativeMapClass.buildScriptTag) return;
   const scripts = NativeMapClass.buildScriptTag(mapKey);
   for (const script of scripts) {
     await new Promise(resolve => buildScript(script, resolve));
