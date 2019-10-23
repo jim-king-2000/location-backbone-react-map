@@ -1,5 +1,4 @@
 import { PositionToLatLng } from './utils';
-import { renderToDiv } from '../../../utils/Render';
 
 function translateProperties(options) {
   const { angle, ...others } = options;
@@ -11,7 +10,7 @@ function translateProperties(options) {
 
 export class Marker {
   constructor(map, options) {
-    const { position, ...others } = options;
+    const { position, events, ...others } = options;
     const markerOptions = {
       map,
       flat: true,
@@ -19,6 +18,9 @@ export class Marker {
       position: PositionToLatLng(position),
     };
     this.marker = new qq.maps.Marker(markerOptions);
+    events && Object.entries(events).forEach(
+      ([key, value]) => qq.maps.event.addListener(this.marker, key, value)
+    );
   }
 
   setOptions(options) {
