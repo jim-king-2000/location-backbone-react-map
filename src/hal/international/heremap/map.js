@@ -1,11 +1,13 @@
 import { Marker } from './marker';
 import { DomMarker } from './domMarker';
 import { Polyline } from './polyline';
+import { InfoWindow } from './infoWindow';
 
 const OverlayClasses = new Map([
   ['Marker', Marker],
   ['DomMarker', DomMarker],
   ['Polyline', Polyline],
+  ['InfoWindow', InfoWindow],
 ]);
 
 export class RHereMap {
@@ -13,8 +15,8 @@ export class RHereMap {
     const platform = new H.service.Platform({
       apikey: mapKey
     });
-    const maptypes = platform.createDefaultLayers();
-    this.map = new H.Map(dom, maptypes.vector.normal.map, {
+    const defaultLayers = platform.createDefaultLayers();
+    this.map = new H.Map(dom, defaultLayers.vector.normal.map, {
       pixelRatio: devicePixelRatio || 1,
       center: { lat: 31, lng: 121 },
       zoom: 11,
@@ -34,6 +36,7 @@ export class RHereMap {
     return [
       '//js.api.here.com/v3/3.1/mapsjs-core.js',
       '//js.api.here.com/v3/3.1/mapsjs-service.js',
+      '//js.api.here.com/v3/3.1/mapsjs-ui.js',
       '//js.api.here.com/v3/3.1/mapsjs-mapevents.js'
     ];
   }
