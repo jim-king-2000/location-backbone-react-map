@@ -13,6 +13,7 @@ export default fromPositionToPixel => {
         div.style.visibility = 'hidden';
         div.style.position = 'absolute';
         div.style.transform = `rotate(${this.options_.angle}deg)`;
+        div.style.cursor = 'pointer';
         this.div_ = div;
         this.map_ = map;
         return div;
