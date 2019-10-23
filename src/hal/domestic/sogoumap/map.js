@@ -1,10 +1,12 @@
 import { Marker } from './marker';
 import { Polyline } from './polyline';
+import { InfoWindow } from './infoWindow';
 import { PositionToLatLng } from './utils';
 
 const OverlayClasses = new Map([
   ['Marker', Marker],
   ['Polyline', Polyline],
+  ['InfoWindow', InfoWindow],
 ]);
 
 export class RSogouMap {
