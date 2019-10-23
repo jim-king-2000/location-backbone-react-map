@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
   DomMarker,
   DynamicMarker,
+  InfoWindow,
   Map,
   Marker,
   Polyline,
@@ -10,6 +11,7 @@ import {
 export default class extends Component {
   state = {
     showOverlays: true,
+    showInfoWindow: false,
     position: {
       latitude: 31,
       longitude: 121
@@ -27,12 +29,28 @@ export default class extends Component {
       >
         {this.state.showOverlays &&
           <>
+            {this.state.showInfoWindow &&
+              <InfoWindow
+                position={this.state.position}
+                events={{
+                  close: () => this.setState({ showInfoWindow: false })
+                }}
+              >
+                <div>
+                  <div>{`latitude: ${this.state.position.latitude}`}</div>
+                  <div>{`longitude: ${this.state.position.longitude}`}</div>
+                </div>
+              </InfoWindow>
+            }
             <DynamicMarker
               position={this.state.position}
               title={JSON.stringify(this.state.position)}
               angle={this.state.angle}
               svgIcon={CarTopView}
               fillColor='red'
+              events={{
+                click: e => this.setState({ showInfoWindow: true })
+              }}
             />
             <Marker
               position={{

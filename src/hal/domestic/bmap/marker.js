@@ -11,7 +11,7 @@ function translateProperties(options) {
 export class Marker {
   constructor(map, options) {
     this.map = map;
-    const { position, ...others } = options;
+    const { position, events, ...others } = options;
     this.marker = new BMap.Marker(PositionToPoint(position), {
       ...translateProperties(others),
       icon: others.svgIcon && new BMap.Symbol(others.svgIcon.path, {
@@ -26,6 +26,9 @@ export class Marker {
           others.svgIcon.viewHeight / 2)
       })
     });
+    events && Object.entries(events).forEach(
+      ([key, value]) => this.marker.addEventListener(key, value)
+    );
     map.addOverlay(this.marker);
   }
 

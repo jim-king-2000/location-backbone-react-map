@@ -1,12 +1,14 @@
 import { Marker } from './marker';
 import { DomMarker } from './domMarker';
 import { Polyline } from './polyline';
+import { InfoWindow } from './infoWindow';
 import { PositionToPoint } from './utils';
 
 const OverlayClasses = new Map([
   ['Marker', Marker],
   ['DomMarker', DomMarker],
   ['Polyline', Polyline],
+  ['InfoWindow', InfoWindow],
 ]);
 
 export class RBMap {
@@ -37,7 +39,8 @@ export class RBMap {
   static buildScriptTag(mapKey) {
     return [
       `//api.map.baidu.com/api?v=3.0&ak=${mapKey}&
-        callback=${this.LoadType.startup}`
+        callback=${this.LoadType.startup}`,
+      '//api.map.baidu.com/library/InfoBox/1.2/src/InfoBox_min.js'
     ];
   }
 
