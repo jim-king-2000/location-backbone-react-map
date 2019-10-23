@@ -1,4 +1,5 @@
 
 export function PositionToLatLng(position) {
-  return new sogou.maps.LatLng(position.latitude, position.longitude);
+  return position &&
+    new sogou.maps.LatLng(position.latitude, position.longitude);
 }

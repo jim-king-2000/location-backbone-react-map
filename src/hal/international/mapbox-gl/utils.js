@@ -1,6 +1,6 @@
 
 export function PositionToLngLat(position) {
-  return [
+  return position && [
     position.longitude,
     position.latitude,
   ];

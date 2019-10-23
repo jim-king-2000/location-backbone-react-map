@@ -1,4 +1,5 @@
 
 export function PositionToLatLng(position) {
-  return new google.maps.LatLng(position.latitude, position.longitude);
+  return position &&
+    new google.maps.LatLng(position.latitude, position.longitude);
 }

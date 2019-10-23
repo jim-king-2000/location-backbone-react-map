@@ -1,3 +1,4 @@
+import uuid from 'uuid/v4';
 import { PositionToLngLat } from './utils';
 import { transformColorToRgb } from '../../../utils/Color';
 
@@ -5,8 +6,9 @@ export class Polyline {
   constructor(map, options) {
     this.map = map;
     const { path, ...others } = options;
+    this.id = uuid();
     map.addLayer({
-      id: 'Polyline',
+      id: this.id,
       type: 'line',
       paint: {
         'line-width': others.strokeWeight,
@@ -30,6 +32,6 @@ export class Polyline {
   }
 
   remove() {
-    this.map.removeLayer('Polyline');
+    this.map.removeLayer(this.id);
   }
 }
