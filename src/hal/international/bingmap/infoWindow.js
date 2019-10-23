@@ -1,5 +1,4 @@
 import { PositionToLocation } from './utils';
-import { renderToDiv } from '../../../utils/Render';
 import { renderToStaticMarkup } from 'react-dom/server';
 
 export class InfoWindow {

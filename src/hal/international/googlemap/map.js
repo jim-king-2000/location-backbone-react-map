@@ -1,12 +1,14 @@
 import { Marker } from './marker';
 import { DomMarker } from './domMarker';
 import { Polyline } from './polyline';
+import { InfoWindow } from './infoWindow';
 import { PositionToLatLng } from './utils';
 
 const OverlayClasses = new Map([
   ['Marker', Marker],
   ['DomMarker', DomMarker],
   ['Polyline', Polyline],
+  ['InfoWindow', InfoWindow],
 ]);
 
 export class RGoogleMap {

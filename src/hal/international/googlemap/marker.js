@@ -2,7 +2,7 @@ import { PositionToLatLng } from './utils';
 
 export class Marker {
   constructor(map, options) {
-    const { position, ...others } = options;
+    const { position, events, ...others } = options;
     this.marker = new google.maps.Marker({
       map,
       icon: others.svgIcon && {
@@ -19,6 +19,9 @@ export class Marker {
       ...others,
       position: PositionToLatLng(position),
     });
+    events && Object.entries(events).forEach(
+      ([key, value]) => this.marker.addListener(key, value)
+    );
   }
 
   setOptions(options) {
