@@ -5,7 +5,7 @@ import { buildSVGElement } from '../../../utils/svg';
 
 export class Marker {
   constructor(map, options) {
-    const { position, angle, svgIcon, children, ...others } = options;
+    const { position, angle, svgIcon, children, events, ...others } = options;
     const div = document.createElement('div');
     if (children) {
       const content = renderToDiv(children);
@@ -18,6 +18,14 @@ export class Marker {
       div.appendChild(content);
       this.iconContainer = content;
     }
+
+    events && Object.entries(events).forEach(
+      ([key, value]) => div.addEventListener(key, e => {
+        e.preventDefault();
+        e.stopPropagation();
+        value(e);
+      })
+    );
 
     this.marker = new mapboxgl.Marker(this.iconContainer && div)
       .setLngLat(PositionToLngLat(position))

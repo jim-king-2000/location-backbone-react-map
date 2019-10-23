@@ -1,13 +1,15 @@
 import 'mapbox-gl/dist/mapbox-gl.css';
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
 import { Marker } from './marker';
-import { PositionToLngLat } from './utils';
 import { Polyline } from './polyline';
+import { InfoWindow } from './infoWindow';
+import { PositionToLngLat } from './utils';
 
 const OverlayClasses = new Map([
   ['Marker', Marker],
   ['DomMarker', Marker],
   ['Polyline', Polyline],
+  ['InfoWindow', InfoWindow],
 ]);
 
 export class RMapBoxGL {
