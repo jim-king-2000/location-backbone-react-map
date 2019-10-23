@@ -2,25 +2,24 @@ import { PositionToLatLng } from './utils';
 import { renderToDiv } from '../../../utils/Render';
 
 export class InfoWindow {
-  constructor(map, options) {
+  constructor(map, options, ui) {
     const { position, events, children, ...others } = options;
     this.infoWindow = new H.ui.InfoBubble(PositionToLatLng(position), {
+      ...others,
       content: renderToDiv(children),
     });
     ui.addBubble(this.infoWindow);
-
-    // events && Object.entries(events).forEach(
-    //   ([key, value]) => this.infoWindow.on(key, value)
-    // );
+    this.infoWindow.close = events.close;
+    this.ui = ui;
   }
 
   setOptions(options) {
     const { position, children } = options;
-    this.infoWindow.setLngLat(PositionToLatLng(position));
-    this.infoWindow.setDOMContent(renderToDiv(children));
+    this.infoWindow.setPosition(PositionToLatLng(position));
+    this.infoWindow.setContent(renderToDiv(children));
   }
 
   remove() {
-    this.infoWindow && this.infoWindow.remove();
+    this.infoWindow && this.ui.removeBubble(this.infoWindow);
   }
 }

@@ -22,6 +22,7 @@ export class RHereMap {
       zoom: 11,
     });
     new H.mapevents.Behavior(new H.mapevents.MapEvents(this.map));
+    this.ui = H.ui.UI.createDefault(this.map, defaultLayers);
   }
 
   static async loadMap(dom, options, mapKey) {
@@ -41,8 +42,12 @@ export class RHereMap {
     ];
   }
 
+  static buildCssTag() {
+    return '//js.api.here.com/v3/3.1/mapsjs-ui.css';
+  }
+
   addOverlay(overlayType, options) {
     const OverlayClass = OverlayClasses.get(overlayType);
-    return OverlayClass && new OverlayClass(this.map, options);
+    return OverlayClass && new OverlayClass(this.map, options, this.ui);
   }
 }
