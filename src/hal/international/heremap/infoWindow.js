@@ -8,8 +8,8 @@ export class InfoWindow {
       ...others,
       content: renderToDiv(children),
     });
-    ui.addBubble(this.infoWindow);
     this.infoWindow.close = events.close;
+    ui.addBubble(this.infoWindow);
     this.ui = ui;
   }
 
