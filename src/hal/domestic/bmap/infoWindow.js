@@ -18,6 +18,6 @@ export class InfoWindow {
   }
 
   remove() {
-    this.infoWindow && this.map.closeInfoWindow();
+    this.map && this.map.closeInfoWindow();
   }
 }
