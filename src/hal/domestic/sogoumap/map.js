@@ -27,10 +27,6 @@ export class RSogouMap {
     return 'initializeRSougouMap';
   }
 
-  static get LoadType() {
-    return { async: false }
-  }
-
   static buildScriptTag() {
     return ['//api.map.sogou.com/maps/js/api_v2.5.1.js'];
   }

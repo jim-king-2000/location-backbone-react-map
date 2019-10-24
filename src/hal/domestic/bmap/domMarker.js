@@ -1,19 +1,22 @@
 import { PositionToPoint } from './utils';
 
 export class DomMarker {
+  #map;
+  #marker;
+
   constructor(map, options) {
-    this.map = map;
-    const { position, ...others } = options;
     import('./domMarkerOverlay')
     .then(({ default: DomMarkerOverlay }) => {
-      this.marker = new DomMarkerOverlay(
+      const { position, ...others } = options;
+      this.#marker = new DomMarkerOverlay(
         PositionToPoint(position),
         others);
-      map.addOverlay(this.marker);
+      map.addOverlay(this.#marker);
     });
+    this.#map = map;
   }
 
   remove() {
-    this.map.removeOverlay(this.marker);
+    this.#marker && this.#map.removeOverlay(this.#marker);
   }
 }

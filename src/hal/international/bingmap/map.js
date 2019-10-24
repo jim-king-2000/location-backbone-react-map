@@ -3,6 +3,7 @@ import { DomMarker } from './domMarker';
 import { Polyline } from './polyline';
 import { InfoWindow } from './infoWindow';
 import { PositionToLocation } from './utils';
+import { buildCallbackName } from '../../../utils/CallbackName';
 
 const OverlayClasses = new Map([
   ['Marker', Marker],
@@ -24,15 +25,12 @@ export class RBingMap {
     return new RBingMap(dom, options);
   }
 
-  static get LoadType() {
-    return {
-      async: true,
-      startup: 'initializeRBingMap'
-    }
+  static get AsyncLoad() {
+    return true;
   }
 
   static buildScriptTag(mapKey) {
-    return [`//cn.bing.com/api/maps/mapcontrol?key=${mapKey}&callback=${this.LoadType.startup}`];
+    return [`//cn.bing.com/api/maps/mapcontrol?key=${mapKey}&callback=${buildCallbackName(this.name)}`];
   }
 
   addOverlay(overlayType, options) {

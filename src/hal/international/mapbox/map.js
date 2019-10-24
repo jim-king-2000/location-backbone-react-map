@@ -15,10 +15,6 @@ export class RMapBox {
       .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'));
   }
 
-  static get LoadType() {
-    return { async: false }
-  }
-
   static buildScriptTag() {
     return ['//api.mapbox.com/mapbox.js/v3.2.1/mapbox.js'];
   }

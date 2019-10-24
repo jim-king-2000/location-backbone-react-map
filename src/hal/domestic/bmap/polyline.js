@@ -9,17 +9,20 @@ function transformOptions(options) {
 }
 
 export class Polyline {
+  #map;
+  #polyline;
+
   constructor(map, options) {
     const { path, ...others } = options;
-    this.map = map;
-    this.polyline = new BMap.Polyline(
+    this.#polyline = new BMap.Polyline(
       path.map(position => PositionToPoint(position)),
       transformOptions(others),
     );
-    this.map.addOverlay(this.polyline);
+    map.addOverlay(this.polyline);
+    this.#map = map;
   }
 
   remove() {
-    this.map.removeOverlay(this.polyline);
+    this.#polyline && this.#map.removeOverlay(this.polyline);
   }
 }

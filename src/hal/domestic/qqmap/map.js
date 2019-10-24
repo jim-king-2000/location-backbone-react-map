@@ -3,6 +3,7 @@ import { DomMarker } from './domMarker';
 import { Polyline } from './polyline';
 import { InfoWindow } from './infoWindow';
 import { PositionToLatLng } from './utils';
+import { buildCallbackName } from '../../../utils/CallbackName';
 
 const OverlayClasses = new Map([
   ['Marker', Marker],
@@ -27,15 +28,12 @@ export class RQQMap {
     return new RQQMap(dom, options);
   }
 
-  static get LoadType() {
-    return {
-      async: true,
-      startup: 'initializeRQQMap'
-    }
+  static get AsyncLoad() {
+    return true;
   }
 
   static buildScriptTag(mapKey) {
-    return [`//map.qq.com/api/js?v=2.exp&key=${mapKey}&callback=${this.LoadType.startup}`];
+    return [`//map.qq.com/api/js?v=2.exp&key=${mapKey}&callback=${buildCallbackName(this.name)}`];
   }
 
   addOverlay(overlayType, options) {

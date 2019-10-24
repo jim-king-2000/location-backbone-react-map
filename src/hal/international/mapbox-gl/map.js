@@ -30,10 +30,6 @@ export class RMapBoxGL {
     return nativeMap;
   }
 
-  static get LoadType() {
-    return { async: false }
-  }
-
   addOverlay(overlayType, options) {
     const OverlayClass = OverlayClasses.get(overlayType);
     return OverlayClass && new OverlayClass(this.map, options);

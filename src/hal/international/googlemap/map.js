@@ -24,10 +24,6 @@ export class RGoogleMap {
     return new RGoogleMap(dom, options);
   }
 
-  static get LoadType() {
-    return { async: false }
-  }
-
   static buildScriptTag(mapKey) {
     return [`//maps.google.cn/maps/api/js?key=${mapKey}`];
   }

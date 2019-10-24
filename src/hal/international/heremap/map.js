@@ -29,10 +29,6 @@ export class RHereMap {
     return new RHereMap(dom, options, mapKey);
   }
 
-  static get LoadType() {
-    return { async: false }
-  }
-
   static buildScriptTag() {
     return [
       '//js.api.here.com/v3/3.1/mapsjs-core.js',

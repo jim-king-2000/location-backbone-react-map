@@ -9,10 +9,12 @@ function translateProperties(options) {
 }
 
 export class Marker {
+  #map;
+  #marker;
+
   constructor(map, options) {
-    this.map = map;
     const { position, events, ...others } = options;
-    this.marker = new BMap.Marker(PositionToPoint(position), {
+    this.#marker = new BMap.Marker(PositionToPoint(position), {
       ...translateProperties(others),
       icon: others.svgIcon && new BMap.Symbol(others.svgIcon.path, {
         fillColor: others.fillColor || 'currentColor',
@@ -27,18 +29,20 @@ export class Marker {
       })
     });
     events && Object.entries(events).forEach(
-      ([key, value]) => this.marker.addEventListener(key, value)
+      ([key, value]) => this.#marker.addEventListener(key, value)
     );
-    map.addOverlay(this.marker);
+    map.addOverlay(this.#marker);
+    this.#map = map;
   }
 
   setOptions(options) {
-    this.marker.setRotation(options.angle);
-    this.marker.setTitle(options.title);
-    this.marker.setPosition(PositionToPoint(options.position));
+    if (!this.#marker) return;
+    this.#marker.setRotation(options.angle);
+    this.#marker.setTitle(options.title);
+    this.#marker.setPosition(PositionToPoint(options.position));
   }
 
   remove() {
-    this.map.removeOverlay(this.marker);
+    this.#marker && this.#map.removeOverlay(this.#marker);
   }
 }

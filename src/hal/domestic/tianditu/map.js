@@ -21,10 +21,6 @@ export class RTianMap {
     return new RTianMap(dom, options);
   }
 
-  static get LoadType() {
-    return { async: false }
-  }
-  
   static buildScriptTag(mapKey) {
     return [`http://api.tianditu.gov.cn/api?v=4.0&tk=${mapKey}`];
   }
