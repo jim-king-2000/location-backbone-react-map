@@ -23,7 +23,7 @@ export class RAMap {
       center: PositionToLngLat(options.center),
     });
     this.#mapView = new MapView(this.#map);
-    this.@mapFeature = new MapFeature(this.#map);
+    this.#mapFeature = new MapFeature(this.#map);
   }
 
   static async loadMap(dom, options) {
