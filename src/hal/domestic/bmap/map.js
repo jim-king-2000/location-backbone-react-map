@@ -29,7 +29,7 @@ export class RBMap {
       this.#map.centerAndZoom(PositionToPoint(center), zoom);
     } else {
       const cityLocator = new BMap.LocalCity();
-      cityLocator.get(city => this.#this.map.setCenter(city));
+      cityLocator.get(city => this.#map.setCenter(city));
     }
     this.#mapView = new MapView(this.#map);
     this.#mapFeature = new MapFeature(this.#map);
