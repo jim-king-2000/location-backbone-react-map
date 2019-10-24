@@ -20,7 +20,7 @@ export class MapView {
             return o._point;
   
           if (o.getPosition)
-            return o.getPosition();
+            return o.getPosition() || [];
           
           if (o.getBounds)
             return [o.getBounds().getSouthWest(), o.getBounds().getNorthEast()];
