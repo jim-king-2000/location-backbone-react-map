@@ -24,10 +24,13 @@ export class RBMap {
     this.#map.enableScrollWheelZoom();
     this.#map.enableContinuousZoom();
     this.#map.highResolutionEnabled();
-    this.#map.centerAndZoom(
-      PositionToPoint(options.center),
-      options.zoom
-    );
+    const { center, zoom } = options;
+    if (center) {
+      this.#map.centerAndZoom(PositionToPoint(center), zoom);
+    } else {
+      const cityLocator = new BMap.LocalCity();
+      cityLocator.get(city => this.#this.map.setCenter(city));
+    }
     this.#mapView = new MapView(this.#map);
     this.#mapFeature = new MapFeature(this.#map);
   }
