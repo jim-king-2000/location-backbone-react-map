@@ -1,8 +1,8 @@
 import { Marker } from './marker';
 import { Polyline } from './polyline';
+import { InfoWindow } from './infoWindow';
 import { MapView } from './mapView';
 import { MapFeature } from './mapFeature';
-import { InfoWindow } from './infoWindow';
 import { PositionToLngLat } from './utils';
 
 const OverlayClasses = new Map([
