@@ -2,6 +2,8 @@ import { Marker } from './marker';
 import { DomMarker } from './domMarker';
 import { Polyline } from './polyline';
 import { InfoWindow } from './infoWindow';
+import { MapView } from './mapView';
+import { MapFeature } from './mapFeature';
 import { PositionToPoint } from './utils';
 import { buildCallbackName } from '../../../utils/CallbackName';
 
@@ -14,6 +16,8 @@ const OverlayClasses = new Map([
 
 export class RBMap {
   #map;
+  #mapView;
+  #mapFeature;
 
   constructor(dom, options) {
     this.#map = new BMap.Map(dom);
@@ -24,6 +28,8 @@ export class RBMap {
       PositionToPoint(options.center),
       options.zoom
     );
+    this.#mapView = new MapView(this.#map);
+    this.#mapFeature = new MapFeature(this.#map);
   }
 
   static async loadMap(dom, options) {
@@ -45,5 +51,13 @@ export class RBMap {
   addOverlay(overlayType, options) {
     const OverlayClass = OverlayClasses.get(overlayType);
     return OverlayClass && new OverlayClass(this.#map, options);
+  }
+
+  get MapView() {
+    return this.#mapView;
+  }
+
+  get MapFeature() {
+    return this.#mapFeature;
   }
 }
