@@ -1,6 +1,7 @@
 import { Marker } from './marker';
 import { Polyline } from './polyline';
 import { MapView } from './mapView';
+import { MapFeature } from './mapFeature';
 import { InfoWindow } from './infoWindow';
 import { PositionToLngLat } from './utils';
 
@@ -14,6 +15,7 @@ const OverlayClasses = new Map([
 export class RAMap {
   #map;
   #mapView;
+  #mapFeature;
   
   constructor(dom, options) {
     this.#map = new AMap.Map(dom, {
@@ -21,6 +23,7 @@ export class RAMap {
       center: PositionToLngLat(options.center),
     });
     this.#mapView = new MapView(this.#map);
+    this.@mapFeature = new MapFeature(this.#map);
   }
 
   static async loadMap(dom, options) {
@@ -41,5 +44,9 @@ export class RAMap {
 
   get MapView() {
     return this.#mapView;
+  }
+
+  get MapFeature() {
+    return this.#mapFeature;
   }
 }
