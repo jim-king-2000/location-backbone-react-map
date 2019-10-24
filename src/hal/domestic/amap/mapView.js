@@ -6,7 +6,7 @@ export class MapView {
     this.zoomIn = () => map.zoomIn();
     this.setFitView = () => map.setFitView();
     this.isInView = things => {
-      const bounds = this.map.getBounds();
+      const bounds = map.getBounds();
       return things.filter(p => p && p.latitude && p.longitude)
         .every(p => bounds.contains(PositionToLngLat(p)));
     };
