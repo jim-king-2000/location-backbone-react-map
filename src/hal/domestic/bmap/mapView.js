@@ -7,7 +7,7 @@ export class MapView {
     this.setFitView = () => map.setViewport(
       map.getOverlays().map(
         o => {
-          console.log(o)
+          console.log(o, o._point, o.getPosition, o.getBounds)
           // It is a workaround of a bug of Baidu Map API. It creates an overlay
           // whose name is 'TANGRAM__2c' when InfoWindow is created. And it keeps
           // alive even when InfoWindow is closed. We have to exclude this overlay
