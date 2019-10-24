@@ -1,9 +1,11 @@
 import { PositionToLngLat } from './utils';
 
 export class Polyline {
+  #polyline;
+  
   constructor(map, options) {
     const { path, ...others } = options;
-    this.polyline = new AMap.Polyline({
+    this.#polyline = new AMap.Polyline({
       map,
       ...others,
       path: path.map(position => PositionToLngLat(position)),
@@ -13,6 +15,6 @@ export class Polyline {
   }
 
   remove() {
-    this.polyline && this.polyline.setMap(null);
+    this.#polyline && this.#polyline.setMap(null);
   }
 }

@@ -5,13 +5,13 @@ import LoadCSS from '../utils/CSSLoader';
 import GetMapClass from '../utils/MapFactory';
 
 export class Map extends Component {
-  container = React.createRef();
-  child = React.createRef();
+  #container = React.createRef();
+  #child = React.createRef();
 
   async #createMap(NativeMapClass, options, mapKey) {
     if (!this.map) {
       this.map = await NativeMapClass.loadMap(
-        this.container.current,
+        this.#container.current,
         options,
         mapKey);
       this.#renderChildren();
@@ -36,7 +36,7 @@ export class Map extends Component {
   #renderChildren() {
     ReactDOM.render(
       this.#cloneChildren(this.props.children),
-      this.child.current);
+      this.#child.current);
   }
 
   async componentDidMount() {
@@ -44,6 +44,7 @@ export class Map extends Component {
     const NativeMapClass = GetMapClass(mapVendor);
     LoadCSS(NativeMapClass);
     if (NativeMapClass.LoadType.async) {
+      console.assert(NativeMapClass.LoadType.startup);
       window[NativeMapClass.LoadType.startup] =
         () => this.#createMap(NativeMapClass, options, mapKey);
     }
@@ -66,12 +67,12 @@ export class Map extends Component {
         }}
       >
         <div
-          ref={this.container}
+          ref={this.#container}
           style={{
             height: '100%'
           }}
         />
-        <div ref={this.child} />
+        <div ref={this.#child} />
       </div>
     );
   }

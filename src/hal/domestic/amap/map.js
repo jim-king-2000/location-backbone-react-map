@@ -12,14 +12,15 @@ const OverlayClasses = new Map([
 ]);
 
 export class RAMap {
+  #map;
   #mapView;
   
   constructor(dom, options) {
-    this.map = new AMap.Map(dom, {
+    this.#map = new AMap.Map(dom, {
       zoom: options.zoom,
       center: PositionToLngLat(options.center),
     });
-    this.#mapView = new MapView(this.map);
+    this.#mapView = new MapView(this.#map);
   }
 
   static async loadMap(dom, options) {
@@ -39,7 +40,7 @@ export class RAMap {
 
   addOverlay(overlayType, options) {
     const OverlayClass = OverlayClasses.get(overlayType);
-    return OverlayClass && new OverlayClass(this.map, options);
+    return OverlayClass && new OverlayClass(this.#map, options);
   }
 
   get MapView() {

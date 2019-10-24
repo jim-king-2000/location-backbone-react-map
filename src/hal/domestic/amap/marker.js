@@ -37,6 +37,8 @@ function createSvgMarker(map, position, options, assigner) {
 }
 
 export class Marker {
+  #marker;
+
   constructor(map, options) {
     const { position, children, events, ...others } = options;
     const markerOptions = {
@@ -44,39 +46,39 @@ export class Marker {
       ...others,
       position: PositionToLngLat(position),
     };
+
+    if (others.svgIcon) {
+      createSvgMarker(
+        map,
+        position,
+        others,
+        marker => this.#setMarkerAndEvents(marker, events));
+      return;
+    }
+
     if (children) {
       markerOptions.content = renderToDiv(children);
       markerOptions.anchor = 'center';
       markerOptions.offset = new AMap.Pixel(0, 0);
     }
-    if (!others.svgIcon) {
-      this.#setMarkerAndEvents(
-        new AMap.Marker(markerOptions),
-        events);
-      return;
-    }
-
-    createSvgMarker(
-      map,
-      position,
-      others,
-      marker => this.#setMarkerAndEvents(marker, events));
+    this.#setMarkerAndEvents(new AMap.Marker(markerOptions),events);
   }
 
   #setMarkerAndEvents(marker, events) {
-    this.marker = marker;
+    this.#marker = marker;
     events && Object.entries(events).forEach(
       ([key, value]) => marker.on(key, value)
     );
   }
 
   setOptions(options) {
-    this.marker.setAngle(options.angle);
-    this.marker.setTitle(options.title);
-    this.marker.setPosition(PositionToLngLat(options.position));
+    if (!this.#marker) return;
+    this.#marker.setAngle(options.angle);
+    this.#marker.setTitle(options.title);
+    this.#marker.setPosition(PositionToLngLat(options.position));
   }
 
   remove() {
-    this.marker && this.marker.setMap(null);
+    this.#marker && this.#marker.setMap(null);
   }
 }
