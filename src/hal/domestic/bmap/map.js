@@ -19,23 +19,26 @@ export class RBMap {
   #mapView;
   #mapFeature;
 
-  constructor(dom, options) {
-    this.#map = new BMap.Map(dom);
-    this.#map.enableScrollWheelZoom();
-    this.#map.enableContinuousZoom();
-    this.#map.highResolutionEnabled();
+  static #buildMap(dom, options) {
+    const map = new BMap.Map(dom);
+    map.enableScrollWheelZoom();
+    map.enableContinuousZoom();
+    map.highResolutionEnabled();
+
     const { center, zoom } = options;
-    console.log(center)
-    if (center) {
-      this.#map.centerAndZoom(PositionToPoint(center), zoom);
-    } else {
-      const point = new BMap.Point(116.331398,39.897445);
-      this.#map.centerAndZoom(undefined, 10);
+    map.centerAndZoom(
+      PositionToPoint(center) || new BMap.Point(116.331398,39.897445),
+      zoom || 10);
+    if (!center) {
       const cityLocator = new BMap.LocalCity();
-      cityLocator.get(result => {
-        console.log(result.name)
-        this.#map.setCenter(result.name)});
+      cityLocator.get(result => map.setCenter(result.name));
     }
+
+    return map;
+  }
+
+  constructor(dom, options) {
+    this.#map = RBMap.#buildMap(dom, options);
     this.#mapView = new MapView(this.#map);
     this.#mapFeature = new MapFeature(this.#map);
   }
