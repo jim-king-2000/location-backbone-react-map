@@ -21,6 +21,7 @@ export class RBingMap {
   constructor(dom, options) {
     this.#map = new Microsoft.Maps.Map(dom, {
       enableHighDpi: true,
+      enableCORS: true,
       zoom: options.zoom,
       center: PositionToLocation(options.center),
     });
