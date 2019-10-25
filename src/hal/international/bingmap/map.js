@@ -3,6 +3,7 @@ import { DomMarker } from './domMarker';
 import { Polyline } from './polyline';
 import { InfoWindow } from './infoWindow';
 import { MapView } from './mapView';
+import { MapFeature } from './mapFeature';
 import { PositionToLocation } from './utils';
 import { buildCallbackName } from '../../../utils/CallbackName';
 
@@ -47,5 +48,9 @@ export class RBingMap {
 
   get MapView() {
     return this.#mapView;
+  }
+
+  get MapFeature() {
+    return this.#mapFeature;
   }
 }
