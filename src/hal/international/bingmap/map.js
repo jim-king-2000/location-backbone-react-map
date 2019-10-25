@@ -24,6 +24,7 @@ export class RBingMap {
       zoom: options.zoom,
       center: PositionToLocation(options.center),
     });
+    Microsoft.Maps.loadModule('Microsoft.Maps.SpatialMath');
     this.#mapView = new MapView(this.#map);
   }
 
