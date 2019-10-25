@@ -29,6 +29,8 @@ export class RBMap {
     if (center) {
       this.#map.centerAndZoom(PositionToPoint(center), zoom);
     } else {
+      const point = new BMap.Point(116.331398,39.897445);
+      map.centerAndZoom(point,9);
       const cityLocator = new BMap.LocalCity();
       cityLocator.get(result => {
         console.log(result.name)
