@@ -29,7 +29,10 @@ export class Marker {
       })
     });
     events && Object.entries(events).forEach(
-      ([key, value]) => this.#marker.addEventListener(key, value)
+      ([key, value]) => this.#marker.addEventListener(key, e => {
+        e.target.getExtData = () => position;
+        value(e);
+      })
     );
     map.addOverlay(this.#marker);
     this.#map = map;
