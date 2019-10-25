@@ -27,6 +27,7 @@ export class RBingMap {
       center: PositionToLocation(options.center),
     });
     this.#mapView = new MapView(this.#map);
+    this.#mapFeature = new MapFeature(this.#map);
   }
 
   static async loadMap(dom, options) {
