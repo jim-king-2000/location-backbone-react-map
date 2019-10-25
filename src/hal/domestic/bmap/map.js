@@ -25,11 +25,14 @@ export class RBMap {
     this.#map.enableContinuousZoom();
     this.#map.highResolutionEnabled();
     const { center, zoom } = options;
+    console.log(center)
     if (center) {
       this.#map.centerAndZoom(PositionToPoint(center), zoom);
     } else {
       const cityLocator = new BMap.LocalCity();
-      cityLocator.get(result => this.#map.setCenter(result.name));
+      cityLocator.get(result => {
+        console.log(result.name)
+        this.#map.setCenter(result.name)});
     }
     this.#mapView = new MapView(this.#map);
     this.#mapFeature = new MapFeature(this.#map);
