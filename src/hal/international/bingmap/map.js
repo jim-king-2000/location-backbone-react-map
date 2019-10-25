@@ -2,6 +2,7 @@ import { Marker } from './marker';
 import { DomMarker } from './domMarker';
 import { Polyline } from './polyline';
 import { InfoWindow } from './infoWindow';
+import { MapView } from './mapView';
 import { PositionToLocation } from './utils';
 import { buildCallbackName } from '../../../utils/CallbackName';
 
@@ -13,8 +14,12 @@ const OverlayClasses = new Map([
 ]);
 
 export class RBingMap {
+  #map;
+  #mapView;
+  #mapFeature;
+
   constructor(dom, options) {
-    this.map = new Microsoft.Maps.Map(dom, {
+    this.#map = new Microsoft.Maps.Map(dom, {
       enableHighDpi: true,
       zoom: options.zoom,
       center: PositionToLocation(options.center),
@@ -35,6 +40,10 @@ export class RBingMap {
 
   addOverlay(overlayType, options) {
     const OverlayClass = OverlayClasses.get(overlayType);
-    return OverlayClass && new OverlayClass(this.map, options);
+    return OverlayClass && new OverlayClass(this.#map, options);
+  }
+
+  get MapView() {
+    return this.#mapView;
   }
 }
