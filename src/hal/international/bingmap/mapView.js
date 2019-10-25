@@ -6,7 +6,7 @@ export class MapView {
     this.zoomIn = () => map.zoomIn();
     this.setFitView = () => {
       const overlays = map.entities;
-      const bounds = Microsoft.Maps.SpatialMath.Geometry.bounds(overlay);
+      const bounds = Microsoft.Maps.SpatialMath.Geometry.bounds(overlays);
       map.setView({ bounds });
     };
     this.isInView = things => {
