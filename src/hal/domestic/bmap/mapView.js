@@ -5,13 +5,11 @@ export class MapView {
     this.zoomOut = () => map.zoomOut();
     this.zoomIn = () => map.zoomIn();
     this.setFitView = positions => map.setViewport(
-      positions.filter(p => p.latitude && p.longitude)
-      .map(p => PositionToPoint(p))
+      positions.map(p => PositionToPoint(p))
       );
     this.isInView = positions => {
       const bounds = map.getBounds();
-      return positions.filter(p => p.latitude && p.longitude)
-        .every(p => bounds.containsPoint(PositionToPoint(p)));
+      return positions.every(p => bounds.containsPoint(PositionToPoint(p)));
     };
   }
 }
