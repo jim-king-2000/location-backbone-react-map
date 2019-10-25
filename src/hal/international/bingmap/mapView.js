@@ -4,9 +4,10 @@ export class MapView {
   constructor(map) {
     this.zoomOut = () => map.zoomOut();
     this.zoomIn = () => map.zoomIn();
-    this.setFitView = () => {
-      const overlays = map.entities;
-      const bounds = Microsoft.Maps.SpatialMath.Geometry.bounds(overlays);
+    this.setFitView = positions => {
+      const bounds = Microsoft.Maps.LocationRect.fromLocations(
+        positions.map(p => PositionToLocation(p))
+      );
       map.setView({ bounds });
     };
     this.isInView = things => {
