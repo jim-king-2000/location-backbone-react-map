@@ -23,6 +23,7 @@ export class RBingMap {
     this.#map = new Microsoft.Maps.Map(dom, {
       enableHighDpi: true,
       enableCORS: true,
+      allowHidingLabelsOfRoad: true,
       zoom: options.zoom,
       center: PositionToLocation(options.center),
     });
