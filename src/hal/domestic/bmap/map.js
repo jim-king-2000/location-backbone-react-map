@@ -53,9 +53,7 @@ export class RBMap {
 
   static buildScriptTag(mapKey) {
     return [
-      `//api.map.baidu.com/api?v=3.0&ak=${mapKey}&
-        callback=${buildCallbackName(this.name)}`,
-      '//api.map.baidu.com/library/InfoBox/1.2/src/InfoBox_min.js'
+      `//api.map.baidu.com/api?v=3.0&ak=${mapKey}&callback=${buildCallbackName(this.name)}`
     ];
   }
 
