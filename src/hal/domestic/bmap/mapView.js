@@ -29,8 +29,8 @@ export class MapView {
         }).flat());
     this.isInView = things => {
       const bounds = map.getBounds();
-    return things.filter(p => p.latitude && p.longitude)
-      .every(p => bounds.containsPoint(PositionToPoint(p)));
+      return things.filter(p => p.latitude && p.longitude)
+        .every(p => bounds.containsPoint(PositionToPoint(p)));
     };
   }
 }
