@@ -24,6 +24,7 @@ export class RBingMap {
       zoom: options.zoom,
       center: PositionToLocation(options.center),
     });
+    this.#mapView = new MapView(this.#map);
   }
 
   static async loadMap(dom, options) {
