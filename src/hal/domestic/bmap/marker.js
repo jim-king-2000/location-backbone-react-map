@@ -13,7 +13,7 @@ export class Marker {
   #marker;
 
   constructor(map, options) {
-    const { position, events, ...others } = options;
+    const { position, events, extData, ...others } = options;
     this.#marker = new BMap.Marker(PositionToPoint(position), {
       ...translateProperties(others),
       icon: others.svgIcon && new BMap.Symbol(others.svgIcon.path, {
@@ -30,7 +30,7 @@ export class Marker {
     });
     events && Object.entries(events).forEach(
       ([key, value]) => this.#marker.addEventListener(key, e => {
-        e.target.getExtData = () => position;
+        e.target.getExtData = () => extData;
         value(e);
       })
     );
