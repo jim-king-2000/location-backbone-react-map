@@ -2,6 +2,8 @@ import { Marker } from './marker';
 import { DomMarker } from './domMarker';
 import { Polyline } from './polyline';
 import { InfoWindow } from './infoWindow';
+import { MapView } from './mapView';
+import { MapFeature } from './mapFeature';
 import { PositionToLatLng } from './utils';
 
 const OverlayClasses = new Map([
