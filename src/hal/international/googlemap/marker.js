@@ -23,7 +23,7 @@ export class Marker {
     });
     events && Object.entries(events).forEach(
       ([key, value]) => this.#marker.addListener(key, e => {
-        e.target.getExtData = () => extData;
+        e.target = { getExtData : () => extData };
         value(e);
       })
     );
