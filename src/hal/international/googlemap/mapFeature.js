@@ -10,6 +10,9 @@ const customMapStyle = [{
 }, {
   featureType: 'administrative',
   stylers: [{ visibility: 'off' }]
+}, {
+  featureType: 'landscape',
+  stylers: [{ visibility: 'off' }]
 }];
 
 export class MapFeature {
