@@ -1,9 +1,11 @@
 import { PositionToLatLng } from './utils';
 
 export class Marker {
+  #marker;
+
   constructor(map, options) {
-    const { position, events, ...others } = options;
-    this.marker = new google.maps.Marker({
+    const { position, events, extData, ...others } = options;
+    this.#marker = new google.maps.Marker({
       map,
       icon: others.svgIcon && {
         path: others.svgIcon.path,
@@ -20,19 +22,22 @@ export class Marker {
       position: PositionToLatLng(position),
     });
     events && Object.entries(events).forEach(
-      ([key, value]) => this.marker.addListener(key, value)
+      ([key, value]) => this.#marker.addListener(key, e => {
+        e.target.getExtData = () => extData;
+        value(e);
+      })
     );
   }
 
   setOptions(options) {
-    const icon = this.marker.getIcon();
+    const icon = this.#marker.getIcon();
     icon.rotation = options.angle;
-    this.marker.setIcon(icon);
-    this.marker.setTitle(options.title);
-    this.marker.setPosition(PositionToLatLng(options.position));
+    this.#marker.setIcon(icon);
+    this.#marker.setTitle(options.title);
+    this.#marker.setPosition(PositionToLatLng(options.position));
   }
 
   remove() {
-    this.marker && this.marker.setMap(null);
+    this.#marker && this.#marker.setMap(null);
   }
 }
