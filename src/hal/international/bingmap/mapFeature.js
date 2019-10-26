@@ -10,7 +10,7 @@ export class MapFeature {
     this.setFullMap = isFullMap => {
       map.setOptions({
         customMapStyle: isFullMap ? {} : customMapStyle,
-      })
+      });
       map.setView({
         labelOverlay: isFullMap ?
           Microsoft.Maps.LabelOverlay.visible :

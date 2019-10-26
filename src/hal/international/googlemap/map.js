@@ -12,12 +12,18 @@ const OverlayClasses = new Map([
 ]);
 
 export class RGoogleMap {
+  #map;
+  #mapView;
+  #mapFeature;
+
   constructor(dom, options) {
-    this.map = new google.maps.Map(dom, {
+    this.#map = new google.maps.Map(dom, {
       center: PositionToLatLng(options.center),
       zoom: options.zoom,
       disableDefaultUI: true,
     });
+    this.#mapView = new MapView(this.#map);
+    this.#mapFeature = new MapFeature(this.#map);
   }
 
   static async loadMap(dom, options) {
@@ -30,6 +36,14 @@ export class RGoogleMap {
 
   addOverlay(overlayType, options) {
     const OverlayClass = OverlayClasses.get(overlayType);
-    return OverlayClass && new OverlayClass(this.map, options);
+    return OverlayClass && new OverlayClass(this.#map, options);
+  }
+
+  get MapView() {
+    return this.#mapView;
+  }
+
+  get MapFeature() {
+    return this.#mapFeature;
   }
 }
