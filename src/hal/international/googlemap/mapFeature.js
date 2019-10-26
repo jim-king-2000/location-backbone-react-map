@@ -7,6 +7,9 @@ const customMapStyle = [{
 }, {
   featureType: 'transit',
   stylers: [{ visibility: 'off' }]
+}, {
+  featureType: 'administrative',
+  stylers: [{ visibility: 'off' }]
 }];
 
 export class MapFeature {

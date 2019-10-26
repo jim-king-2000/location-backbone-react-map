@@ -2,8 +2,8 @@ import { PositionToLatLng } from './utils';
 
 export class MapView {
   constructor(map) {
-    this.zoomOut = () => map.zoomOut();
-    this.zoomIn = () => map.zoomIn();
+    this.zoomOut = () => map.setZoom(map.getZoom() + 1);
+    this.zoomIn = () => map.setZoom(map.getZoom() - 1);
     this.setFitView = positions => {
       const bounds = new google.maps.LatLngBounds();
       positions.forEach(p => bounds.extend(PositionToLatLng(p)));
