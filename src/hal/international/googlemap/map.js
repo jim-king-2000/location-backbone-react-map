@@ -23,6 +23,7 @@ export class RGoogleMap {
       center: PositionToLatLng(options.center),
       zoom: options.zoom,
       disableDefaultUI: true,
+      maxZoom: 18,
     });
     this.#mapView = new MapView(this.#map);
     this.#mapFeature = new MapFeature(this.#map);
