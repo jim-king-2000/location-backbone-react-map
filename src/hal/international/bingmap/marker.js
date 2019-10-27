@@ -18,32 +18,42 @@ function draw(svgIcon, fillColor, angle) {
 }
 
 export class Marker {
+  #marker;
+  #map;
+  #options;
+
   constructor(map, options) {
     const { position, events, ...others } = options;
-    this.marker = new Microsoft.Maps.Pushpin(PositionToLocation(position), {
+    this.#marker = new Microsoft.Maps.Pushpin(PositionToLocation(position), {
       icon: others.svgIcon && draw(
         others.svgIcon, others.fillColor, others.angle),
       ...others,
       anchor: new Microsoft.Maps.Point(24, 24)
     });
     events && Object.entries(events).forEach(
-      ([key, value]) =>
-        Microsoft.Maps.Events.addHandler(this.marker, key, value)
+      ([key, value]) => Microsoft.Maps.Events.addHandler(
+        this.#marker,
+        key,
+        e => {
+          e.target.getExtData = () => extData;
+          value(e);
+        }
+      )
     );
-    map.entities.push(this.marker);
-    this.map = map;
-    this.options = others;
+    map.entities.push(this.#marker);
+    this.#map = map;
+    this.#options = others;
   }
 
   setOptions(options) {
-    this.marker.setOptions({
-      icon: draw(this.options.svgIcon, this.options.fillColor, options.angle),
+    this.#marker.setOptions({
+      icon: draw(this.#options.svgIcon, this.#options.fillColor, options.angle),
       title: options.title
     });
-    this.marker.setLocation(PositionToLocation(options.position));
+    this.#marker.setLocation(PositionToLocation(options.position));
   }
 
   remove() {
-    this.map.entities.remove(this.marker);
+    this.#map.entities.remove(this.#marker);
   }
 }
