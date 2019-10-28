@@ -20,8 +20,12 @@ export class RGoogleMap {
 
   constructor(dom, options) {
     this.#map = new google.maps.Map(dom, {
-      center: PositionToLatLng(options.center),
-      zoom: options.zoom,
+      center: PositionToLatLng(options.center) ||
+      PositionToLatLng({
+        latitude: 39.915,
+        longitude: 116.404,
+      }),
+      zoom: options.zoom || 9,
       disableDefaultUI: true,
       maxZoom: 18,
     });

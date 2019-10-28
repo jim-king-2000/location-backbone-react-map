@@ -24,8 +24,8 @@ export default class extends Component {
       <Map
         mapKey={this.props.mapKey}
         mapVendor={this.props.mapVendor}
-        center={this.state.position}
-        zoom={11}
+        // center={this.state.position}
+        // zoom={11}
       >
         {this.state.showOverlays &&
           <>
