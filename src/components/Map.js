@@ -1,62 +1,27 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import LoadAPI from '../utils/APILoader';
-import LoadCSS from '../utils/CSSLoader';
-import GetMapClass from '../utils/MapFactory';
-import { buildCallbackName } from '../utils/CallbackName';
+import { renderChildren, loadAndCreateMap } from '../utils/MapUtils';
 
 export class Map extends Component {
   #container = React.createRef();
   #child = React.createRef();
   #map;
 
-  async #createMap(NativeMapClass, options, mapKey) {
-    if (!this.#map) {
-      this.#map = await NativeMapClass.loadMap(
-        this.#container.current,
-        options,
-        mapKey);
-      this.#renderChildren();
-    }
-  }
-
-  #cloneChildren(children) {
-    return React.Children.map(
-      children,
-      child => {
-        if (!child || typeof child === 'string' || typeof child.type === 'string')
-          return child;
-        return React.cloneElement(
-          child,
-          { __map__: this.#map },
-          this.#cloneChildren(child.props && child.props.children)
-        );
-      }
-    );
-  }
-
-  #renderChildren() {
-    ReactDOM.render(
-      this.#cloneChildren(this.props.children),
-      this.#child.current);
-  }
-
   async componentDidMount() {
-    const { mapVendor, mapKey, ...options } = this.props;
-    const NativeMapClass = GetMapClass(mapVendor);
-    LoadCSS(NativeMapClass);
-    if (NativeMapClass.AsyncLoad) {
-      window[buildCallbackName(NativeMapClass.name)] =
-        () => this.#createMap(NativeMapClass, options, mapKey);
-      await LoadAPI(NativeMapClass, mapKey);
-    } else {
-      await LoadAPI(NativeMapClass, mapKey);
-      this.#createMap(NativeMapClass, options, mapKey);
-    }
+    this.#map = await loadAndCreateMap(
+      this.props, this.#container.current, this.#child.current);
   }
 
-  componentDidUpdate() {
-    this.#renderChildren();
+  async componentDidUpdate(prevProps) {
+    if (prevProps.mapVendor !== this.props.mapVendor) {
+      this.#map.destroy && this.#map.destroy();
+      this.#map = await loadAndCreateMap(
+        this.props, this.#container.current, this.#child.current);
+    }
+    renderChildren(
+      this.#map,
+      this.props.children,
+      this.#child.current
+    );
   }
 
   componentWillUnmount() {

@@ -18,11 +18,11 @@ export class Polyline {
       path.map(position => PositionToPoint(position)),
       transformOptions(others),
     );
-    map.addOverlay(this.polyline);
+    map.addOverlay(this.#polyline);
     this.#map = map;
   }
 
   remove() {
-    this.#polyline && this.#map.removeOverlay(this.polyline);
+    this.#map && this.#map.removeOverlay(this.#polyline);
   }
 }

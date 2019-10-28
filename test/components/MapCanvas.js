@@ -24,8 +24,8 @@ export default class extends Component {
       <Map
         mapKey={this.props.mapKey}
         mapVendor={this.props.mapVendor}
-        // center={this.state.position}
-        // zoom={11}
+        center={this.state.position}
+        zoom={11}
       >
         {this.state.showOverlays &&
           <>
@@ -93,29 +93,27 @@ export default class extends Component {
             >
               <div style={{ border: '1px solid' }}>HTML Marker</div>
             </DomMarker>
+            <Polyline path={[{
+                longitude: 121,
+                latitude: 31
+              }, {
+                longitude: 121.05,
+                latitude: 31.05
+              }, {
+                longitude: 121,
+                latitude: 31.10
+              }, {
+                longitude: 121.05,
+                latitude: 31.15
+              }]}
+              strokeColor='#00FF007F'
+              // strokeColor='rgba(0, 0, 255, 0.3)'
+              // strokeColor='rgb(255, 0, 0)'
+              // strokeColor='blue'
+              // strokeOpacity={0.5}
+              strokeWeight={10}
+            />
           </>
-        }
-        {this.state.showOverlays &&
-          <Polyline path={[{
-              longitude: 121,
-              latitude: 31
-            }, {
-              longitude: 121.05,
-              latitude: 31.05
-            }, {
-              longitude: 121,
-              latitude: 31.10
-            }, {
-              longitude: 121.05,
-              latitude: 31.15
-            }]}
-            strokeColor='#00FF007F'
-            // strokeColor='rgba(0, 0, 255, 0.3)'
-            // strokeColor='rgb(255, 0, 0)'
-            // strokeColor='blue'
-            // strokeOpacity={0.5}
-            strokeWeight={10}
-          />
         }
         <div
           style={{
