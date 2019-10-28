@@ -33,6 +33,7 @@ function renderContent(children) {
     </div>
   );
 }
+
 export class InfoWindow {
   #infoWindow;
 
