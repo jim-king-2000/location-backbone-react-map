@@ -11,17 +11,20 @@ function translatePolylineOptions(options) {
 }
 
 export class Polyline {
+  #map;
+  #polyline;
+
   constructor(map, options) {
     const { path, ...others } = options;
-    this.map = map;
-    this.polyline = new Microsoft.Maps.Polyline(
+    this.#map = map;
+    this.#polyline = new Microsoft.Maps.Polyline(
       path.map(position => PositionToLocation(position)),
       translatePolylineOptions(others)
     );
-    this.map.entities.push(this.polyline);
+    this.#map.entities.push(this.#polyline);
   }
 
   remove() {
-    this.map.entities.remove(this.polyline);
+    this.#map.entities.remove(this.#polyline);
   }
 }

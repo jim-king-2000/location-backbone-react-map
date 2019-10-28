@@ -1,23 +1,23 @@
 import buildDomOverlay from '../../../utils/DomOverlay';
 
 export default class extends BMap.Overlay {
-  #DomMarkerOverlay;
+  #domMarkerOverlay;
 
   constructor(position, options) {
     super();
     const DomOverlay = buildDomOverlay(
       (position, map) => map.pointToOverlayPixel(position)
     );
-    this.#DomMarkerOverlay = new DomOverlay(position, options);
+    this.#domMarkerOverlay = new DomOverlay(position, options);
   }
 
   initialize(map) {
-    const div = this.#DomMarkerOverlay.onAdd(map);
+    const div = this.#domMarkerOverlay.onAdd(map);
     map.getPanes().markerPane.appendChild(div);
     return div;
   }
 
   draw() {
-    return this.#DomMarkerOverlay.draw();
+    return this.#domMarkerOverlay.draw();
   }
 }

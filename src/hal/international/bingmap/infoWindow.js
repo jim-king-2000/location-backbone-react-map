@@ -32,24 +32,26 @@ function renderContent(children) {
   );
 }
 export class InfoWindow {
+  #infoWindow;
+
   constructor(map, options) {
     const { position, events, children, ...others } = options;
-    this.infoWindow = new Microsoft.Maps.Infobox(PositionToLocation(position), {
+    this.#infoWindow = new Microsoft.Maps.Infobox(PositionToLocation(position), {
       ...others,
       htmlContent: renderContent(children),
     });
-    this.infoWindow.setMap(map);
+    this.#infoWindow.setMap(map);
   }
 
   setOptions(options) {
     const { position, children } = options;
-    this.infoWindow.setOptions({
+    this.#infoWindow.setOptions({
       location: PositionToLocation(position),
       htmlContent: renderContent(children),
     });
   }
 
   remove() {
-    this.infoWindow && this.infoWindow.setMap(null);
+    this.#infoWindow && this.#infoWindow.setMap(null);
   }
 }
