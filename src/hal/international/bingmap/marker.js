@@ -23,7 +23,7 @@ export class Marker {
   #options;
 
   constructor(map, options) {
-    const { position, events, ...others } = options;
+    const { position, events, extData, ...others } = options;
     this.#marker = new Microsoft.Maps.Pushpin(PositionToLocation(position), {
       icon: others.svgIcon && draw(
         others.svgIcon, others.fillColor, others.angle),
