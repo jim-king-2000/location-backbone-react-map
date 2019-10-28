@@ -43,6 +43,10 @@ export class RBingMap {
     return [`//cn.bing.com/api/maps/mapcontrol?key=${mapKey}&callback=${buildCallbackName(this.name)}`];
   }
 
+  destroy() {
+    this.#map && this.#map.dispose();
+  }
+
   addOverlay(overlayType, options) {
     const OverlayClass = OverlayClasses.get(overlayType);
     return OverlayClass && new OverlayClass(this.#map, options);
