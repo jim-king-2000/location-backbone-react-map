@@ -29,6 +29,10 @@ export class RGoogleMap {
       disableDefaultUI: true,
       maxZoom: 18,
     });
+    const map = this.#map;
+    navigator.geolocation.getCurrentPosition(
+      pos => map.setCenter(PositionToLatLng(pos.coords))
+    );
     this.#mapView = new MapView(this.#map);
     this.#mapFeature = new MapFeature(this.#map);
   }
