@@ -57,6 +57,10 @@ export class RBMap {
     ];
   }
 
+  destroy() {
+    // this.#map && this.#map.destroy();
+  }
+
   addOverlay(overlayType, options) {
     const OverlayClass = OverlayClasses.get(overlayType);
     return OverlayClass && new OverlayClass(this.#map, options);

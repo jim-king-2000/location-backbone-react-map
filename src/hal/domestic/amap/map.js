@@ -36,6 +36,10 @@ export class RAMap {
       '//webapi.amap.com/ui/1.0/main.js?v=1.0.11'
     ];
   }
+  
+  destroy() {
+    this.#map && this.#map.destroy();
+  }
 
   addOverlay(overlayType, options) {
     const OverlayClass = OverlayClasses.get(overlayType);

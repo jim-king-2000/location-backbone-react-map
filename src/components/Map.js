@@ -8,10 +8,11 @@ import { buildCallbackName } from '../utils/CallbackName';
 export class Map extends Component {
   #container = React.createRef();
   #child = React.createRef();
+  #map;
 
   async #createMap(NativeMapClass, options, mapKey) {
-    if (!this.map) {
-      this.map = await NativeMapClass.loadMap(
+    if (!this.#map) {
+      this.#map = await NativeMapClass.loadMap(
         this.#container.current,
         options,
         mapKey);
@@ -27,7 +28,7 @@ export class Map extends Component {
           return child;
         return React.cloneElement(
           child,
-          { __map__: this.map },
+          { __map__: this.#map },
           this.#cloneChildren(child.props && child.props.children)
         );
       }
@@ -56,6 +57,10 @@ export class Map extends Component {
 
   componentDidUpdate() {
     this.#renderChildren();
+  }
+
+  componentWillUnmount() {
+    this.#map.destroy && this.#map.destroy();
   }
 
   render() {
