@@ -1,6 +1,8 @@
 import { PositionToLocation } from './utils';
 import { renderToStaticMarkup } from 'react-dom/server';
 
+const closeButtonId = 'bingMapHTMLInfoBoxCloseButton';
+
 function renderContent(children) {
   return renderToStaticMarkup(
     <div
@@ -12,7 +14,7 @@ function renderContent(children) {
       }}
     >
       <button
-        // onClick={events.close}
+        id={closeButtonId}
         style={{
           top: 0,
           right: 0,
@@ -36,11 +38,18 @@ export class InfoWindow {
 
   constructor(map, options) {
     const { position, events, children, ...others } = options;
-    this.#infoWindow = new Microsoft.Maps.Infobox(PositionToLocation(position), {
-      ...others,
-      htmlContent: renderContent(children),
-    });
+    this.#infoWindow = new Microsoft.Maps.Infobox(
+      PositionToLocation(position), {
+        ...others,
+        htmlContent: renderContent(children),
+      }
+    );
     this.#infoWindow.setMap(map);
+    Microsoft.Maps.Events.addHandler(this.#infoWindow, 'click', e => {
+      if (e.originalEvent.target.id === closeButtonId) {
+        events.close(e);
+      }
+    });
   }
 
   setOptions(options) {
