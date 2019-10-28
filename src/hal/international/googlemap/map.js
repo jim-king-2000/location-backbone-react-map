@@ -25,7 +25,7 @@ export class RGoogleMap {
         latitude: 39.915,
         longitude: 116.404,
       }),
-      zoom: options.zoom || 9,
+      zoom: options.zoom || 11,
       disableDefaultUI: true,
       maxZoom: 18,
     });
