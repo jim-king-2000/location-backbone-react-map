@@ -31,8 +31,10 @@ export class RBMap {
       PositionToPoint(center) || new BMap.Point(116.331398,39.897445),
       zoom || 11);
     if (!center) {
-      const cityLocator = new BMap.LocalCity();
-      cityLocator.get(result => map.setCenter(result.name));
+      map.addEventListener('load', () => {
+        const cityLocator = new BMap.LocalCity();
+        cityLocator.get(result => map.setCenter(result.name));
+      });
     }
 
     return map;
