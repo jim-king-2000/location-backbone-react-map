@@ -15,6 +15,7 @@ const OverlayClasses = new Map([
 ]);
 
 export class RBMap {
+  #dom;
   #map;
   #mapView;
   #mapFeature;
@@ -38,6 +39,7 @@ export class RBMap {
   }
 
   constructor(dom, options) {
+    this.#dom = dom;
     this.#map = RBMap.#buildMap(dom, options);
     this.#mapView = new MapView(this.#map);
     this.#mapFeature = new MapFeature(this.#map);
@@ -58,7 +60,10 @@ export class RBMap {
   }
 
   destroy() {
-    // this.#map && this.#map.destroy();
+    if (!this.#dom) return;
+    while(this.#dom.firstChild) {
+      this.#dom.removeChild(this.#dom.firstChild);
+    }
   }
 
   addOverlay(overlayType, options) {
