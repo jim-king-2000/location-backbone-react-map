@@ -28,7 +28,7 @@ export class RBMap {
 
     const { center, zoom } = options;
     if (!center) {
-      map.addEventListener('load', () => {
+      map.addEventListener('tilesloaded', () => {
         const cityLocator = new BMap.LocalCity();
         cityLocator.get(result => map.setCenter(result.name));
       });
