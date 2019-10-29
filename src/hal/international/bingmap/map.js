@@ -26,6 +26,7 @@ export class RBingMap {
       allowHidingLabelsOfRoad: true,
       zoom: options.zoom,
       center: PositionToLocation(options.center),
+      maxZoom: 18,
     });
     this.#mapView = new MapView(this.#map);
     this.#mapFeature = new MapFeature(this.#map);
