@@ -32,7 +32,7 @@ function buildDynamicOverlay(overlayName) {
       }
 
       componentDidUpdate(prevProps) {
-        this.overlay.setOptions && this.overlay.setOptions(this.props);
+        this.overlay.setOptions && this.overlay.setOptions(this.props, prevProps);
       }
     }
   );
