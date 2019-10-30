@@ -31,8 +31,8 @@ export default class RBMap {
       function setCenter() {
         const cityLocator = new BMap.LocalCity();
         cityLocator.get(result => {
-          map.removeEventListener('tilesloaded', setCenter);
           map.setCenter(result.name);
+          map.removeEventListener('tilesloaded', setCenter);
         });
       }
       map.addEventListener('tilesloaded', setCenter);
