@@ -13,8 +13,8 @@ export class Map extends Component {
 
   async componentDidUpdate(prevProps) {
     if (prevProps.mapVendor !== this.props.mapVendor) {
-      componentWillUnmount();
-      await componentDidMount();
+      this.componentWillUnmount();
+      await this.componentDidMount();
     }
     renderChildren(
       this.#map,
