@@ -41,3 +41,5 @@ export class RQQMap {
     return OverlayClass && new OverlayClass(this.map, options);
   }
 }
+
+export default RQQMap;

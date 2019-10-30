@@ -63,3 +63,5 @@ export class RGoogleMap {
     return this.#mapFeature;
   }
 }
+
+export default RGoogleMap;

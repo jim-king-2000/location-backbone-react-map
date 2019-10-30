@@ -28,3 +28,5 @@ export class RMapBox {
     return OverlayClass && new OverlayClass(this.map, options);
   }
 }
+
+export default RMapBox;

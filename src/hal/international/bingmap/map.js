@@ -61,3 +61,5 @@ export class RBingMap {
     return this.#mapFeature;
   }
 }
+
+export default RBingMap;

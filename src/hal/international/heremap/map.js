@@ -47,3 +47,5 @@ export class RHereMap {
     return OverlayClass && new OverlayClass(this.map, options, this.ui);
   }
 }
+
+export default RHereMap;

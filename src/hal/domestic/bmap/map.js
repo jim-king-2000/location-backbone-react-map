@@ -81,3 +81,5 @@ export class RBMap {
     return this.#mapFeature;
   }
 }
+
+export default RBMap;

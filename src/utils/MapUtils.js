@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import LoadCSS from '../utils/CSSLoader';
 import LoadAPI from '../utils/APILoader';
-import GetMapClass from '../utils/MapFactory';
+// import GetMapClass from '../utils/MapFactory';
+import GetMapClass from '../utils/MapDynamicFactory';
 import { buildCallbackName } from '../utils/CallbackName';
 
 function cloneChildren(map, children) {
@@ -43,7 +44,7 @@ async function createMap(
 
 export async function loadAndCreateMap(props, domMap, domChild) {
   const { mapVendor, mapKey, ...options } = props;
-  const NativeMapClass = GetMapClass(mapVendor);
+  const NativeMapClass = await GetMapClass(mapVendor);
 
   LoadCSS(NativeMapClass);
 

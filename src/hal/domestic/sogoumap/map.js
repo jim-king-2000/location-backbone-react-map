@@ -36,3 +36,5 @@ export class RSogouMap {
     return OverlayClass && new OverlayClass(this.map, options);
   }
 }
+
+export default RSogouMap;

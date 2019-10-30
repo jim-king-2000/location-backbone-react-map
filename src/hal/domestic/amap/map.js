@@ -54,3 +54,5 @@ export class RAMap {
     return this.#mapFeature;
   }
 }
+
+export default RAMap;

@@ -35,3 +35,5 @@ export class RMapBoxGL {
     return OverlayClass && new OverlayClass(this.map, options);
   }
 }
+
+export default RMapBoxGL;
