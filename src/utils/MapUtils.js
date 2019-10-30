@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
 import LoadCSS from '../utils/CSSLoader';
 import LoadAPI from '../utils/APILoader';
