@@ -14,11 +14,13 @@ const OverlayClasses = new Map([
 ]);
 
 export class RGoogleMap {
+  #dom;
   #map;
   #mapView;
   #mapFeature;
 
   constructor(dom, options) {
+    this.#dom = dom;
     this.#map = new google.maps.Map(dom, {
       center: PositionToLatLng(options.center) ||
       PositionToLatLng({
@@ -39,6 +41,13 @@ export class RGoogleMap {
 
   static buildScriptTag(mapKey) {
     return [`//maps.google.cn/maps/api/js?key=${mapKey}`];
+  }
+
+  destroy() {
+    if (!this.#dom) return;
+    while(this.#dom.firstChild) {
+      this.#dom.removeChild(this.#dom.firstChild);
+    }
   }
 
   addOverlay(overlayType, options) {
