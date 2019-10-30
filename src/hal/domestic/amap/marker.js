@@ -61,7 +61,7 @@ export class Marker {
       markerOptions.anchor = 'center';
       markerOptions.offset = new AMap.Pixel(0, 0);
     }
-    this.#setMarkerAndEvents(new AMap.Marker(markerOptions),events);
+    this.#setMarkerAndEvents(new AMap.Marker(markerOptions), events);
   }
 
   #setMarkerAndEvents(marker, events) {
