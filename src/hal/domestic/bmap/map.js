@@ -14,14 +14,6 @@ const OverlayClasses = new Map([
   ['InfoWindow', InfoWindow],
 ]);
 
-function setCenter() {
-  const cityLocator = new BMap.LocalCity();
-  cityLocator.get(result => {
-    map.removeEventListener('tilesloaded', setCenter);
-    map.setCenter(result.name);
-  });
-}
-
 export default class RBMap {
   #dom;
   #map;
@@ -36,6 +28,13 @@ export default class RBMap {
 
     const { center, zoom } = options;
     if (!center) {
+      function setCenter() {
+        const cityLocator = new BMap.LocalCity();
+        cityLocator.get(result => {
+          map.removeEventListener('tilesloaded', setCenter);
+          map.setCenter(result.name);
+        });
+      }
       map.addEventListener('tilesloaded', setCenter);
     }
     map.centerAndZoom(
