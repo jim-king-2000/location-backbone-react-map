@@ -1,4 +1,3 @@
-import React from 'react';
 import { renderToDiv } from './Render';
 
 export default fromPositionToPixel => {
