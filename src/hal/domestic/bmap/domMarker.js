@@ -17,6 +17,6 @@ export class DomMarker {
   }
 
   remove() {
-    this.#marker && this.#map.removeOverlay(this.#marker);
+    this.#map && this.#map.removeOverlay(this.#marker);
   }
 }
