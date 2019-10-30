@@ -12,7 +12,7 @@ const OverlayClasses = new Map([
   ['InfoWindow', InfoWindow],
 ]);
 
-export class RAMap {
+export default class RAMap {
   #map;
   #mapView;
   #mapFeature;
@@ -54,5 +54,3 @@ export class RAMap {
     return this.#mapFeature;
   }
 }
-
-export default RAMap;

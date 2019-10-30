@@ -13,7 +13,7 @@ const OverlayClasses = new Map([
   ['InfoWindow', InfoWindow],
 ]);
 
-export class RGoogleMap {
+export default class RGoogleMap {
   #dom;
   #map;
   #mapView;
@@ -63,5 +63,3 @@ export class RGoogleMap {
     return this.#mapFeature;
   }
 }
-
-export default RGoogleMap;

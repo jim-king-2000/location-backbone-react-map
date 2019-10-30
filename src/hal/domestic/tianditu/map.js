@@ -9,7 +9,7 @@ const OverlayClasses = new Map([
   ['InfoWindow', InfoWindow],
 ]);
 
-export class RTianMap {
+export default class RTianMap {
   constructor(dom, options) {
     this.map = new T.Map(dom, {
       center: PositionToLngLat(options.center),
@@ -30,5 +30,3 @@ export class RTianMap {
     return OverlayClass && new OverlayClass(this.map, options);
   }
 }
-
-export default RTianMap;

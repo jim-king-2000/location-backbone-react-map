@@ -12,7 +12,7 @@ const OverlayClasses = new Map([
   ['InfoWindow', InfoWindow],
 ]);
 
-export class RQQMap {
+export default class RQQMap {
   constructor(dom, options) {
     this.map = new qq.maps.Map(dom, {
       zoom: options.zoom,
@@ -41,5 +41,3 @@ export class RQQMap {
     return OverlayClass && new OverlayClass(this.map, options);
   }
 }
-
-export default RQQMap;

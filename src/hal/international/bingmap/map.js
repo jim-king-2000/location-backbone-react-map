@@ -14,7 +14,7 @@ const OverlayClasses = new Map([
   ['InfoWindow', InfoWindow],
 ]);
 
-export class RBingMap {
+export default class RBingMap {
   #map;
   #mapView;
   #mapFeature;
@@ -61,5 +61,3 @@ export class RBingMap {
     return this.#mapFeature;
   }
 }
-
-export default RBingMap;

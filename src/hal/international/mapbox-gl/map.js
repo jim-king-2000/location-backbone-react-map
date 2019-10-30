@@ -12,7 +12,7 @@ const OverlayClasses = new Map([
   ['InfoWindow', InfoWindow],
 ]);
 
-export class RMapBoxGL {
+export default class RMapBoxGL {
   constructor(dom, options, mapKey) {
     mapboxgl.accessToken = mapKey;
     this.map = new mapboxgl.Map({
@@ -35,5 +35,3 @@ export class RMapBoxGL {
     return OverlayClass && new OverlayClass(this.map, options);
   }
 }
-
-export default RMapBoxGL;

@@ -10,7 +10,7 @@ const OverlayClasses = new Map([
   ['InfoWindow', InfoWindow],
 ]);
 
-export class RHereMap {
+export default class RHereMap {
   constructor(dom, options, mapKey) {
     const platform = new H.service.Platform({
       apikey: mapKey
@@ -47,5 +47,3 @@ export class RHereMap {
     return OverlayClass && new OverlayClass(this.map, options, this.ui);
   }
 }
-
-export default RHereMap;

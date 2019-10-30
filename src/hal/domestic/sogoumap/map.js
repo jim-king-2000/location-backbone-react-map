@@ -9,7 +9,7 @@ const OverlayClasses = new Map([
   ['InfoWindow', InfoWindow],
 ]);
 
-export class RSogouMap {
+export default class RSogouMap {
   constructor(dom, options) {
     this.map = new sogou.maps.Map(dom, {
       hdMap: true,
@@ -36,5 +36,3 @@ export class RSogouMap {
     return OverlayClass && new OverlayClass(this.map, options);
   }
 }
-
-export default RSogouMap;
