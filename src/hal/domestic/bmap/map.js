@@ -27,20 +27,15 @@ export default class RBMap {
     map.highResolutionEnabled();
 
     const { center, zoom } = options;
-    if (!center) {
-      function setCenter() {
-        map.removeEventListener('tilesloaded', setCenter);
-        const cityLocator = new BMap.LocalCity();
-        cityLocator.get(result => {
-          map.setCenter(result.name);
-        });
-      }
-      map.addEventListener('tilesloaded', setCenter);
-    }
     map.centerAndZoom(
       PositionToPoint(center) || new BMap.Point(116.331398,39.897445),
       zoom || 11);
-
+    if (!center) {
+      const cityLocator = new BMap.LocalCity();
+      cityLocator.get(result => {
+        setTimeout(() => map.setCenter(result.name), 500);
+      });
+    }
     return map;
   }
 
