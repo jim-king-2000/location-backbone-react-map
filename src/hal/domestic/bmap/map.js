@@ -29,10 +29,10 @@ export default class RBMap {
     const { center, zoom } = options;
     if (!center) {
       function setCenter() {
+        map.removeEventListener('tilesloaded', setCenter);
         const cityLocator = new BMap.LocalCity();
         cityLocator.get(result => {
           map.setCenter(result.name);
-          map.removeEventListener('tilesloaded', setCenter);
         });
       }
       map.addEventListener('tilesloaded', setCenter);
