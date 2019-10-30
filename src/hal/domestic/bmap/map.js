@@ -17,8 +17,8 @@ const OverlayClasses = new Map([
 function setCenter() {
   const cityLocator = new BMap.LocalCity();
   cityLocator.get(result => {
-    map.setCenter(result.name);
     map.removeEventListener('tilesloaded', setCenter);
+    map.setCenter(result.name);
   });
 }
 
