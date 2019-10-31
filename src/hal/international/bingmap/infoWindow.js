@@ -42,7 +42,7 @@ export class InfoWindow {
     this.#infoWindow = new Microsoft.Maps.Infobox(
       PositionToLocation(position), {
         ...others,
-        description: renderContent(children),
+        description: renderToStaticMarkup(children),
       }
     );
     this.#infoWindow.setMap(map);
