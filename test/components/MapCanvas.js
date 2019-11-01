@@ -49,7 +49,7 @@ export default class extends Component {
               svgIcon={CarTopView}
               fillColor='red'
               events={{
-                click: e => this.setState({ showInfoWindow: true })
+                click: () => this.setState({ showInfoWindow: true })
               }}
             />
             <Marker
