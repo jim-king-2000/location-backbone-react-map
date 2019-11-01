@@ -27,6 +27,9 @@ export default class RBingMap {
       zoom: options.zoom,
       center: PositionToLocation(options.center),
       maxZoom: 18,
+      showMapTypeSelector: false,
+      showLocateMeButton: false,
+      showZoomButtons: false,
     });
     this.#mapView = new MapView(this.#map);
     this.#mapFeature = new MapFeature(this.#map);
