@@ -44,7 +44,7 @@ export default class RBingMap {
   }
 
   static buildScriptTag(mapKey) {
-    return [`//cn.bing.com/api/maps/mapcontrol?key=${mapKey}&callback=${buildCallbackName(this.name)}`];
+    return [`//www.bing.com/api/maps/mapcontrol?key=${mapKey}&callback=${buildCallbackName(this.name)}`];
   }
 
   destroy() {
