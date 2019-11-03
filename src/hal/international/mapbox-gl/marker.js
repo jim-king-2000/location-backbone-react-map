@@ -1,4 +1,4 @@
-import { Marker } from 'mapbox-gl/dist/mapbox-gl.js';
+import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
 import { PositionToLngLat } from './utils';
 import { renderToDiv } from '../../../utils/Render';
 import { buildSVGElement } from '../../../utils/svg';
@@ -28,7 +28,7 @@ export class Marker {
       })
     );
 
-    this.marker = new Marker(this.iconContainer && div)
+    this.marker = new mapboxgl.Marker(this.iconContainer && div)
       .setLngLat(PositionToLngLat(position))
       .addTo(map);
   }
