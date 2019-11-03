@@ -29,6 +29,7 @@ export default class RMapBoxGL {
         longitude: 116.404,
       }),
       zoom: options.zoom || 11,
+      maxZoom: options.maxZoom || 18,
       style: 'mapbox://styles/mapbox/streets-v11'
     });
     this.#mapView = new MapView(this.#map);
