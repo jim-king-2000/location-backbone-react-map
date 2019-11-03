@@ -34,7 +34,7 @@ export default class RMapBoxGL {
       style: 'mapbox://styles/mapbox/streets-v11'
     });
     this.#map.addControl(new MapboxLanguage({
-      defaultLanguage: 'zh-cn'
+      defaultLanguage: 'zh'
     }));
     this.#mapView = new MapView(this.#map);
     this.#mapFeature = new MapFeature(this.#map);
