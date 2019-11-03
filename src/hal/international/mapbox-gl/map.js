@@ -3,6 +3,8 @@ import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
 import { Marker } from './marker';
 import { Polyline } from './polyline';
 import { InfoWindow } from './infoWindow';
+import { MapView } from './mapView';
+import { MapFeature } from './mapFeature';
 import { PositionToLngLat } from './utils';
 
 const OverlayClasses = new Map([
@@ -13,15 +15,24 @@ const OverlayClasses = new Map([
 ]);
 
 export default class RMapBoxGL {
+  #map;
+  #mapView;
+  #mapFeature;
+
   constructor(dom, options, mapKey) {
     mapboxgl.accessToken = mapKey;
-    this.map = new mapboxgl.Map({
+    this.#map = new mapboxgl.Map({
       container: dom,
       antialias: true,
-      center: PositionToLngLat(options.center),
-      zoom: options.zoom,
+      center: PositionToLngLat(options.center || {
+        latitude: 39.915,
+        longitude: 116.404,
+      }),
+      zoom: options.zoom || 11,
       style: 'mapbox://styles/mapbox/streets-v11'
     });
+    this.#mapView = new MapView(this.#map);
+    this.#mapFeature = new MapFeature(this.#map);
   }
 
   static async loadMap(dom, options, mapKey) {
@@ -30,8 +41,20 @@ export default class RMapBoxGL {
     return nativeMap;
   }
 
+  destroy() {
+    this.#map.remove();
+  }
+
   addOverlay(overlayType, options) {
     const OverlayClass = OverlayClasses.get(overlayType);
-    return OverlayClass && new OverlayClass(this.map, options);
+    return OverlayClass && new OverlayClass(this.#map, options);
+  }
+
+  get MapView() {
+    return this.#mapView;
+  }
+
+  get MapFeature() {
+    return this.#mapFeature;
   }
 }
