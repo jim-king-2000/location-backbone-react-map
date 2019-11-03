@@ -9,7 +9,7 @@ export class MapView {
       const locations = positions.map(p => PositionToLngLat(p));
       if (!Array.isArray(locations) || locations.length < 1) return;
       const bounds = new LngLatBounds();
-      positions.forEach(p => bounds.extend(PositionToLatLng(p)));
+      positions.forEach(p => bounds.extend(PositionToLngLat(p)));
       map.fitBounds(bounds);
     };
     this.isInView = things => {
