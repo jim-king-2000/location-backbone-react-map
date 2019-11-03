@@ -1,5 +1,6 @@
 import 'mapbox-gl/dist/mapbox-gl.css';
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
+import MapboxLanguage  from '@mapbox/mapbox-gl-language';
 import { Marker } from './marker';
 import { Polyline } from './polyline';
 import { InfoWindow } from './infoWindow';
@@ -32,6 +33,9 @@ export default class RMapBoxGL {
       maxZoom: options.maxZoom || 17,
       style: 'mapbox://styles/mapbox/streets-v11'
     });
+    this.#map.addControl(new MapboxLanguage({
+      defaultLanguage: 'zh-cn'
+    }));
     this.#mapView = new MapView(this.#map);
     this.#mapFeature = new MapFeature(this.#map);
   }
