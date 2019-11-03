@@ -5,7 +5,7 @@ import { buildSVGElement } from '../../../utils/svg';
 
 export class Marker {
   constructor(map, options) {
-    const { position, angle, svgIcon, children, events, ...others } = options;
+    const { position, angle, svgIcon, children, events, extData, ...others } = options;
     const div = document.createElement('div');
     div.style.cursor = 'pointer';
     if (children) {
@@ -24,6 +24,7 @@ export class Marker {
       ([key, value]) => div.addEventListener(key, e => {
         e.preventDefault();
         e.stopPropagation();
+        e.target.getExtData = () => extData;
         value(e);
       })
     );
