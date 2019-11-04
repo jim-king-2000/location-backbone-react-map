@@ -31,6 +31,7 @@ export default class RMapBoxGL {
       }),
       zoom: options.zoom || 11,
       maxZoom: options.maxZoom || 17,
+      antialias: true,
       style: 'mapbox://styles/mapbox/streets-v11'
     });
     this.#map.addControl(new MapboxLanguage({
