@@ -7,7 +7,7 @@ export class MapView {
     this.zoomIn = () => map.zoomIn();
 
     this.setFitView = positions => {
-      if (!Array.isArray(positions)) return;
+      // if (!Array.isArray(positions)) return;
 
       // if (positions.length === 1) map.panTo(PositionToLngLat(positions[0]));
 
