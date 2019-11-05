@@ -21,6 +21,7 @@ export default class RAMap {
     this.#map = new AMap.Map(dom, {
       zoom: options.zoom,
       center: PositionToLngLat(options.center),
+      ...options,
     });
     this.#mapView = new MapView(this.#map);
     this.#mapFeature = new MapFeature(this.#map);
