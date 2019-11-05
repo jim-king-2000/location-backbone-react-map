@@ -43,8 +43,8 @@ export class Marker {
     const { position, children, events, ...others } = options;
     const markerOptions = {
       map,
-      ...others,
       position: PositionToLngLat(position),
+      ...others,
     };
 
     if (others.svgIcon) {

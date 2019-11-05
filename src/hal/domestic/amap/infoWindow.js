@@ -8,9 +8,9 @@ export class InfoWindow {
     const { position, events, children, closeWhenClickMap = true,
       ...others } = options;
     this.#infoWindow = new AMap.InfoWindow({
-      ...others,
       closeWhenClickMap,
       content: renderToDiv(children),
+      ...others,
     });
     events && Object.entries(events).forEach(
       ([key, value]) => this.#infoWindow.on(key, value)

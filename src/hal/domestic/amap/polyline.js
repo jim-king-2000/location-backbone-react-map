@@ -4,13 +4,13 @@ export class Polyline {
   #polyline;
   
   constructor(map, options) {
-    const { path, ...others } = options;
+    const { path, lineJoin = 'round', lineCap = 'round', ...others } = options;
     this.#polyline = new AMap.Polyline({
       map,
-      ...others,
       path: path.map(position => PositionToLngLat(position)),
-      lineJoin: 'round',
-      lineCap: 'round',
+      lineJoin,
+      lineCap,
+      ...others,
     });
   }
 
