@@ -22,17 +22,17 @@ export default class RMapBoxGL {
 
   constructor(dom, options, mapKey) {
     mapboxgl.accessToken = mapKey;
+    const { center = { latitude: 39.915, longitude: 116.404 },
+      style = 'mapbox://styles/mapbox/streets-v11',
+      antialias = true, maxZoom = 18, zoom = 11, ...others } = options;
     this.#map = new mapboxgl.Map({
       container: dom,
-      antialias: true,
-      center: PositionToLngLat(options.center || {
-        latitude: 39.915,
-        longitude: 116.404,
-      }),
-      zoom: options.zoom || 11,
-      maxZoom: options.maxZoom || 17,
-      antialias: true,
-      style: 'mapbox://styles/mapbox/streets-v11'
+      center: PositionToLngLat(center),
+      zoom,
+      maxZoom,
+      antialias,
+      style,
+      ...others,
     });
     this.#map.addControl(new MapboxLanguage({
       defaultLanguage: 'zh'

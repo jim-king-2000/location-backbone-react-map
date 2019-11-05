@@ -11,9 +11,12 @@ const OverlayClasses = new Map([
 
 export default class RTianMap {
   constructor(dom, options) {
+    const { center = { latitude: 39.915, longitude: 116.404 },
+      zoom = 11, ...others } = options;
     this.map = new T.Map(dom, {
-      center: PositionToLngLat(options.center),
-      zoom: options.zoom,
+      center: PositionToLngLat(center),
+      zoom,
+      ...others,
     });
   }
 

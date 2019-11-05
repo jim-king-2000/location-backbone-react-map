@@ -11,11 +11,12 @@ const OverlayClasses = new Map([
 
 export default class RSogouMap {
   constructor(dom, options) {
+    const { center, mapControlType = 4, hdMap = true, ...others } = options;
     this.map = new sogou.maps.Map(dom, {
-      hdMap: true,
-      center: PositionToLatLng(options.center),
-      zoom: options.zoom,
-      mapControlType: 4,
+      center: PositionToLatLng(center),
+      hdMap,
+      mapControlType,
+      ...others,
     });
   }
 

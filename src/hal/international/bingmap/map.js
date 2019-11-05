@@ -20,14 +20,17 @@ export default class RBingMap {
   #mapFeature;
 
   constructor(dom, options) {
+    const { center, enableHighDpi = true, enableCORS = true, maxZoom = 18,
+      allowHidingLabelsOfRoad = true, showDashboard = false, children,
+      ...others } = options;
     this.#map = new Microsoft.Maps.Map(dom, {
-      enableHighDpi: true,
-      enableCORS: true,
-      allowHidingLabelsOfRoad: true,
-      zoom: options.zoom,
-      center: PositionToLocation(options.center),
-      maxZoom: 18,
-      showDashboard: false,
+      center: PositionToLocation(center),
+      enableHighDpi,
+      enableCORS,
+      allowHidingLabelsOfRoad,
+      showDashboard,
+      maxZoom,
+      ...others,
     });
     this.#mapView = new MapView(this.#map);
     this.#mapFeature = new MapFeature(this.#map);

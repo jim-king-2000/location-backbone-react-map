@@ -18,10 +18,10 @@ export default class RAMap {
   #mapFeature;
   
   constructor(dom, options) {
+    const { center, ...others } = options;
     this.#map = new AMap.Map(dom, {
-      zoom: options.zoom,
-      center: PositionToLngLat(options.center),
-      ...options,
+      center: PositionToLngLat(center),
+      ...others,
     });
     this.#mapView = new MapView(this.#map);
     this.#mapFeature = new MapFeature(this.#map);

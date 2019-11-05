@@ -21,7 +21,7 @@ export default class RBMap {
   #mapFeature;
 
   static #buildMap(dom, options) {
-    const map = new BMap.Map(dom);
+    const map = new BMap.Map(dom, options);
     map.enableScrollWheelZoom();
     map.enableContinuousZoom();
     map.highResolutionEnabled();

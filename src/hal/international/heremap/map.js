@@ -2,6 +2,7 @@ import { Marker } from './marker';
 import { DomMarker } from './domMarker';
 import { Polyline } from './polyline';
 import { InfoWindow } from './infoWindow';
+import { PositionToLatLng } from './utils';
 
 const OverlayClasses = new Map([
   ['Marker', Marker],
@@ -16,10 +17,13 @@ export default class RHereMap {
       apikey: mapKey
     });
     const defaultLayers = platform.createDefaultLayers();
+    const { center = { lat: 31, lng: 121 }, zoom = 11,
+      pixelRatio = devicePixelRatio || 1, ...others } = options;
     this.map = new H.Map(dom, defaultLayers.vector.normal.map, {
-      pixelRatio: devicePixelRatio || 1,
-      center: { lat: 31, lng: 121 },
-      zoom: 11,
+      center: PositionToLatLng(center),
+      pixelRatio,
+      zoom,
+      ...others,
     });
     new H.mapevents.Behavior(new H.mapevents.MapEvents(this.map));
     this.ui = H.ui.UI.createDefault(this.map, defaultLayers);

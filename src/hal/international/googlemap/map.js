@@ -21,15 +21,14 @@ export default class RGoogleMap {
 
   constructor(dom, options) {
     this.#dom = dom;
+    const { center = { latitude: 39.915, longitude: 116.404 },
+      disableDefaultUI = true, maxZoom = 18, zoom = 11, ...others } = options;
     this.#map = new google.maps.Map(dom, {
-      center: PositionToLatLng(options.center) ||
-      PositionToLatLng({
-        latitude: 39.915,
-        longitude: 116.404,
-      }),
-      zoom: options.zoom || 11,
-      disableDefaultUI: true,
-      maxZoom: 18,
+      center: PositionToLatLng(center),
+      zoom,
+      maxZoom,
+      disableDefaultUI,
+      ...others,
     });
     this.#mapView = new MapView(this.#map);
     this.#mapFeature = new MapFeature(this.#map);

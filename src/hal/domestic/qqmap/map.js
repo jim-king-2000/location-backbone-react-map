@@ -14,13 +14,16 @@ const OverlayClasses = new Map([
 
 export default class RQQMap {
   constructor(dom, options) {
+    const { center = { latitude: 39.915, longitude: 116.404 },
+      mapTypeControl = false, panControl = false,
+      zoomControl = false, scaleControl = false, ...others } = options;
     this.map = new qq.maps.Map(dom, {
-      zoom: options.zoom,
-      center: PositionToLatLng(options.center),
-      mapTypeControl: false,
-      panControl: false,
-      zoomControl: false,
-      scaleControl: false,
+      center: PositionToLatLng(center),
+      mapTypeControl: mapTypeControl,
+      panControl: panControl,
+      zoomControl: zoomControl,
+      scaleControl: scaleControl,
+      ...others,
     });
   }
 
