@@ -5,10 +5,11 @@ export class InfoWindow {
   #infoWindow;
 
   constructor(map, options) {
-    const { position, events, children, ...others } = options;
+    const { position, events, children, closeWhenClickMap = true,
+      ...others } = options;
     this.#infoWindow = new AMap.InfoWindow({
       ...others,
-      closeWhenClickMap: true,
+      closeWhenClickMap,
       content: renderToDiv(children),
     });
     events && Object.entries(events).forEach(
