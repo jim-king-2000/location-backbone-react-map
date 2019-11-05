@@ -11,7 +11,7 @@ export class MapView {
 
       // if (positions.length === 1) map.panTo(PositionToLngLat(positions[0]));
 
-      map.setFitView(null, false, [75, 75, 75, 75]);
+      map.setFitView(null, false, [35, 35, 35, 35]);
     };
 
     this.isInView = things => {
