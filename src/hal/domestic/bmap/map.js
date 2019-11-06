@@ -26,10 +26,12 @@ export default class RBMap {
     map.enableContinuousZoom();
     map.highResolutionEnabled();
 
-    const { center = new BMap.Point(116.331398,39.897445),
+    const { center,
       zoom = 11 } = options;
-    map.centerAndZoom(PositionToPoint(center), zoom);
-    if (!options.center) {
+    map.centerAndZoom(
+      PositionToPoint(center) || new BMap.Point(116.331398,39.897445),
+      zoom);
+    if (!center) {
       const cityLocator = new BMap.LocalCity();
       cityLocator.get(result =>
         setTimeout(() => map.setCenter(result.name), 500)
