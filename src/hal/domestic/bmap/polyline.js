@@ -1,10 +1,10 @@
 import { PositionToPoint } from './utils';
 
 function transformOptions(options) {
-  const { strokeOpacity, ...others } = options;
+  const { strokeOpacity = 1, ...others } = options;
   return {
     ...others,
-    strokeOpacity: strokeOpacity || 1,
+    strokeOpacity,
   }
 }
 
