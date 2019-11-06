@@ -8,7 +8,7 @@ export class MapView {
       const locations = positions.map(p => PositionToLocation(p));
       if (!Array.isArray(locations) || locations.length < 1) return;
       const bounds = Microsoft.Maps.LocationRect.fromLocations(locations);
-      map.setView({ bounds });
+      map.setView({ bounds, padding: 35 });
     };
     this.isInView = things => {
       const bounds = map.getBounds();
