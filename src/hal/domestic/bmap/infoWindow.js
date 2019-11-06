@@ -6,8 +6,8 @@ export class InfoWindow {
   #infoWindow;
 
   constructor(map, options) {
-    const { position, events, children } = options;
-    this.#infoWindow = new BMap.InfoWindow(renderToDiv(children));
+    const { position, events, children, ...others } = options;
+    this.#infoWindow = new BMap.InfoWindow(renderToDiv(children), others);
     events && Object.entries(events).forEach(
       ([key, value]) => this.#infoWindow.addEventListener(key, value)
     );

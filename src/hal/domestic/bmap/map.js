@@ -26,15 +26,14 @@ export default class RBMap {
     map.enableContinuousZoom();
     map.highResolutionEnabled();
 
-    const { center, zoom } = options;
-    map.centerAndZoom(
-      PositionToPoint(center) || new BMap.Point(116.331398,39.897445),
-      zoom || 11);
-    if (!center) {
+    const { center = new BMap.Point(116.331398,39.897445),
+      zoom = 11 } = options;
+    map.centerAndZoom(PositionToPoint(center), zoom);
+    if (!options.center) {
       const cityLocator = new BMap.LocalCity();
-      cityLocator.get(result => {
-        setTimeout(() => map.setCenter(result.name), 500);
-      });
+      cityLocator.get(result =>
+        setTimeout(() => map.setCenter(result.name), 500)
+      );
     }
     return map;
   }

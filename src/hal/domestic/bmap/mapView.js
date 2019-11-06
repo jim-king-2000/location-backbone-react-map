@@ -5,7 +5,9 @@ export class MapView {
     this.zoomOut = () => map.zoomOut();
     this.zoomIn = () => map.zoomIn();
     this.setFitView = positions => map.setViewport(
-      positions.map(p => PositionToPoint(p))
+      positions.map(p => PositionToPoint(p)), {
+        margins: [35, 35, 35, 35]
+      }
     );
     this.isInView = positions => {
       const bounds = map.getBounds();
