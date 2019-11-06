@@ -10,7 +10,7 @@ export class MapView {
       }
       const bounds = new google.maps.LatLngBounds();
       positions.forEach(p => bounds.extend(PositionToLatLng(p)));
-      map.fitBounds(bounds);
+      map.fitBounds(bounds, 35);
     };
     this.isInView = things => {
       const bounds = map.getBounds();
