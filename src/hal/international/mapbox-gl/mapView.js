@@ -24,7 +24,7 @@ export class MapView {
       if (!Array.isArray(locations) || locations.length < 1) return;
       const bounds = new LngLatBounds();
       positions.forEach(p => bounds.extend(PositionToLngLat(p)));
-      map.fitBounds(bounds);
+      map.fitBounds(bounds, { padding: 35 });
     };
     this.isInView = things => {
       const bounds = map.getBounds();
