@@ -1,5 +1,6 @@
 import { renderToStaticMarkup } from 'react-dom/server';
 import { PositionToLatLng } from './utils';
+import { renderToDiv } from '../../../utils/Render';
 
 export class DomMarker {
   constructor(map, options) {
