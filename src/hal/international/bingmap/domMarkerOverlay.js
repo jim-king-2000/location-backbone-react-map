@@ -36,10 +36,7 @@ export default class extends Microsoft.Maps.CustomOverlay {
     // setTimeout() resolve the problem. If this.#domMarkerOverlay.draw() did
     // not depends on div.offsetWidth or div.offsetHeight, it would be OK to
     // invoke it directly.
-    setTimeout(
-      () => this.#domMarkerOverlay.draw(),
-      0
-    );
+    setTimeout(() => this.#domMarkerOverlay.draw());
   }
 
   onRemove() {
