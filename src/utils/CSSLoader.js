@@ -4,5 +4,5 @@ export default NativeMapClass => {
   const cssLink = document.createElement('link');
   cssLink.rel = 'stylesheet';
   cssLink.href = NativeMapClass.buildCssTag();
-  document.head.appendChild(cssLink);
+  document.head.append(cssLink);
 }

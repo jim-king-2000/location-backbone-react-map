@@ -32,7 +32,7 @@ export default fromPositionToPixel => {
       }
     
       onRemove() {
-        this.#div.parentNode.removeChild(this.#div);
+        this.#div.remove();
         this.#div = null;
       }
     }

@@ -13,7 +13,7 @@ export default class extends BMap.Overlay {
 
   initialize(map) {
     const div = this.#domMarkerOverlay.onAdd(map);
-    map.getPanes().markerPane.appendChild(div);
+    map.getPanes().markerPane.append(div);
     return div;
   }
 

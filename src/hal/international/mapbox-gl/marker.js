@@ -11,12 +11,12 @@ export class Marker {
     if (children) {
       const content = renderToDiv(children);
       if (angle) content.style.transform = `rotate(${angle}deg)`;
-      div.appendChild(content);
+      div.append(content);
       this.iconContainer = content;
     } else if (svgIcon) {
       const content = renderToDiv(buildSVGElement(options));
       if (angle) content.style.transform = `rotate(${angle}deg)`;
-      div.appendChild(content);
+      div.append(content);
       this.iconContainer = content;
     }
 

@@ -4,7 +4,7 @@ function buildScript(src, onLoad) {
   script.type = 'text/javascript';
   script.src = src;
   script.onload = onLoad;
-  document.head.appendChild(script);
+  document.head.append(script);
 }
 
 export default async (NativeMapClass, mapKey) => {

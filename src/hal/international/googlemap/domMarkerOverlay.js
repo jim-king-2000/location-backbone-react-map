@@ -14,7 +14,7 @@ export default class extends google.maps.OverlayView {
 
   onAdd() {
     const div = this.#domMarkerOverlay.onAdd();
-    this.getPanes().overlayLayer.appendChild(div);
+    this.getPanes().overlayLayer.append(div);
   }
 
   draw() {
