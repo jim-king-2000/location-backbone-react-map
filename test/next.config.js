@@ -1,4 +1,6 @@
-const withTM = require('next-transpile-modules');
+const withTM = require('next-transpile-modules')([
+  'location-backbone-react-map'
+]);
 const withPlugins = require('next-compose-plugins');
 
 if (typeof require !== 'undefined') {
@@ -14,9 +16,5 @@ module.exports = withTM({
 });
 module.exports = withPlugins([
   [withCSS()],
-  [withTM, {
-    transpileModules: [
-      'location-backbone-react-map'
-    ]
-  }],
+  [withTM],
 ])
