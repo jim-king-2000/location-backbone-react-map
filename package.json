@@ -20,7 +20,7 @@
   "homepage": "https://github.com/jim-king-2000/location-backbone-react-map#readme",
   "dependencies": {
     "@mapbox/mapbox-gl-language": "^0.10.1",
-    "mapbox-gl": "^1.5.0",
+    "mapbox-gl": "^1.7.0",
     "tinycolor2": "^1.4.1",
     "uuid": "^3.3.3"
   }
