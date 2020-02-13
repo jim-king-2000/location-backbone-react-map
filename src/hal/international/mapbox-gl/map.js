@@ -1,4 +1,3 @@
-import 'mapbox-gl/dist/mapbox-gl.css';
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
 import MapboxLanguage  from '@mapbox/mapbox-gl-language';
 import { Marker } from './marker';
@@ -45,6 +44,10 @@ export default class RMapBoxGL {
     const nativeMap = new RMapBoxGL(dom, options, mapKey);
     await new Promise(resolve => nativeMap.#map.on('load', resolve));
     return nativeMap;
+  }
+
+  static buildCssTag() {
+    return '//api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.css';
   }
 
   destroy() {
