@@ -34,12 +34,10 @@ export default class RBMap {
     if (!center) {
       const tilesloadedHanlder = () => {
         const cityLocator = new BMap.LocalCity();
-        cityLocator.get(result =>
-          setTimeout(() => {
-            map.removeEventListener('tilesloaded', tilesloadedHanlder);
-            map.setCenter(result.name);
-          }, 500)
-        );
+        cityLocator.get(result => {
+          map.removeEventListener('tilesloaded', tilesloadedHanlder);
+          map.setCenter(result.name);
+        });
       };
       map.addEventListener('tilesloaded', tilesloadedHanlder);
     }
