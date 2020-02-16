@@ -32,10 +32,16 @@ export default class RBMap {
       PositionToPoint(center) || new BMap.Point(116.331398,39.897445),
       zoom);
     if (!center) {
-      const cityLocator = new BMap.LocalCity();
-      cityLocator.get(result =>
-        setTimeout(() => map.setCenter(result.name), 500)
-      );
+      const tilesloadedHanlder = () => {
+        const cityLocator = new BMap.LocalCity();
+        cityLocator.get(result =>
+          setTimeout(() => {
+            map.removeEventListener('tilesloaded', tilesloadedHanlder);
+            map.setCenter(result.name);
+          }, 500)
+        );
+      };
+      map.addEventListener('tilesloaded', tilesloadedHanlder);
     }
     return map;
   }
