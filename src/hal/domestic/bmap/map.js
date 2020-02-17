@@ -33,11 +33,9 @@ export default class RBMap {
       zoom);
     if (!center) {
       const tilesloadedHanlder = () => {
+        map.removeEventListener('tilesloaded', tilesloadedHanlder);
         const cityLocator = new BMap.LocalCity();
-        cityLocator.get(result => {
-          map.removeEventListener('tilesloaded', tilesloadedHanlder);
-          map.setCenter(result.name);
-        });
+        cityLocator.get(result => map.setCenter(result.name));
       };
       map.addEventListener('tilesloaded', tilesloadedHanlder);
     }
