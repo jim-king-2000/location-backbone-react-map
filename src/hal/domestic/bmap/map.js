@@ -36,7 +36,7 @@ export default class RBMap {
         map.removeEventListener('tilesloaded', tilesloadedHanlder);
         const cityLocator = new BMap.LocalCity();
         cityLocator.get(result =>
-          setTimeout(() => map.setCenter(result.name)));
+          setTimeout(() => map.setCenter(result.name), 400));
       };
       map.addEventListener('tilesloaded', tilesloadedHanlder);
     }
