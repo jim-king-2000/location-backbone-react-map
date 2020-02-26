@@ -39,7 +39,7 @@ export default class RGoogleMap {
   }
 
   static buildScriptTag(mapKey) {
-    return [`//maps.google.cn/maps/api/js?key=${mapKey}`];
+    return [`//maps.googleapis.com/maps/api/js?key=${mapKey}&region=CN&language=zh-CN`];
   }
 
   destroy() {
