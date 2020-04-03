@@ -1,4 +1,4 @@
-import uuid from 'uuid/v4';
+import { v4 as uuidv4 } from 'uuid';
 import { PositionToLngLat } from './utils';
 import { transformColorToRgb } from '../../../utils/Color';
 
@@ -6,7 +6,7 @@ export class Polyline {
   constructor(map, options) {
     this.map = map;
     const { path, ...others } = options;
-    this.id = uuid();
+    this.id = uuidv4();
     map.addLayer({
       id: this.id,
       type: 'line',

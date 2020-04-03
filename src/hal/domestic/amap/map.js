@@ -33,8 +33,8 @@ export default class RAMap {
 
   static buildScriptTag(mapKey) {
     return [
-      `//webapi.amap.com/maps?v=1.4.15&key=${mapKey}`,
-      '//webapi.amap.com/ui/1.0/main.js?v=1.0.11'
+      `//webapi.amap.com/maps?v=2.0&key=${mapKey}`,
+      '//webapi.amap.com/ui/1.0/main.js'
     ];
   }
   
